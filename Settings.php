@@ -29,9 +29,9 @@ abstract class Settings extends \Df\Payment\Settings {
 		$product = $this->product();
         return new API(new HttpClient([
         	'base_url' => [G::getEndpoint($this->product()), ['version' => 'v1']],
-			'defaults' => [
-				'auth' => [$apiKey, ''], 'headers' => df_headers(['User-Agent' => "Mage2.PRO $product"]),
-			]
+			'defaults' => ['auth' => [$apiKey, ''], 'headers' => df_headers([
+				'User-Agent' => df_cc_s('Mage2.PRO', $product, df_package_version($this))
+			]),]
 		]), $product);
 	}, [!is_null($test) ? $test : $this->test(), $s]);}
 
