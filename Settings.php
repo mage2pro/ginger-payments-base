@@ -41,7 +41,7 @@ abstract class Settings extends \Df\Payment\Settings {
 	 */
 	final public function api($test = null, $s = null) {return dfc($this, function($test, $s) {
 		/** @var string $apiKey */
-		$apiKey = $this->p(($test ? 'test' : 'live') . 'PrivateKey', $s);
+		$apiKey = $this->privateKey($s);
 		Guard::uuid(G::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
 		/** @var string $product */
 		$product = $this->product();
