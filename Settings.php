@@ -35,9 +35,9 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
         return new API($this, new HttpClient([
 			'auth' => [$apiKey, '']
 			,'base_url' => "https://api.{$this->apiDomain()}/v1/"
-			,'headers' => df_headers(['User-Agent' => df_cc_s(
+			,'headers' => ['User-Agent' => df_cc_s(
 				'Mage2.PRO', $this->titleB(), df_package_version($this)
-			)])
+			)] + df_headers()
 		]));
 	}, [$s]);}
 
