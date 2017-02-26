@@ -27,7 +27,7 @@ final class Common extends TestCase {
 			'http://www.example.com',       // The return URL (optional)
 			'PT15M'                         // The expiration period in ISO 8601 format (optional)
 		);
-		var_dump($order);
+		echo $this->apiK()->lastResponse();
 	}
 
 	/** @test 2017-02-26 */
@@ -42,6 +42,6 @@ final class Common extends TestCase {
 			'http://www.example.com',       // The return URL (optional)
 			'PT15M'                         // The expiration period in ISO 8601 format (optional)
 		);
-		var_dump($order);
+		echo $this->apiG()->lastResponse();
 	}
 }
