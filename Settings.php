@@ -15,6 +15,24 @@ use Magento\Store\Model\Store;
 abstract class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-02-26
+	 * @see \Dfe\GingerPayments\Settings::apiDomain()
+	 * @see \Dfe\KassaCompleet\Settings::apiDomain()
+	 * @used-by api()
+	 * @return string
+	 */
+	abstract protected function apiDomain();
+
+	/**
+	 * 2017-02-26
+	 * @see \Dfe\GingerPayments\Settings::product()
+	 * @see \Dfe\KassaCompleet\Settings::product()
+	 * @used-by api()
+	 * @return string
+	 */
+	abstract protected function product();
+
+	/**
+	 * 2017-02-26
 	 * @used-by account()
 	 * @used-by \Dfe\Spryng\Method::api()
 	 * @param bool|null $test [optional]
@@ -28,18 +46,11 @@ abstract class Settings extends \Df\Payment\Settings {
 		/** @var string $product */
 		$product = $this->product();
         return new API(new HttpClient([
-        	'base_url' => [G::getEndpoint($this->product()), ['version' => 'v1']],
-			'defaults' => ['auth' => [$apiKey, ''], 'headers' => df_headers([
-				'User-Agent' => df_cc_s('Mage2.PRO', $product, df_package_version($this))
-			]),]
+			'auth' => [$apiKey, '']
+			,'base_url' => "https://api.{$this->apiDomain()}/v1/"
+			,'headers' => df_headers(['User-Agent' => df_cc_s(
+				'Mage2.PRO', $product, df_package_version($this)
+			)])
 		]), $product);
 	}, [!is_null($test) ? $test : $this->test(), $s]);}
-
-	/**
-	 * 2017-02-26
-	 * @see \Dfe\GingerPayments\Settings::product()
-	 * @see \Dfe\KassaCompleet\Settings::product()
-	 * @return string
-	 */
-	abstract protected function product();
 }
