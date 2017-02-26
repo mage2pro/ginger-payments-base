@@ -23,15 +23,6 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 
 	/**
 	 * 2017-02-26
-	 * @see \Dfe\GingerPayments\Settings::product()
-	 * @see \Dfe\KassaCompleet\Settings::product()
-	 * @used-by api()
-	 * @return string
-	 */
-	abstract protected function product();
-
-	/**
-	 * 2017-02-26
 	 * @used-by account()
 	 * @used-by \Dfe\Spryng\Method::api()
 	 * @param bool|null $test [optional]
@@ -46,7 +37,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 			'auth' => [$apiKey, '']
 			,'base_url' => "https://api.{$this->apiDomain()}/v1/"
 			,'headers' => df_headers(['User-Agent' => df_cc_s(
-				'Mage2.PRO', $this->product(), df_package_version($this)
+				'Mage2.PRO', $this->titleB(), df_package_version($this)
 			)])
 		]));
 	}, [!is_null($test) ? $test : $this->test(), $s]);}
