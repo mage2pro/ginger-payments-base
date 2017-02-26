@@ -34,7 +34,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
         return new API($this, new HttpClient([
 			'auth' => [$apiKey, '']
-			,'base_url' => "https://api.{$this->apiDomain()}/v1/"
+			,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
 			,'headers' => ['User-Agent' => df_cc_s(
 				'Mage2.PRO', $this->titleB(), df_package_version($this)
 			)] + df_headers()
