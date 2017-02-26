@@ -15,9 +15,24 @@ final class Common extends TestCase {
 		,get_class($this->apiG())
 	]);}
 
-	/** @test 2017-02-26 */
+	/** 2017-02-26 */
 	function t02() {
 		$order = $this->apiK()->createOrder(
+			2500,                           // The amount in cents
+			'EUR',                          // The currency
+			'ideal',                        // The payment method
+			['issuer_id' => 'INGBNL2A'],    // Extra details required for this payment method
+			'A great order',                // A description (optional)
+			'order-234192',                 // Your identifier for the order (optional)
+			'http://www.example.com',       // The return URL (optional)
+			'PT15M'                         // The expiration period in ISO 8601 format (optional)
+		);
+		var_dump($order);
+	}
+
+	/** @test 2017-02-26 */
+	function t03() {
+		$order = $this->apiG()->createOrder(
 			2500,                           // The amount in cents
 			'EUR',                          // The currency
 			'ideal',                        // The payment method
