@@ -25,11 +25,10 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	 * 2017-02-26
 	 * @used-by account()
 	 * @used-by \Dfe\Spryng\Method::api()
-	 * @param bool|null $test [optional]
 	 * @param null|string|int|S|Store $s [optional]
 	 * @return API
 	 */
-	final public function api($test = null, $s = null) {return dfc($this, function($test, $s) {
+	final public function api($s = null) {return dfc($this, function($s) {
 		/** @var string $apiKey */
 		$apiKey = $this->privateKey($s);
 		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
@@ -40,7 +39,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 				'Mage2.PRO', $this->titleB(), df_package_version($this)
 			)])
 		]));
-	}, [!is_null($test) ? $test : $this->test(), $s]);}
+	}, [$s]);}
 
     /**
      * 2017-02-26
