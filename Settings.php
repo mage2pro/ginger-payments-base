@@ -2,7 +2,6 @@
 namespace Df\GingerPaymentsBase;
 use Assert\Assertion as Guard;
 use GingerPayments\Payment\Client as API;
-use GingerPayments\Payment\Ginger as G;
 use GuzzleHttp\Client as HttpClient;
 use Magento\Framework\App\ScopeInterface as S;
 use Magento\Store\Model\Store;
