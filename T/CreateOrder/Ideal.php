@@ -22,5 +22,11 @@ abstract class Ideal extends \Df\GingerPaymentsBase\T\CreateOrder {
 	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
 	 * @return string
 	 */
-	final protected function params() {return ['issuer_id' => 'INGBNL2A'];}
+	final protected function params() {return [
+		// 2017-02-27
+		// This parameter is required:
+		// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+		// https://www.gingerpayments.com/docs#creating-an-ideal-order
+		'issuer_id' => 'INGBNL2A'
+	];}
 }

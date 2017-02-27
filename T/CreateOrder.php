@@ -40,8 +40,11 @@ abstract class CreateOrder extends TestCase {
 			// Your identifier for the order (optional)
 			,'order-234192'
 			// 2017-02-27
-			// The return URL (optional)
-			,'http://www.example.com'
+			// «The return URL (optional)».
+			// This parameter is required for iDEAL:
+			// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+			// https://www.gingerpayments.com/docs#creating-an-ideal-order
+			,'https://mage2.pro'
 			// 2017-02-27
 			// The expiration period in ISO 8601 format (optional)
 			,'PT15M'
