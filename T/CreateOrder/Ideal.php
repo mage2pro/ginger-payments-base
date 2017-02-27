@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase\T\CreateOrder;
+use GingerPayments\Payment\Order\Transaction\PaymentMethod as M;
 /**
  * 2017-02-27
  * @see \Dfe\GingerPayments\T\CreateOrder\Ideal
@@ -13,7 +14,7 @@ abstract class Ideal extends \Df\GingerPaymentsBase\T\CreateOrder {
 	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
 	 * @return string
 	 */
-	final protected function method() {return 'ideal';}
+	final protected function method() {return M::IDEAL;}
 
 	/**
 	 * 2017-02-27
