@@ -8,10 +8,9 @@ namespace Df\GingerPaymentsBase\T;
 abstract class CreateOrder extends TestCase {
 	/**
 	 * @test
-	 * @final
 	 * 2017-02-27
 	 */
-	function t01_ideal() {
+	final function t01_ideal() {
 		$this->api()->createOrder(
 			2500,                           // The amount in cents
 			'EUR',                          // The currency
