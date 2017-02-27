@@ -16,6 +16,7 @@ abstract class CreateOrder extends TestCase {
 
 	/**
 	 * @test
+	 * [Ginger Payments] Which parameters can be passed to «POST /v1/orders/»? https://mage2.pro/t/3389
 	 * 2017-02-27
 	 */
 	final function t01_success() {
