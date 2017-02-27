@@ -33,9 +33,9 @@ abstract class CreateOrder extends TestCase {
 			// Extra details required for this payment method
 			,$this->params()
 			// 2017-02-27
-			// A description (optional)
-			// 2017-02-27
-			,'A great order'
+			// «A description (optional)»
+			// I did not find any limitations on it.
+			,'Пример <b>описания</b> <a href="https:://mage2.pro">заказа</a> د ويکيپېډيا، وړیا پوهنغونډ له خوا 묘사(描寫)는 사물의'
 			// 2017-02-27
 			// Your identifier for the order (optional)
 			,'order-234192'
