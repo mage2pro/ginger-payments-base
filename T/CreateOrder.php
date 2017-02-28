@@ -99,6 +99,18 @@ abstract class CreateOrder extends TestCase {
 				// Extra details required for this payment method
 				,'payment_method_details' => $this->params()
 			]]
+			/**
+			 * 2017-02-28
+			 * [Kassa Compleet] The «webhook_url» property allows to set the webhook URL dynamically
+			 * in a «POST /v1/orders/» request: https://mage2.pro/t/3453
+			 *
+			 * Whether Ginger Payments allows to set the webhook URL dynamically
+			 * in a «POST /v1/orders/» request? https://mage2.pro/t/3452
+			 *
+			 * Надо будет сделать по аналогии с модулем allPay:
+			 * https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L431-L454
+			 */
+			,'webhook_url' => 'https://mage2.pro'
 		]);
 		echo $this->api()->lastResponse();
 	}
