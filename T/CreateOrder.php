@@ -16,8 +16,10 @@ abstract class CreateOrder extends TestCase {
 
 	/**
 	 * @test
-	 * [Ginger Payments] Which parameters can be passed to «POST /v1/orders/»? https://mage2.pro/t/3389
 	 * 2017-02-27
+	 * [Ginger Payments] Which parameters can be passed to «POST /v1/orders/»? https://mage2.pro/t/3389
+	 * [Ginger Payments] A JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3410
+	 * [Kassa Compleet] A JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3411
 	 */
 	final function t01_success() {
 		$this->api()->postOrder([
