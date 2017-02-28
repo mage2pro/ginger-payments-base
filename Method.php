@@ -7,6 +7,19 @@ namespace Df\GingerPaymentsBase;
  */
 abstract class Method extends \Df\PaypalClone\Method\Normal {
 	/**
+	 * 2017-02-28
+	 * Kassa Compleet and Ginger Payments use different formats
+	 * for the «order_lines/order_line/vat_percentage» property
+	 * of a «POST /v1/orders/» request: https://mage2.pro/t/3451
+	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
+	 * @see \Dfe\GingerPayments\Method::vatFactor()
+	 * @see \Dfe\KassaCompleet\Method::vatFactor()
+	 * @see \Df\Payment\Method::amountFactor()
+	 * @return int
+	 */
+	abstract function vatFactor();
+
+	/**
 	 * 2017-02-25
 	 * Первый параметр — для test, второй — для live.
 	 * @override
