@@ -23,7 +23,7 @@ abstract class CreateOrder extends TestCase {
 	final function t01_success() {
 		$this->api()->postOrder([
 			// 2017-02-27
-			// The amount in cents
+			// «Order amount (including VAT)».
 			'amount' => 2500
 			// 2017-02-28
 			// The «client» property is present only in the Kassa Compleet's JSON schema,
@@ -79,12 +79,18 @@ abstract class CreateOrder extends TestCase {
 					,'vat_percentage' => 17.5 * $this->m()->vatFactor()
 				]
 			]
-			// 2017-02-27
-			// «The return URL (optional)».
-			// This parameter is required for iDEAL:
-			// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
-			// https://www.gingerpayments.com/docs#creating-an-ideal-order
-			,'return_url' => 'https://mage2.pro'
+			/**
+			 * 2017-02-27
+			 * «The return URL (optional)».
+			 * «Your customer will be redirected here after payment»
+			 * This parameter is required for iDEAL: https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+			 * https://www.gingerpayments.com/docs#creating-an-ideal-order
+			 * 2017-02-28
+			 * @uses df_url_checkout_success() поставил временно:
+			 * намного лучше будет сделать, как в модуле allPay:
+			 * https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L365-L378
+			 */
+			,'return_url' => df_url_checkout_success()
 			,'transactions' => [[
 				// 2017-02-27
 				// The payment method
