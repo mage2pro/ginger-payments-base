@@ -26,6 +26,16 @@ abstract class CreateOrder extends TestCase {
 			// The amount in cents
 			'amount' => 2500
 			// 2017-02-28
+			// The «client» property is present only in the Kassa Compleet's JSON schema,
+			// but Ginger Payments does not fail if it is specified (just silently ignores it).
+			,'client' => [
+				'platform_name' => "Mage2.PRO «{$this->m()->titleB()}» extension for Magento 2 (https://mage2.pro)"
+				,'platform_version' => df_package_version($this)
+				// 2017-02-28
+				// It will be rewritten to «Ginger-Python-ApiClient/0.8.1 Requests/2.11.1 Python/2.7.10».
+				,'user_agent' => 'Mage2.PRO (https://mage2.pro)'
+			]
+			// 2017-02-28
 			// [Ginger Payments] A documentation for the «customer» parameter
 			// in the «POST /v1/orders/» request: https://mage2.pro/t/3394
 			// The official Ginger Payments and Kassa Compleet extensions for Magento 1.x
