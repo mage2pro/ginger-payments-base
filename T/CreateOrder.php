@@ -53,6 +53,9 @@ abstract class CreateOrder extends TestCase {
 			// The expiration period in ISO 8601 format (optional)
 			// [Ginger Payments] The «expiration_period» parameter for POST /v1/orders/ is undocumented: https://mage2.pro/t/3388
 			,'expiration_period' => 'PT15M'
+			// 2017-02-28
+			// Arbitrary data.
+			,'extra' => ['aaa' => 3, 'bbb' => 5]
 			// 2017-02-27
 			// Your identifier for the order (optional)
 			,'merchant_order_id' => 'order-234192'
