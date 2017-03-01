@@ -13,6 +13,9 @@ abstract class GetMerchant extends TestCase {
 	 * [Ginger Payments] Why does a «GET merchants/self/projects/self/» request
 	 * lead to the «You don't have the permission to access the requested resource» response?
 	 * https://mage2.pro/t/3457
+	 * [Ginger Payments] Why does a «GET /merchants/{merchant_id}/projects/{project_id}/» request
+	 * lead to the «You don't have the permission to access the requested resource» response?
+	 * https://mage2.pro/t/3460
 	 *
 	 * [Kassa Compleet] The «merchants/» API part is undocumented: https://mage2.pro/t/3459
 	 * [Kassa Compleet] An example of a response to «GET merchants/self/projects/self/»
