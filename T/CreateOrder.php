@@ -94,6 +94,15 @@ abstract class CreateOrder extends TestCase {
 			 * https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L365-L378
 			 */
 			,'return_url' => df_url_checkout_success()
+			/**
+			 * 2017-03-01
+			 * Замечение №1
+			 * Это свойство обязательно, иначе будет сбой:
+			 * «Array does not contain an element with key "transactions"».
+			 * Замечение №2
+			 * [Ginger Payments] The referenced «transactions.json» part
+			 * is missed in the JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3456
+			 */
 			,'transactions' => [[
 				// 2017-02-27
 				// The payment method
