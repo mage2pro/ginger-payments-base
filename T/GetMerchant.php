@@ -19,7 +19,23 @@ abstract class GetMerchant extends TestCase {
 	 * https://mage2.pro/t/3458
 	 */
 	final function t01() {
-		print_r($this->api()->getAllowedProducts());
+		print_r($this->api()->products($this->merchantId(), $this->projectId()));
 		echo $this->api()->lastResponse();
 	}
+
+	/**
+	 * 2017-03-01
+	 * @used-by t01()
+	 * @see \Dfe\GingerPayments\T\GetMerchant::merchantId()
+	 * @return string
+	 */
+	protected function merchantId() {return 'self';}
+
+	/**
+	 * 2017-03-01
+	 * @used-by t01()
+	 * @see \Dfe\GingerPayments\T\GetMerchant::projectId()
+	 * @return string
+	 */
+	protected function projectId() {return 'self';}
 }
