@@ -21,6 +21,10 @@ abstract class Option extends \Df\Config\SourceT {
 
 	/**
 	 * 2017-03-01
+	 * 2017-03-02
+	 * @todo Filter options by their availability to the concrete merchant:
+	 * [Kassa Compleet] How to programmatically get the list of available payment options
+	 * for a merchant? https://mage2.pro/t/3486
 	 * @override
 	 * @see \Df\Config\Source::map()
 	 * @used-by \Df\Config\Source::toOptionArray()
