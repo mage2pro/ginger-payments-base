@@ -28,7 +28,7 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @used-by \Df\PaypalClone\Refund::stageNames()
 	 * @return string[]
 	 */
-	function stageNames() {return ['', ''];}
+	final function stageNames() {return ['', ''];}
 
 	/**
 	 * 2017-02-25
@@ -38,7 +38,16 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @used-by \Df\Payment\Method::isAvailable()
 	 * @return null
 	 */
-	protected function amountLimits() {return null;}
+	final protected function amountLimits() {return null;}
+
+	/**
+	 * 2017-03-02
+	 * @override
+	 * @see \Df\Payment\Method::iiaKeys()
+	 * @used-by \Df\Payment\Method::assignData()
+	 * @return string[]
+	 */
+	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
 
 	/**
 	 * 2017-02-25
@@ -49,5 +58,17 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @used-by \Df\PaypalClone\Method\Normal::getConfigPaymentAction()
 	 * @return string
 	 */
-	protected function redirectUrl() {return '';}
+	final protected function redirectUrl() {return '';}
+
+	/**
+	 * 2017-03-02
+	 * @used-by iiaKeys()
+	 */
+	private static $II_BANK = 'plan';
+
+	/**
+	 * 2017-03-02
+	 * @used-by iiaKeys()
+	 */
+	private static $II_OPTION = 'option';
 }
