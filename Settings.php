@@ -50,7 +50,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	 */
 	final function options() {
 		/** @var OS $os */
-		$os = df_sc(df_con_heir($this, OS::class), OS::class);
+		$os = df_sc(df_con_heir($this, OS::class));
 		return $this->test() ? $os->optionsTest() : $this->_options($os)->o();
 	}
 
