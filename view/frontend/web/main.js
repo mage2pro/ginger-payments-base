@@ -36,6 +36,16 @@ define([
 		option: this.option
 	}));},
 	/**
+	 * 2017-03-03
+	 * @override
+	 * @see Df_Payment/mixin::dfFormCssClasses()
+	 * https://github.com/mage2pro/core/blob/2.0.25/Payment/view/frontend/web/mixin.js?ts=4#L165
+	 * @used-by Df_Payment/mixin::dfFormCssClassesS()
+	 * https://github.com/mage2pro/core/blob/2.0.25/Payment/view/frontend/web/mixin.js?ts=4#L171
+	 * @returns {String[]}
+	 */
+	dfFormCssClasses: function() {return this._super().concat(['df_ginger_payments_base']);},
+	/**
 	 * 2017-03-02
 	 * @override
 	 * @see mage2pro/core/Payment/view/frontend/web/mixin.js
