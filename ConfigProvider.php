@@ -2,8 +2,10 @@
 namespace Df\GingerPaymentsBase;
 /**
  * 2017-03-03
- * @see \Dfe\GingerPayments\ConfigProvider
- * @see \Dfe\KassaCompleet\ConfigProvider
+ * The class is not abstract,
+ * because it is used as a base for virtual types in the following modules:
+ * 1) GingerPayments
+ * 2) KassaCompleet
  * @method Settings s()
  */
-abstract class ConfigProvider extends \Df\Payment\ConfigProvider {}
+class ConfigProvider extends \Df\Payment\ConfigProvider {}
