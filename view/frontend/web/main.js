@@ -25,13 +25,12 @@ define([
 	 */
 	dfData: function() {return df.o.merge(this._super(), df.clean({
 		// 2017-03-02
-		// @see \Df\GingerPaymentsBase\Method::$II_BANK
-		// https://github.com/mage2pro/ginger-payments-base/blob/0.0.5/Method.php?ts=4#L67
-		bank: this.bank
-		// 2017-03-02
 		// @see \Df\GingerPaymentsBase\Method::II_OPTION
 		// https://github.com/mage2pro/ginger-payments-base/blob/0.0.5/Method.php?ts=4#L73
-		,option: this.option
+		//
+		// If the iDEAL payment option is selected,
+		// then a value passed to the server should include the chosen iDEAL issuer bank.
+		option: this.option
 	}));},
 	/**
 	 * 2017-03-02
