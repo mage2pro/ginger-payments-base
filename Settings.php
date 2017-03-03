@@ -28,7 +28,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	 * @param null|string|int|S|Store $s [optional]
 	 * @return API
 	 */
-	final public function api($s = null) {return dfc($this, function($s) {
+	final function api($s = null) {return dfc($this, function($s) {
 		/** @var string $apiKey */
 		$apiKey = $this->privateKey($s);
 		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
