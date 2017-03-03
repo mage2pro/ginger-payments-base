@@ -15,4 +15,15 @@ namespace Df\GingerPaymentsBase;
  *
  * @method Settings s()
  */
-class ConfigProvider extends \Df\Payment\ConfigProvider {}
+final class ConfigProvider extends \Df\Payment\ConfigProvider {
+	/**
+	 * 2016-08-04
+	 * @override
+	 * @see \Df\Payment\ConfigProvider::config()
+	 * @used-by \Df\Payment\ConfigProvider::getConfig()
+	 * @return array(string => mixed)
+	 */
+	protected function config() {return [
+		'options' => $this->s()->options()->o()
+	] + parent::config();}
+}
