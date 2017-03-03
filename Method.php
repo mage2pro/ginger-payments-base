@@ -65,7 +65,7 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.0.6/view/frontend/web/main.js?ts=4#L34
 	 * @used-by iiaKeys()
 	 * 2017-03-03
-	 * If the iDEAL payment option is selected,
+	 * If the «iDEAL» payment option is selected,
 	 * then a value passed from a browser should include the chosen iDEAL issuer bank.
 	 */
 	private static $II_OPTION = 'option';

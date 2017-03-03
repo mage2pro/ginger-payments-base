@@ -29,7 +29,7 @@ define([
 		// https://github.com/mage2pro/ginger-payments-base/blob/0.0.5/Method.php?ts=4#L73
 		//
 		// 2017-03-03
-		// If the iDEAL payment option is selected,
+		// If the «iDEAL» payment option is selected,
 		// then a value passed to the server should include the chosen iDEAL issuer bank.
 		option: this.option
 	}));},
