@@ -1,7 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Assert\Assertion as Guard;
-use Df\GingerPaymentsBase\Source\Option as OptionSource;
+use Df\GingerPaymentsBase\Source\Option as OS;
 use Df\Payment\Settings\Options as O;
 use GingerPayments\Payment\Client as API;
 use GuzzleHttp\Client as HttpClient;
@@ -48,7 +48,11 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @return O
 	 */
-	final function options() {return $this->_options(df_con_heir($this, OptionSource::class));}
+	final function options() {
+		/** @var OS $os */
+		$os = df_sc(df_con_heir($this, OS::class), OS::class);
+		return $this->test() ? $os->optionsTest() : $this->_options($os)->o();
+	}
 
     /**
      * 2017-02-26

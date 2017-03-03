@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use Df\GingerPaymentsBase\Settings as S;
 /**
  * 2017-03-03
  * The class is not abstract,
@@ -13,7 +14,7 @@ namespace Df\GingerPaymentsBase;
  * https://github.com/mage2pro/kassa-compleet/tree/0.1.3/etc/frontend/di.xml?ts=4#L13-L15
  * https://github.com/mage2pro/kassa-compleet/tree/0.1.3/etc/frontend/di.xml?ts=4#L9
  *
- * @method Settings s()
+ * @method S s()
  */
 final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	/**
@@ -23,7 +24,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	 * @used-by \Df\Payment\ConfigProvider::getConfig()
 	 * @return array(string => mixed)
 	 */
-	protected function config() {return [
-		'options' => $this->s()->options()->o()
+	protected function config() {/** @var S $s */ $s = $this->s(); return [
+		'options' => $s->options()
 	] + parent::config();}
 }

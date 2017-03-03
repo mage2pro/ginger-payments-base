@@ -20,6 +20,13 @@ abstract class Option extends \Df\Config\SourceT {
 	abstract protected function mapExtra();
 
 	/**
+	 * 2017-03-04
+	 * @used-by \Df\GingerPaymentsBase\Settings::options()
+	 * @return array(string => string)
+	 */
+	final function optionsTest() {return $this->options(array_keys($this->mapTest()));}
+
+	/**
 	 * 2017-03-01
 	 * 2017-03-02
 	 * @todo Filter options by their availability to the concrete merchant:
@@ -36,11 +43,18 @@ abstract class Option extends \Df\Config\SourceT {
 		// 2017-03-03
 		// Whether Kassa Compleet allows to accept payments via Bancontact?
 		// https://mage2.pro/t/3493
-		M::BANCONTACT => 'Bancontact'
-		,M::BANK_CARD => 'Bank Card'
-		,self::BANK_TRANSFER => 'Bank Transfer'
-		,M::IDEAL => 'iDEAL'
-	] + $this->mapExtra();}
+		M::BANCONTACT => 'Bancontact', M::BANK_CARD => 'Bank Card'
+	] + $this->mapTest() + $this->mapExtra();}
+
+	/**
+	 * 2017-03-04
+	 * [Ginger Payments] Which payment options are available in the test mode? https://mage2.pro/t/3492
+	 * [Kassa Compleet] Which payment options are available in the test mode? https://mage2.pro/t/3272
+	 * @used-by map()
+	 * @used-by optionsTest()
+	 * @return array(string => string)
+	 */
+	private function mapTest() {return [self::BANK_TRANSFER => 'Bank Transfer', M::IDEAL => 'iDEAL'];}
 
 	/**
 	 * 2017-03-01
