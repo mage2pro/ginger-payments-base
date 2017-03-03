@@ -31,7 +31,13 @@ abstract class Option extends \Df\Config\SourceT {
 	 * @return array(string => string)
 	 */
 	final protected function map() {return [
-		M::BANK_CARD => 'Bank Card'
+		// 2017-03-01
+		// What is Bancontact? https://mage2.pro/t/3395
+		// 2017-03-03
+		// Whether Kassa Compleet allows to accept payments via Bancontact?
+		// https://mage2.pro/t/3493
+		M::BANCONTACT => 'Bancontact'
+		,M::BANK_CARD => 'Bank Card'
 		,self::BANK_TRANSFER => 'Bank Transfer'
 		,M::IDEAL => 'iDEAL'
 	] + $this->mapExtra();}
