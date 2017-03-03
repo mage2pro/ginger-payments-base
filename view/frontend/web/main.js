@@ -1,4 +1,6 @@
 // 2017-03-02
+// @see https://github.com/mage2pro/ginger-payments/blob/0.0.6/view/frontend/web/main.js
+// @see https://github.com/mage2pro/kassa-compleet/blob/0.1.1/view/frontend/web/main.js
 define([
 	'df'
 	,'df-lodash'
