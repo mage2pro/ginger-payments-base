@@ -48,7 +48,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @return O
 	 */
-	final function options() {return $this->_options(OptionSource::class);}
+	final function options() {return $this->_options(df_con_heir($this, OptionSource::class));}
 
     /**
      * 2017-02-26
