@@ -38,6 +38,7 @@ define([
 	/**
 	 * 2017-03-03
 	 * @override
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.1.0/view/frontend/web/main.less#L2
 	 * @see Df_Payment/mixin::dfFormCssClasses()
 	 * https://github.com/mage2pro/core/blob/2.0.25/Payment/view/frontend/web/mixin.js?ts=4#L165
 	 * @used-by Df_Payment/mixin::dfFormCssClassesS()
