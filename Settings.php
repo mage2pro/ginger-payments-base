@@ -1,6 +1,8 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Assert\Assertion as Guard;
+use Df\GingerPaymentsBase\Source\Option as OptionSource;
+use Df\Payment\Settings\Options as O;
 use GingerPayments\Payment\Client as API;
 use GuzzleHttp\Client as HttpClient;
 use Magento\Framework\App\ScopeInterface as S;
@@ -40,6 +42,13 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 			)] + df_headers()
 		]));
 	}, [$s]);}
+
+	/**
+	 * 2017-03-03
+	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
+	 * @return O
+	 */
+	final function options() {return $this->_options(OptionSource::class);}
 
     /**
      * 2017-02-26
