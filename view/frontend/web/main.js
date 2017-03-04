@@ -34,7 +34,7 @@ define([
 		/** @type {Boolean} */
 		var t = this.isTest();
 		/** @type {Object} */
-		var tm = {INGBNL2A: 'ING Bank', RABONL2U: 'Rabobank'};
+		var tm = {INGBNL2A: 'ING Bank ING Bank ING Bank ING Bank', RABONL2U: 'Rabobank'};
 		return $.map(this.config('idealBanks'), function(v, k) {return {
 			label: t && tm[k] ? tm[k] : v, value: k
 		};});
