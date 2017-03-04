@@ -40,6 +40,17 @@ define([
 		};});
 	},
 	/**
+	 * 2017-03-04
+	 * @override
+	 * @see Df_Payment/withOptions::optionAfter()
+	 * https://github.com/mage2pro/core/blob/2.0.35/Payment/view/frontend/web/withOptions.js?ts=4#L58-L68
+	 * @used-by Df_Payment/withOptions
+	 * https://github.com/mage2pro/core/blob/2.0.35/Payment/view/frontend/web/template/withOptions.html?ts=4#L20
+	 * @param {String} v
+	 * @returns {String}
+	 */
+	optionAfter: function(v) {return 'ideal' !== v ? this._super(v) : 'Df_GingerPaymentsBase/idealBank';},
+	/**
 	 * 2017-03-02
 	 * @override
 	 * @see https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Checkout/view/frontend/web/js/view/payment/default.js#L127-L159

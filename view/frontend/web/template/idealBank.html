@@ -1,0 +1,13 @@
+<div class="control">
+	<select class="select idealBank"
+		data-bind="
+			attr: {'data-container': getCode() + '-idealBank'}
+			,enable: true
+			,options: idealBanks()
+			,optionsCaption: $t('-- Select your bank --')
+			,optionsText: 'label'
+			,optionsValue: 'value'
+			,value: idealBank
+		"
+	></select>
+</div>
