@@ -54,7 +54,7 @@ abstract class Option extends \Df\Config\SourceT {
 	 * @used-by optionsTest()
 	 * @return array(string => string)
 	 */
-	private function mapTest() {return [self::BANK_TRANSFER => 'Bank Transfer', M::IDEAL => 'iDEAL'];}
+	private function mapTest() {return [M::IDEAL => 'iDEAL', self::BANK_TRANSFER => 'Bank Transfer'];}
 
 	/**
 	 * 2017-03-01
