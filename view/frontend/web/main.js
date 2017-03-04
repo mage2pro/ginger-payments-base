@@ -4,11 +4,14 @@
 define([
 	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery'
 ], function(df, _, parent, $) {'use strict'; return parent.extend({
-	defaults: {df: {
-		// 2017-03-02
-		// @used-by mage2pro/core/Payment/view/frontend/web/template/item.html
-		formTemplate: 'Df_GingerPaymentsBase/form'
-	}},
+	defaults: {
+		df: {
+			// 2017-03-02
+			// @used-by mage2pro/core/Payment/view/frontend/web/template/item.html
+			formTemplate: 'Df_GingerPaymentsBase/form'
+		}
+		,idealBank: ''
+	},
 	/**
 	 * 2017-03-03
 	 * @override
@@ -17,9 +20,17 @@ define([
 	 * https://github.com/mage2pro/core/blob/2.0.25/Payment/view/frontend/web/mixin.js?ts=4#L165
 	 * @used-by Df_Payment/mixin::dfFormCssClassesS()
 	 * https://github.com/mage2pro/core/blob/2.0.25/Payment/view/frontend/web/mixin.js?ts=4#L171
-	 * @returns {String[]}
+	 * @returns {String}[]
 	 */
 	dfFormCssClasses: function() {return this._super().concat(['df_ginger_payments_base']);},
+	/**
+	 * 2017-03-04
+	 * @returns {Object}[]
+	 */
+	idealBanks: function () {return [
+		{title: 'Bank 1', value: 'bank-1'}
+		,{title: 'Bank 2', value: 'bank-2'}
+	]},
 	/**
 	 * 2017-03-02
 	 * @override

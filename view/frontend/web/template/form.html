@@ -1,1 +1,14 @@
 <!-- ko template: 'Df_Payment/withOptions' --><!-- /ko -->
+<div class="control">
+	<select class="select idealBank"
+		data-bind="
+			attr: {'data-container': getCode() + '-idealBank'}
+			,enable: true
+			,options: idealBanks()
+			,optionsCaption: $t('Bank')
+			,optionsText: 'title'
+			,optionsValue: 'value'
+			,value: idealBank
+		"
+	></select>
+</div>
