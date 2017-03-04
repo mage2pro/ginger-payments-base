@@ -30,9 +30,15 @@ define([
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.1.5/view/frontend/web/template/form.html?ts=4#L7
 	 * @returns {Object}[]
 	 */
-	idealBanks: function () {return $.map(this.config('idealBanks'), function(v, k) {return {
-		label: v, value: k
-	};});},
+	idealBanks: function () {
+		/** @type {Boolean} */
+		var t = this.isTest();
+		/** @type {Object} */
+		var tm = {INGBNL2A: 'ING Bank', RABONL2U: 'Rabobank'};
+		return $.map(this.config('idealBanks'), function(v, k) {return {
+			label: t && tm[k] ? tm[k] : v, value: k
+		};});
+	},
 	/**
 	 * 2017-03-02
 	 * @override
