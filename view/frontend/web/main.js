@@ -41,6 +41,17 @@ define([
 	},
 	/**
 	 * 2017-03-04
+	 * @returns {Object}
+	*/
+	initialize: function() {
+		this._super();
+		this.option.subscribe(function(v) {
+			//debugger;
+		}, this);
+		return this;
+	},
+	/**
+	 * 2017-03-04
 	 * @override
 	 * @see Df_Payment/withOptions::optionAfter()
 	 * https://github.com/mage2pro/core/blob/2.0.35/Payment/view/frontend/web/withOptions.js?ts=4#L58-L68
@@ -50,22 +61,5 @@ define([
 	 * @returns {String}
 	 * @see https://github.com/mage2pro/ginger-payments-base/blob/0.1.9/view/frontend/web/template/idealBank.html?ts=4
 	 */
-	optionAfter: function(v) {return 'ideal' !== v ? this._super(v) : 'Df_GingerPaymentsBase/idealBank';},
-	/**
-	 * 2017-03-02
-	 * @override
-	 * @see https://github.com/magento/magento2/blob/2.1.0/app/code/Magento/Checkout/view/frontend/web/js/view/payment/default.js#L127-L159
-	 * @used-by https://github.com/magento/magento2/blob/2.1.0/lib/web/knockoutjs/knockout.js#L3863
-	*/
-	placeOrder: function() {
-		if (this.validate()) {
-			// http://stackoverflow.com/a/8622351
-			/** @type {?String} */
-			var option = this.dfRadioValue('option');
-			if (null !== option) {
-				this.option = option;
-			}
-			this.placeOrderInternal();
-		}
-	}
+	optionAfter: function(v) {return 'ideal' !== v ? this._super(v) : 'Df_GingerPaymentsBase/idealBank';}
 });});
