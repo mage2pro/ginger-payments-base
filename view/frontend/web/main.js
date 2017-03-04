@@ -48,6 +48,7 @@ define([
 	 * https://github.com/mage2pro/core/blob/2.0.35/Payment/view/frontend/web/template/withOptions.html?ts=4#L20
 	 * @param {String} v
 	 * @returns {String}
+	 * @see https://github.com/mage2pro/ginger-payments-base/blob/0.1.9/view/frontend/web/template/idealBank.html?ts=4
 	 */
 	optionAfter: function(v) {return 'ideal' !== v ? this._super(v) : 'Df_GingerPaymentsBase/idealBank';},
 	/**
