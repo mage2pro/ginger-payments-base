@@ -30,10 +30,9 @@ define([
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.1.5/view/frontend/web/template/form.html?ts=4#L7
 	 * @returns {Object}[]
 	 */
-	idealBanks: function () {return [
-		{title: 'Bank 1', value: 'bank-1'}
-		,{title: 'Bank 2', value: 'bank-2'}
-	]},
+	idealBanks: function () {return $.map(this.config('idealBanks'), function(v, k) {return {
+		label: v, value: k
+	};});},
 	/**
 	 * 2017-03-02
 	 * @override

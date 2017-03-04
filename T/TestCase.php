@@ -6,7 +6,7 @@ use GingerPayments\Payment\Client as API;
 /**
  * 2017-02-25
  * @see \Df\GingerPaymentsBase\T\СreateOrder
- * @see \Df\GingerPaymentsBase\T\GetIdealIssuers
+ * @see \Df\GingerPaymentsBase\T\GetIdealBanks
  * @see \Df\GingerPaymentsBase\T\GetMerchant
  * @method M m()
  * @method S s()

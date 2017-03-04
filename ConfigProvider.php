@@ -25,6 +25,6 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	 * @return array(string => mixed)
 	 */
 	protected function config() {/** @var S $s */ $s = $this->s(); return [
-		'options' => $s->options()
+		'idealBanks' => $this->s()->api()->idealBanks(), 'options' => $s->options()
 	] + parent::config();}
 }
