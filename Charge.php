@@ -61,7 +61,7 @@ final class Charge extends \Df\Payment\Charge {
 		// [Ginger Payments] The «customer/birth_date» property is absent in the JSON Schema
 		// of a «POST /v1/orders/» request, but is passed by the official extension for Magento 1.x:
 		// https://mage2.pro/t/3446
-		,'birth_date' => '1982-07-08 00:00:00'
+		,'birth_date' => $this->customerDobS(\Zend_Date::ISO_8601)
 		,'country' => $a->getCountryId()
 		,'email_address' => $this->customerEmail()
 		,'first_name' => $this->customerNameF()
