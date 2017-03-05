@@ -65,7 +65,7 @@ final class Charge extends \Df\Payment\Charge {
 		,'country' => $a->getCountryId()
 		,'email_address' => $this->customerEmail()
 		,'first_name' => $this->customerNameF()
-		,'forwarded_ip' => '5.9.188.84'
+		,'forwarded_ip' => $this->customerIp()
 		// "male", "female", "other", null
 		,'gender' => $this->customerGender('male', 'female')
 		,'housenumber' => '17'
