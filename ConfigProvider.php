@@ -31,7 +31,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 		'banks' => $this->s()->api()->idealBanks()
 		// 2017-03-04
 		// @used-by Df_Payments/withOptions::options()
-		// https://github.com/mage2pro/core/blob/2.0.33/Payment/view/frontend/web/withOptions.js?ts=4#L47
+		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55
 	  	,'options' => $s->options()
 	] + parent::config();}
 }
