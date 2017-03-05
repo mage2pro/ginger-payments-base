@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use Magento\Sales\Model\Order\Address as OA;
 /**
  * 2017-03-05
  * @method Method m()
@@ -46,7 +47,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => string|string[])
 	 */
-	private function pCustomer() {return [
+	private function pCustomer() {/** @var OA $a */ $a = $this->addressBS(); return [
 		// 2017-02-28
 		// Test addresses for some countries: https://mage2.pro/t/2555
 		'address' => 'Amsterdam Rusland 17'
@@ -61,7 +62,7 @@ final class Charge extends \Df\Payment\Charge {
 		// of a «POST /v1/orders/» request, but is passed by the official extension for Magento 1.x:
 		// https://mage2.pro/t/3446
 		,'birth_date' => '1982-07-08 00:00:00'
-		,'country' => 'NL'
+		,'country' => $a->getCountryId()
 		,'email_address' => 'admin@mage2.pro'
 		,'first_name' => 'Dmitry'
 		,'forwarded_ip' => '5.9.188.84'
