@@ -47,7 +47,7 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	final protected function iiaKeys() {return [self::$II_OPTION];}
+	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
 
 	/**
 	 * 2017-02-25
@@ -61,12 +61,16 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	final protected function redirectUrl() {return '';}
 
 	/**
-	 * 2017-03-02
-	 * https://github.com/mage2pro/ginger-payments-base/blob/0.0.6/view/frontend/web/main.js?ts=4#L34
+	 * 2017-03-05
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.1/view/frontend/web/main.js?ts=4#L23
 	 * @used-by iiaKeys()
-	 * 2017-03-03
-	 * If the «iDEAL» payment option is selected,
-	 * then a value passed from a browser should include the chosen iDEAL issuer bank.
+	 */
+	private static $II_BANK = 'bank';
+
+	/**
+	 * 2017-03-05
+	 * https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L23
+	 * @used-by iiaKeys()
 	 */
 	private static $II_OPTION = 'option';
 }
