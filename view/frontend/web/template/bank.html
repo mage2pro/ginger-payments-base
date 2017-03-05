@@ -1,12 +1,12 @@
-<select class="select idealBank"
+<select class="select bank"
 	data-bind="
-		attr: {'data-container': getCode() + '-idealBank'}
+		attr: {'data-container': getCode() + '-bank'}
 		,css: {'df-hidden': !idealSelected()}
 		,enable: true
-		,options: idealBanks()
+		,options: banks()
 		,optionsCaption: $t('-- Select your bank --')
 		,optionsText: 'label'
 		,optionsValue: 'value'
-		,value: idealBank
+		,value: bank
 	"
 ></select>

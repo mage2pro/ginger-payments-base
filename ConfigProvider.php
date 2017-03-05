@@ -26,9 +26,9 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	 */
 	protected function config() {/** @var S $s */ $s = $this->s(); return [
 		// 2017-03-04
-		// @used-by Df_GingerPaymentsBase/main::idealBanks()
+		// @used-by Df_GingerPaymentsBase/main::banks()
 	  	// https://github.com/mage2pro/ginger-payments-base/blob/0.1.6/view/frontend/web/main.js?ts=4#L33
-		'idealBanks' => $this->s()->api()->idealBanks()
+		'banks' => $this->s()->api()->idealBanks()
 		// 2017-03-04
 		// @used-by Df_Payments/withOptions::options()
 		// https://github.com/mage2pro/core/blob/2.0.33/Payment/view/frontend/web/withOptions.js?ts=4#L47
