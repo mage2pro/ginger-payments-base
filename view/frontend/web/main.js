@@ -2,17 +2,26 @@
 // @see https://github.com/mage2pro/ginger-payments/blob/0.0.6/view/frontend/web/main.js
 // @see https://github.com/mage2pro/kassa-compleet/blob/0.1.1/view/frontend/web/main.js
 define([
-	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery'
-], function(df, _, parent, $) {'use strict'; return parent.extend({
-	defaults: {
-		// 2017-03-02
-		// @used-by mage2pro/core/Payment/view/frontend/web/template/item.html
-		df: {formTemplate: 'Df_GingerPaymentsBase/form'}
-		// 2017-03-04
-		// @used-by Df_GingerPaymentsBase/form
-		// https://github.com/mage2pro/ginger-payments-base/blob/0.1.5/view/frontend/web/template/form.html?ts=4#L11
-		,idealBank: ''
-	},
+	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery', 'ko'
+], function(df, _, parent, $, ko) {'use strict'; return parent.extend({
+	// 2017-03-02
+	// @used-by mage2pro/core/Payment/view/frontend/web/template/item.html
+	defaults: {df: {formTemplate: 'Df_GingerPaymentsBase/form'}, idealBank: ''},
+	/**
+	 * 2016-08-08
+	 * 2017-03-01
+	 * Задаёт набор передаваемых на сервер при нажатии кнопки «Place Order» данных.
+	 * @override
+	 * @see mage2pro/core/Payment/view/frontend/web/mixin.js::dfData()
+	 * @used-by mage2pro/core/Payment/view/frontend/web/mixin.js::getData()
+	 * https://github.com/mage2pro/core/blob/2.0.21/Payment/view/frontend/web/mixin.js?ts=4#L208-L225
+	 * @see \Dfe\AllPay\Method::II_OPTION
+	 * https://github.com/mage2pro/allpay/blob/1.1.32/Method.php?ts=4#L126
+	 * @returns {Object}
+	 */
+	dfData: function() {return df.o.merge(this._super(), df.clean({
+		bank: this.idealSelected() ? this.idealBank : null
+	}));},
 	/**
 	 * 2017-03-03
 	 * @override
@@ -39,17 +48,11 @@ define([
 			label: t && tm[k] ? tm[k] : v, value: k
 		};});
 	},
-	/**
-	 * 2017-03-04
-	 * @returns {Object}
-	*/
-	initialize: function() {
-		this._super();
-		this.option.subscribe(function(v) {
-			//debugger;
-		}, this);
-		return this;
-	},
+ 	/**
+	 * 2017-03-05
+	 * @return {Boolean}
+	 */
+	idealSelected: function() {return 'ideal' === this.option();},
 	/**
 	 * 2017-03-04
 	 * @override
