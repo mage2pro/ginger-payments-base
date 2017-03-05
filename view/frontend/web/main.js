@@ -2,17 +2,19 @@
 // @see https://github.com/mage2pro/ginger-payments/blob/0.0.6/view/frontend/web/main.js
 // @see https://github.com/mage2pro/kassa-compleet/blob/0.1.1/view/frontend/web/main.js
 define([
-	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery', 'ko'
-], function(df, _, parent, $, ko) {'use strict'; return parent.extend({
+	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery'
+], function(df, _, parent, $) {'use strict'; return parent.extend({
 	/**
 	 * 2017-03-04
-	 * @used-by Df_GingerPaymentsBase/form
-	 * https://github.com/mage2pro/ginger-payments-base/blob/0.1.5/view/frontend/web/template/form.html?ts=4#L7
+	 * @used-by Df_GingerPaymentsBase/bank
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L6
 	 * @returns {Object}[]
 	 */
 	banks: function () {
 		/** @type {Boolean} */
 		var t = this.isTest();
+		// 2017-03-05
+		// I make the banks names in the test mode more real (and shorter).
 		/** @type {Object} */
 		var tm = {INGBNL2A: 'ING Bank', RABONL2U: 'Rabobank'};
 		return $.map(this.config('banks'), function(v, k) {return {
@@ -23,7 +25,7 @@ define([
 		// 2017-03-05
 		// @used-by dfData()
 		// @used-by Df_GingerPaymentsBase/bank
-		// https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/template/idealBank.html?ts=4#L10
+		// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L10
 		bank: ''
 		// 2017-03-02
 		// @used-by Df_Payment/main
@@ -60,6 +62,9 @@ define([
 	dfFormCssClasses: function() {return this._super().concat(['df_ginger_payments_base']);},
  	/**
 	 * 2017-03-05
+	 * @used-by dfData()
+	 * @used-by Df_GingerPaymentsBase/bank
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L4
 	 * @return {Boolean}
 	 */
 	idealSelected: function() {return 'ideal' === this.option();},
