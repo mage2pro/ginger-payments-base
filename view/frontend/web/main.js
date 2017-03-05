@@ -4,9 +4,13 @@
 define([
 	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery', 'ko'
 ], function(df, _, parent, $, ko) {'use strict'; return parent.extend({
-	// 2017-03-02
-	// @used-by mage2pro/core/Payment/view/frontend/web/template/item.html
-	defaults: {df: {formTemplate: 'Df_GingerPaymentsBase/form'}, idealBank: ''},
+	defaults: {
+		// 2017-03-02
+		// @used-by Df_Payment/main
+		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/template/main.html?ts=4#L36-L38
+		df: {formTemplate: 'Df_GingerPaymentsBase/form'}
+		,idealBank: ''
+	},
 	/**
 	 * 2016-08-08
 	 * 2017-03-01
