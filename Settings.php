@@ -26,7 +26,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 	/**
 	 * 2017-02-26
 	 * @used-by account()
-	 * @used-by \Dfe\Spryng\Method::api()
+	 * @used-by \Df\GingerPaymentsBase\Method::api()
 	 * @param null|string|int|S|Store $s [optional]
 	 * @return API
 	 */

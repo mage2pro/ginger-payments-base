@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use GingerPayments\Payment\Client as API;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
@@ -50,6 +51,12 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return string[]
 	 */
 	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
+
+	/**
+	 * 2017-03-06
+	 * @return API
+	 */
+	private function api() {return $this->s()->api();}
 
 	/**
 	 * 2017-03-05
