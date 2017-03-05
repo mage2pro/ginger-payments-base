@@ -5,7 +5,7 @@ namespace Df\GingerPaymentsBase;
  * @see \Dfe\GingerPayments\Method
  * @see \Dfe\KassaCompleet\Method
  */
-abstract class Method extends \Df\PaypalClone\Method\Normal {
+abstract class Method extends \Df\PaypalClone\Method {
 	/**
 	 * 2017-02-28
 	 * Kassa Compleet and Ginger Payments use different formats
@@ -18,17 +18,6 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @return int
 	 */
 	abstract function vatFactor();
-
-	/**
-	 * 2017-02-25
-	 * Первый параметр — для test, второй — для live.
-	 * @override
-	 * @see \Df\PaypalClone\Method\Normal::stageNames()
-	 * @used-by \Df\PaypalClone\Method\Normal::url()
-	 * @used-by \Df\PaypalClone\Refund::stageNames()
-	 * @return string[]
-	 */
-	final function stageNames() {return ['', ''];}
 
 	/**
 	 * 2017-02-25
@@ -48,17 +37,6 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 	 * @return string[]
 	 */
 	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
-
-	/**
-	 * 2017-02-25
-	 * Does Kassa Compleet use browser redirects? https://mage2.pro/t/3347
-	 * Ginger Payments and Kassa Compleet use the same API: https://mage2.pro/t/3355
-	 * @override
-	 * @see \Df\PaypalClone\Method\Normal::redirectUrl()
-	 * @used-by \Df\PaypalClone\Method\Normal::getConfigPaymentAction()
-	 * @return string
-	 */
-	final protected function redirectUrl() {return '';}
 
 	/**
 	 * 2017-03-05
