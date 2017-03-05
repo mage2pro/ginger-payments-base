@@ -30,6 +30,19 @@ abstract class Method extends \Df\PaypalClone\Method {
 	final protected function amountLimits() {return null;}
 
 	/**
+	 * 2017-03-05
+	 * Сюда мы попадаем только из метода @used-by \Magento\Sales\Model\Order\Payment::place()
+	 * причём там наш метод вызывается сразу из двух мест и по-разному.
+	 * Умышленно возвращаем null.
+	 * @used-by \Magento\Sales\Model\Order\Payment::place()
+	 * https://github.com/magento/magento2/blob/2.1.5/app/code/Magento/Sales/Model/Order/Payment.php#L334-L355
+	 * @override
+	 * @see \Df\Payment\Method::getConfigPaymentAction()
+	 * @return string
+	 */
+	final function getConfigPaymentAction() {return null;}
+
+	/**
 	 * 2017-03-02
 	 * @override
 	 * @see \Df\Payment\Method::iiaKeys()
