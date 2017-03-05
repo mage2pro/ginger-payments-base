@@ -63,11 +63,11 @@ final class Charge extends \Df\Payment\Charge {
 		// https://mage2.pro/t/3446
 		,'birth_date' => '1982-07-08 00:00:00'
 		,'country' => $a->getCountryId()
-		,'email_address' => 'admin@mage2.pro'
-		,'first_name' => 'Dmitry'
+		,'email_address' => $this->customerEmail()
+		,'first_name' => $this->customerNameF()
 		,'forwarded_ip' => '5.9.188.84'
 		// "male", "female", "other", null
-		,'gender' => 'male'
+		,'gender' => $this->customerGender('male', 'female')
 		,'housenumber' => '17'
 		,'ip_address' => '5.9.188.84'
 		,'last_name' => 'Fedyuk'
