@@ -69,8 +69,8 @@ final class Charge extends \Df\Payment\Charge {
 		// "male", "female", "other", null
 		,'gender' => $this->customerGender('male', 'female')
 		,'housenumber' => '17'
-		,'ip_address' => '5.9.188.84'
-		,'last_name' => 'Fedyuk'
+		,'ip_address' => $this->customerIp()
+		,'last_name' => $this->customerNameL()
 		// 2017-02-28
 		// [Kassa Compleet] What is the right format of a customer's locale in a «POST /v1/orders/» request?
 		// https://mage2.pro/t/3444
