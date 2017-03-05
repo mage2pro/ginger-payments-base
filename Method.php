@@ -62,7 +62,7 @@ abstract class Method extends \Df\PaypalClone\Method\Normal {
 
 	/**
 	 * 2017-03-05
-	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.1/view/frontend/web/main.js?ts=4#L23
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/main.js?ts=4#L25
 	 * @used-by iiaKeys()
 	 */
 	private static $II_BANK = 'bank';

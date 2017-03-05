@@ -15,8 +15,10 @@ define([
 	 * @see mage2pro/core/Payment/view/frontend/web/mixin.js::dfData()
 	 * @used-by mage2pro/core/Payment/view/frontend/web/mixin.js::getData()
 	 * https://github.com/mage2pro/core/blob/2.0.21/Payment/view/frontend/web/mixin.js?ts=4#L208-L225
-	 * @see \Dfe\AllPay\Method::II_OPTION
-	 * https://github.com/mage2pro/allpay/blob/1.1.32/Method.php?ts=4#L126
+	 * @see \Df\GingerPaymentsBase\Method::$II_BANK
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/Method.php?ts=4#L68
+	 * @see \Df\GingerPaymentsBase\Method::$II_OPTION
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/Method.php?ts=4#L75
 	 * @returns {Object}
 	 */
 	dfData: function() {return df.o.merge(this._super(), df.clean({
