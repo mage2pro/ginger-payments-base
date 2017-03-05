@@ -11,7 +11,11 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by p()
 	 * @return array(string => mixed)
 	 */
-	private function pCharge() {return [];}
+	private function pCharge() {return [
+		// 2017-02-27
+		// «Order amount (including VAT)».
+		'amount' => $this->amountF()
+	];}
 
 	/**
 	 * 2017-03-06
