@@ -116,6 +116,7 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-03-06
+	 * https://mage2.pro/t/3411
 	 * @used-by pCharge()
 	 * @return array(string => string|int|float)
 	 */
@@ -123,13 +124,23 @@ final class Charge extends \Df\Payment\Charge {
 		'amount' => 1250
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
-		,'ean' => '12345'
-		,'id' => '1'
-		,'image_url' => 'https://mage2.pro/uploads/default/original/1X/ed63ec02f0651856b03670a04b03057758b4c8e8.png'
-		,'merchant_order_line_id' => '11'
-		,'name' => 'An order item'
-		,'quantity' => 2
-		,'url' => 'https://mage2.pro'
+		,'ean' => ''
+		// 2017-03-06
+		// «Order line identifier»
+		,'id' => $i->getSku()
+		// 2017-03-06
+		// «Item image URI»
+		,'image_url' => df_oi_image($i)
+		// 2017-03-06
+		// «Merchant's internal order line identifier»
+		,'merchant_order_line_id' => $i->getSku()
+		// 2017-03-06
+		// «Name, usually a short description»
+		,'name' => $i->getName()
+		,'quantity' => df_oi_qty($i)
+		// 2017-03-06
+		// «Item product page URI»
+		,'url' => df_oi_url($i)
 		,'type' => 'physical'
 		// 2017-02-28
 		// Kassa Compleet and Ginger Payments use different formats
