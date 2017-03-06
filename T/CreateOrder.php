@@ -79,7 +79,7 @@ abstract class CreateOrder extends TestCase {
 					// Kassa Compleet and Ginger Payments use different formats
 					// for the «order_lines/order_line/vat_percentage» property
 					// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
-					,'vat_percentage' => 17.5 * $this->m()->vatFactor()
+					,'vat_percentage' => 17.5 * ($this->m()->vatIsInteger() ? 100 : 1)
 				]
 			]
 			/**

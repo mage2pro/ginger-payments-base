@@ -141,12 +141,14 @@ final class Charge extends \Df\Payment\Charge {
 		// 2017-03-06
 		// «Item product page URI»
 		,'url' => df_oi_url($i)
+		// 2017-03-06
+		// «Type: physical, discount or shipping_fee»
 		,'type' => 'physical'
 		// 2017-02-28
 		// Kassa Compleet and Ginger Payments use different formats
 		// for the «order_lines/order_line/vat_percentage» property
 		// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
-		,'vat_percentage' => 17.5 * $this->m()->vatFactor()
+		,'vat_percentage' => df_oi_tax_rate($i, $this->m()->vatIsInteger())
 	];});}
 
 	/**
