@@ -41,6 +41,13 @@ final class Charge extends \Df\Payment\Charge {
 		// 2017-02-28
 		// Arbitrary data.
 		,'extra' => $this->metadata()
+		// 2017-02-27
+		// Your identifier for the order (optional)
+		,'merchant_order_id' => $this->oii()
+		// 2017-02-28
+		// [Ginger Payments] Is any documentation on the «order_lines» property
+		// of the «POST /v1/orders/» request? https://mage2.pro/t/3450
+		,'order_lines' => $this->pOrderLines()
 	];}
 
 	/**
@@ -106,6 +113,31 @@ final class Charge extends \Df\Payment\Charge {
 		,'user_agent' => 'Mage2.PRO'
 	];}
 
+	/**
+	 * 2017-03-06
+	 * @used-by pCharge()
+	 * @return array(string => mixed)
+	 */
+	private function pOrderLines() {return [
+		[
+			'amount' => 1250
+			,'currency' => 'EUR'
+			,'discount_rate' => 0
+			,'ean' => '12345'
+			,'id' => '1'
+			,'image_url' => 'https://mage2.pro/uploads/default/original/1X/ed63ec02f0651856b03670a04b03057758b4c8e8.png'
+			,'merchant_order_line_id' => '11'
+			,'name' => 'An order item'
+			,'quantity' => 2
+			,'url' => 'https://mage2.pro'
+			,'type' => 'physical'
+			// 2017-02-28
+			// Kassa Compleet and Ginger Payments use different formats
+			// for the «order_lines/order_line/vat_percentage» property
+			// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
+			,'vat_percentage' => 17.5 * $this->m()->vatFactor()
+		]
+	];}
 
 	/**
 	 * 2017-03-06
