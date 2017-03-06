@@ -120,8 +120,20 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines() {return $this->oiLeafs(function(OI $i) {return [
-		'amount' => 1250
+	private function pOrderLines() {return array_merge(
+		$this->pOrderLines_products(), [$this->pOrderLines_shipping()]
+	);}
+
+	/**
+	 * 2017-03-06
+	 * https://mage2.pro/t/3411
+	 * @used-by pOrderLines()
+	 * @return array(string => string|int|float)
+	 */
+	private function pOrderLines_products() {return $this->oiLeafs(function(OI $i) {return [
+		// 2017-03-06
+		// «Amount for a single item (including VAT) in cents»
+		'amount' => $this->cFromOrderF(df_oi_price($i, true))
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
 		,'ean' => ''
@@ -150,6 +162,32 @@ final class Charge extends \Df\Payment\Charge {
 		// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
 		,'vat_percentage' => df_oi_tax_rate($i, $this->m()->vatIsInteger())
 	];});}
+
+	/**
+	 * 2017-03-06
+	 * https://mage2.pro/t/3411
+	 * @used-by pOrderLines()
+	 * @return array(string => string|int|float)
+	 */
+	private function pOrderLines_shipping() {return [
+		// 2017-03-06
+		// «Amount for a single item (including VAT) in cents»
+		'amount' => $this->cFromOrderF($this->o()->getShippingAmount())
+		,'currency' => $this->currencyC()
+		// 2017-03-06
+		// «Order line identifier»
+		,'id' => 'shipping'
+		// 2017-03-06
+		// «Merchant's internal order line identifier»
+		,'merchant_order_line_id' => 'shipping'
+		// 2017-03-06
+		// «Name, usually a short description»
+		,'name' => $this->o()->getShippingDescription()
+		,'quantity' => 1
+		// 2017-03-06
+		// «Type: physical, discount or shipping_fee»
+		,'type' => 'shipping_fee'
+	];}
 
 	/**
 	 * 2017-03-06
