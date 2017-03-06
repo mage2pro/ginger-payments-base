@@ -49,6 +49,15 @@ final class Charge extends \Df\Payment\Charge {
 		// [Ginger Payments] Is any documentation on the «order_lines» property
 		// of the «POST /v1/orders/» request? https://mage2.pro/t/3450
 		,'order_lines' => $this->pOrderLines()
+		// 2017-02-27
+		// «The return URL (optional)».
+		// «Your customer will be redirected here after payment»
+		// This parameter is required for iDEAL: https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+		// https://www.gingerpayments.com/docs#creating-an-ideal-order
+		// 2017-07-07
+		// Сделал по аналогии с модулем allPay:
+		// https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L365-L378
+		,'return_url' => $this->customerReturnRemote()
 	];}
 
 	/**
