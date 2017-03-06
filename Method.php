@@ -1,6 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use GingerPayments\Payment\Client as API;
+use GingerPayments\Payment\Order\Transaction\PaymentMethod as GM;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
@@ -20,6 +21,28 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return int
 	 */
 	abstract function vatIsInteger();
+
+	/**
+	 * 2017-03-06
+	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
+	 * @return string|null
+	 */
+	final function bank() {return $this->iia(self::$II_BANK);}
+
+	/**
+	 * 2017-03-06
+	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
+	 * @return bool
+	 */
+	final function isIdeal() {return GM::IDEAL === $this->option();}
+
+	/**
+	 * 2017-03-06
+	 * 2used-by isIdeal()
+	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
+	 * @return string
+	 */
+	final function option() {return df_result_sne($this->iia(self::$II_OPTION));}
 
 	/**
 	 * 2017-02-25
@@ -62,6 +85,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 	/**
 	 * 2017-03-05
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/main.js?ts=4#L25
+	 * @used-by bank()
 	 * @used-by iiaKeys()
 	 */
 	private static $II_BANK = 'bank';
@@ -70,6 +94,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * 2017-03-05
 	 * https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L23
 	 * @used-by iiaKeys()
+	 * @used-by option()
 	 */
 	private static $II_OPTION = 'option';
 }

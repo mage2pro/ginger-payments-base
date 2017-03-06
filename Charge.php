@@ -58,6 +58,37 @@ final class Charge extends \Df\Payment\Charge {
 		// Сделал по аналогии с модулем allPay:
 		// https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L365-L378
 		,'return_url' => $this->customerReturnRemote()
+		// 2017-03-01
+		// Замечение №1
+		// Это свойство обязательно, иначе будет сбой:
+		// «Array does not contain an element with key "transactions"».
+		// Замечение №2
+		// [Ginger Payments] The referenced «transactions.json» part
+		// is missed in the JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3456
+		,'transactions' => [[
+			// 2017-02-27
+			// The payment method
+			'payment_method' => $this->m()->option()
+			// 2017-02-27
+			// Extra details required for this payment method
+			,'payment_method_details' => !$this->m()->isIdeal() ? [] : [
+				// 2017-02-27
+				// This parameter is required:
+				// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+				// https://www.gingerpayments.com/docs#creating-an-ideal-order
+				'issuer_id' => $this->m()->bank()
+			]
+		]]
+		// 2017-02-28
+		// [Kassa Compleet] The «webhook_url» property allows to set the webhook URL dynamically
+		// in a «POST /v1/orders/» request: https://mage2.pro/t/3453
+		//
+		// Whether Ginger Payments allows to set the webhook URL dynamically
+		// in a «POST /v1/orders/» request? https://mage2.pro/t/3452
+		//
+		// Надо будет сделать по аналогии с модулем allPay:
+		// https://github.com/mage2pro/allpay/blob/1.1.31/Charge.php?ts=4#L431-L454
+		,'webhook_url' => $this->callback()
 	];}
 
 	/**
