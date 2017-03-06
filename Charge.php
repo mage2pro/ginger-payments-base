@@ -50,7 +50,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pCustomer() {/** @var OA $a */ $a = $this->addressBS(); return [
 		// 2017-02-28
 		// Test addresses for some countries: https://mage2.pro/t/2555
-		'address' => 'Amsterdam Rusland 17'
+		'address' => df_cc_s($a->getStreet())
 		,'address_type' => 'billing'
 		// 2017-02-28
 		// [Kassa Compleet] What is the right format of a customer's birth date in a «POST /v1/orders/» request?
@@ -68,7 +68,7 @@ final class Charge extends \Df\Payment\Charge {
 		,'forwarded_ip' => $this->customerIp()
 		// "male", "female", "other", null
 		,'gender' => $this->customerGender('male', 'female')
-		,'housenumber' => '17'
+		,'housenumber' => ''
 		,'ip_address' => $this->customerIp()
 		,'last_name' => $this->customerNameL()
 		// 2017-02-28
@@ -80,7 +80,7 @@ final class Charge extends \Df\Payment\Charge {
 		// The official Ginger Payments and Kassa Compleet extensions for Magento 1.x
 		// pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 		// https://mage2.pro/t/3445
-		,'locale' => 'nl_NL'
+		,'locale' => df_locale_by_country($a->getCountryId())
 		,'merchant_customer_id' => '123'
 		,'phone_numbers' => ['+31 20 623 1231']
 		// 2017-02-28
