@@ -30,6 +30,10 @@ final class Charge extends \Df\Payment\Charge {
 		// 2017-02-27
 		// The currency
 		,'currency' => $this->currencyC()
+		// 2017-02-27
+		// «A description (optional)»
+		// I did not find any limitations on it.
+		,'description' => $this->description()
 	];}
 
 	/**
