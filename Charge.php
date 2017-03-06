@@ -1,6 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Magento\Sales\Model\Order\Address as OA;
+use Magento\Sales\Model\Order\Item as OI;
 /**
  * 2017-03-05
  * @method Method m()
@@ -101,7 +102,7 @@ final class Charge extends \Df\Payment\Charge {
 		// The official Ginger Payments and Kassa Compleet extensions for Magento 1.x
 		// pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 		// https://mage2.pro/t/3445
-		,'locale' => df_locale_by_country($a->getCountryId())
+		,'locale' => $this->locale()
 		,'merchant_customer_id' => $this->o()->getCustomerId() ?: $this->customerName()
 		,'phone_numbers' => df_clean([$a->getTelephone()])
 		// 2017-02-28
@@ -116,28 +117,26 @@ final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-06
 	 * @used-by pCharge()
-	 * @return array(string => mixed)
+	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines() {return [
-		[
-			'amount' => 1250
-			,'currency' => 'EUR'
-			,'discount_rate' => 0
-			,'ean' => '12345'
-			,'id' => '1'
-			,'image_url' => 'https://mage2.pro/uploads/default/original/1X/ed63ec02f0651856b03670a04b03057758b4c8e8.png'
-			,'merchant_order_line_id' => '11'
-			,'name' => 'An order item'
-			,'quantity' => 2
-			,'url' => 'https://mage2.pro'
-			,'type' => 'physical'
-			// 2017-02-28
-			// Kassa Compleet and Ginger Payments use different formats
-			// for the «order_lines/order_line/vat_percentage» property
-			// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
-			,'vat_percentage' => 17.5 * $this->m()->vatFactor()
-		]
-	];}
+	private function pOrderLines() {return $this->oiLeafs(function(OI $i) {return [
+		'amount' => 1250
+		,'currency' => $this->currencyC()
+		,'discount_rate' => 0
+		,'ean' => '12345'
+		,'id' => '1'
+		,'image_url' => 'https://mage2.pro/uploads/default/original/1X/ed63ec02f0651856b03670a04b03057758b4c8e8.png'
+		,'merchant_order_line_id' => '11'
+		,'name' => 'An order item'
+		,'quantity' => 2
+		,'url' => 'https://mage2.pro'
+		,'type' => 'physical'
+		// 2017-02-28
+		// Kassa Compleet and Ginger Payments use different formats
+		// for the «order_lines/order_line/vat_percentage» property
+		// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
+		,'vat_percentage' => 17.5 * $this->m()->vatFactor()
+	];});}
 
 	/**
 	 * 2017-03-06
