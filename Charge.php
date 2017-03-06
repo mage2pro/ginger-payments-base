@@ -27,6 +27,9 @@ final class Charge extends \Df\Payment\Charge {
 		// pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 		// https://mage2.pro/t/3445
 		,'customer' => $this->pCustomer()
+		// 2017-02-27
+		// The currency
+		,'currency' => $this->currencyC()
 	];}
 
 	/**
