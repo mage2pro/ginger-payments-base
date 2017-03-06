@@ -81,11 +81,13 @@ final class Charge extends \Df\Payment\Charge {
 		// pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 		// https://mage2.pro/t/3445
 		,'locale' => df_locale_by_country($a->getCountryId())
-		,'merchant_customer_id' => '123'
-		,'phone_numbers' => ['+31 20 623 1231']
+		,'merchant_customer_id' => $this->o()->getCustomerId() ?: $this->customerName()
+		,'phone_numbers' => df_clean([$a->getTelephone()])
 		// 2017-02-28
 		// Test addresses for some countries: https://mage2.pro/t/2555
-		,'postal_code' => '1012'
+		,'postal_code' => $a->getPostcode()
+		// 2017-03-06
+		// I did it intentionally.
 		,'referrer' => 'https://mage2.pro'
 		,'user_agent' => 'Mage2.PRO'
 	];}
