@@ -34,6 +34,10 @@ final class Charge extends \Df\Payment\Charge {
 		// «A description (optional)»
 		// I did not find any limitations on it.
 		,'description' => $this->description()
+		// 2017-02-27
+		// The expiration period in ISO 8601 format (optional)
+		// [Ginger Payments] The «expiration_period» parameter for POST /v1/orders/ is undocumented: https://mage2.pro/t/3388
+		,'expiration_period' => 'PT15M'
 	];}
 
 	/**
