@@ -59,8 +59,8 @@ abstract class Option extends \Df\Config\SourceT {
 	/**
 	 * 2017-03-01
 	 * @used-by map()
-	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_ING
-	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_GINGER
+	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_G
+	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_K
 	 */
 	const BANK_TRANSFER = 'bank-transfer';
 }

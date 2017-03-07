@@ -3,12 +3,16 @@ namespace Df\GingerPaymentsBase\T;
 /**
  * 2017-02-27
  * @see \Df\GingerPaymentsBase\T\CreateOrder\Ideal
+ * @see \Dfe\GingerPayments\T\CreateOrder\BankTransfer
+ * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer
  */
 abstract class CreateOrder extends TestCase {
 	/**
 	 * 2017-02-27
 	 * @used-by t01_success()
 	 * @see \Df\GingerPaymentsBase\T\CreateOrder\Ideal::method()
+	 * @see \Dfe\GingerPayments\T\CreateOrder\BankTransfer::method()
+	 * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer::method()
 	 * @return string
 	 */
 	abstract protected function method();
