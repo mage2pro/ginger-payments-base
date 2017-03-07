@@ -221,18 +221,18 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pTransactions() {return [[
+	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [[
 		// 2017-02-27
 		// The payment method
-		'payment_method' => $this->m()->optionT()
+		'payment_method' => $m->optionT()
 		// 2017-02-27
 		// Extra details required for this payment method
-		,'payment_method_details' => !$this->m()->isIdeal() ? [] : [
+		,'payment_method_details' => !$m->isIdeal() ? [] : [
 			// 2017-02-27
 			// This parameter is required:
 			// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
 			// https://www.gingerpayments.com/docs#creating-an-ideal-order
-			'issuer_id' => $this->m()->bank()
+			'issuer_id' => $m->bank()
 		]
 	]];}
 
