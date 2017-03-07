@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use Df\GingerPaymentsBase\Source\Option as SO;
 use GingerPayments\Payment\Client as API;
 use GingerPayments\Payment\Order\Transaction\PaymentMethod as GM;
 /**
@@ -23,6 +24,15 @@ abstract class Method extends \Df\PaypalClone\Method {
 	abstract function vatIsInteger();
 
 	/**
+	 * 2017-03-07
+	 * @see \Dfe\GingerPayments\Method::bankTransferId()
+	 * @see \Dfe\KassaCompleet\Method::bankTransferId()
+	 * @used-by optionT()
+	 * @return string
+	 */
+	abstract protected function bankTransferId();
+
+	/**
 	 * 2017-03-06
 	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
 	 * @return string|null
@@ -37,12 +47,13 @@ abstract class Method extends \Df\PaypalClone\Method {
 	final function isIdeal() {return GM::IDEAL === $this->option();}
 
 	/**
-	 * 2017-03-06
-	 * 2used-by isIdeal()
-	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
+	 * 2017-03-07
+	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
-	final function option() {return df_result_sne($this->iia(self::$II_OPTION));}
+	final function optionT() {return dftr($this->option(), [
+		SO::BANK_TRANSFER => $this->bankTransferId()
+	]);}
 
 	/**
 	 * 2017-02-25
@@ -81,6 +92,14 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return API
 	 */
 	private function api() {return $this->s()->api();}
+
+	/**
+	 * 2017-03-06
+	 * @used-by isIdeal()
+	 * @used-by optionT()
+	 * @return string
+	 */
+	private function option() {return df_result_sne($this->iia(self::$II_OPTION));}
 
 	/**
 	 * 2017-03-05
