@@ -218,23 +218,26 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-03-07
+	 * Значением «payment_method_details» не может быть пустой массив:
+	 * «[] is not valid under any of the given schemas»
 	 * @used-by pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [[
+	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
 		// 2017-02-27
 		// The payment method
-		'payment_method' => $m->optionT()
-		// 2017-02-27
-		// Extra details required for this payment method
-		,'payment_method_details' => !$m->isIdeal() ? [] : [
+		['payment_method' => $m->optionT()] + !$m->isIdeal() ? [] : [
 			// 2017-02-27
-			// This parameter is required:
-			// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
-			// https://www.gingerpayments.com/docs#creating-an-ideal-order
-			'issuer_id' => $m->bank()
+			// Extra details required for this payment method
+			'payment_method_details' => [
+				// 2017-02-27
+				// This parameter is required:
+				// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
+				// https://www.gingerpayments.com/docs#creating-an-ideal-order
+				'issuer_id' => $m->bank()
+			]
 		]
-	]];}
+	];}
 
 	/**
 	 * 2017-03-06

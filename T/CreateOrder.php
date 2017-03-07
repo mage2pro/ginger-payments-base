@@ -107,14 +107,14 @@ abstract class CreateOrder extends TestCase {
 			 * [Ginger Payments] The referenced «transactions.json» part
 			 * is missed in the JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3456
 			 */
-			,'transactions' => [[
+			,'transactions' => [df_clean([
 				// 2017-02-27
 				// The payment method
 				'payment_method' => $this->method()
 				// 2017-02-27
 				// Extra details required for this payment method
 				,'payment_method_details' => $this->params()
-			]]
+			])]
 			/**
 			 * 2017-02-28
 			 * [Kassa Compleet] The «webhook_url» property allows to set the webhook URL dynamically
