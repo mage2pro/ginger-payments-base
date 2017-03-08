@@ -78,5 +78,8 @@ define([
 	 * @param {String} v
 	 * @returns {String}
 	 */
-	optionAfter: function(v) {return 'ideal' !== v ? this._super(v) : 'Df_GingerPaymentsBase/ideal';}
+	optionAfter: function(v) {return df.k({
+		'bank-transfer': 'Df_GingerPaymentsBase/bankTransfer'
+		,ideal: 'Df_GingerPaymentsBase/ideal'
+	}, v, this._super(v));}
 });});
