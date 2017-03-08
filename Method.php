@@ -40,6 +40,9 @@ abstract class Method extends \Df\PaypalClone\Method {
 	/**
 	 * 2017-03-07
 	 * https://mage2.pro/t/3355/2
+	 * 2017-03-08
+	 * https://github.com/mage2pro/ginger-payments/blob/0.2.2/etc/config.xml?ts=4#L16
+	 * https://github.com/mage2pro/kassa-compleet/blob/0.2.2/etc/config.xml?ts=4#L16
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
