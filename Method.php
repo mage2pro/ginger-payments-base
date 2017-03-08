@@ -2,7 +2,6 @@
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
 use GingerPayments\Payment\Client as API;
-use GingerPayments\Payment\Order\Transaction\PaymentMethod as GM;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method

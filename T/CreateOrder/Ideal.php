@@ -1,6 +1,5 @@
 <?php
 namespace Df\GingerPaymentsBase\T\CreateOrder;
-use GingerPayments\Payment\Order\Transaction\PaymentMethod as M;
 /**
  * 2017-02-27
  * @see \Dfe\GingerPayments\T\CreateOrder\Ideal
