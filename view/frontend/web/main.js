@@ -6,7 +6,7 @@ define([
 ], function(df, _, parent, $) {'use strict'; return parent.extend({
 	/**
 	 * 2017-03-04
-	 * @used-by Df_GingerPaymentsBase/bank
+	 * @used-by Df_GingerPaymentsBase/ideal
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L6
 	 * @returns {Object}[]
 	 */
@@ -24,7 +24,7 @@ define([
 	defaults: {
 		// 2017-03-05
 		// @used-by dfData()
-		// @used-by Df_GingerPaymentsBase/bank
+		// @used-by Df_GingerPaymentsBase/ideal
 		// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L10
 		bank: ''
 		// 2017-03-02
@@ -47,7 +47,7 @@ define([
 	 * @returns {Object}
 	 */
 	dfData: function() {return df.o.merge(this._super(), df.clean({
-		bank: this.idealSelected() ? this.bank : null
+		bank: 'ideal' === this.option() ? this.bank : null
 	}));},
 	/**
 	 * 2017-03-03
@@ -60,14 +60,6 @@ define([
 	 * @returns {String}[]
 	 */
 	dfFormCssClasses: function() {return this._super().concat(['df_ginger_payments_base']);},
- 	/**
-	 * 2017-03-05
-	 * @used-by dfData()
-	 * @used-by Df_GingerPaymentsBase/bank
-	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L4
-	 * @return {Boolean}
-	 */
-	idealSelected: function() {return 'ideal' === this.option();},
 	/**
 	 * 2017-03-04
 	 * @override
