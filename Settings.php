@@ -13,7 +13,7 @@ use Magento\Store\Model\Store;
  * @see \Dfe\GingerPayments\Settings
  * @see \Dfe\KassaCompleet\Settings
  */
-abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\Payment\IProduct {
+abstract class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-02-26
 	 * @see \Dfe\GingerPayments\Settings::apiDomain()
@@ -34,7 +34,7 @@ abstract class Settings extends \Df\Payment\Settings implements \GingerPayments\
 		/** @var string $apiKey */
 		$apiKey = $this->privateKey($s);
 		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
-        return new API($this, new HttpClient([
+        return new API(new HttpClient([
 			'auth' => [$apiKey, '']
 			,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
 			,'headers' => ['User-Agent' => df_cc_s(
