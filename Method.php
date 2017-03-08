@@ -41,6 +41,9 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * of a «POST /v1/orders/» request: https://mage2.pro/t/3451
 	 * @used-by \Df\GingerPaymentsBase\Charge::pOrderLines_products()
 	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
+	 * 2017-03-08
+	 * https://github.com/mage2pro/ginger-payments/blob/0.2.3/etc/config.xml?ts=4#L23
+	 * https://github.com/mage2pro/kassa-compleet/blob/0.2.3/etc/config.xml?ts=4#L23
 	 * @return bool
 	 */
 	final function vatIsInteger() {return df_bool($this->s('vatIsInteger'));}
