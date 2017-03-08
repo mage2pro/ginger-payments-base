@@ -1,6 +1,5 @@
 <?php
 namespace Df\GingerPaymentsBase\Source;
-use GingerPayments\Payment\Order\Transaction\PaymentMethod as M;
 /**
  * 2017-03-01
  * [Ginger Payments] Available payment options: https://mage2.pro/t/3463
@@ -43,7 +42,7 @@ abstract class Option extends \Df\Config\SourceT {
 		// 2017-03-03
 		// Whether Kassa Compleet allows to accept payments via Bancontact?
 		// https://mage2.pro/t/3493
-		M::BANCONTACT => 'Bancontact', M::BANK_CARD => 'Bank Card'
+		'bancontact' => 'Bancontact', 'credit-card' => 'Bank Card'
 	] + $this->mapTest() + $this->mapExtra();}
 
 	/**
@@ -54,14 +53,20 @@ abstract class Option extends \Df\Config\SourceT {
 	 * @used-by optionsTest()
 	 * @return array(string => string)
 	 */
-	private function mapTest() {return [M::IDEAL => 'iDEAL', self::BANK_TRANSFER => 'Bank Transfer'];}
+	private function mapTest() {return [self::IDEAL => 'iDEAL', self::BT => 'Bank Transfer'];}
 
 	/**
 	 * 2017-03-01
 	 * @used-by map()
 	 * @used-by \Df\GingerPaymentsBase\Method::optionT()
-	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_G
-	 * @see \GingerPayments\Payment\Order\Transaction\PaymentMethod::BANK_TRANSFER_K
 	 */
-	const BANK_TRANSFER = 'bank-transfer';
+	const BT = 'bank-transfer';
+	/**
+	 * 2017-02-27
+	 * @used-by map()
+	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
+	 * @used-by Df_GingerPaymentsBase/form::optionAfter()
+	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.5/view/frontend/web/main.js?ts=4#L82
+	 */
+	const IDEAL = 'ideal';
 }

@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use Df\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
 /**
@@ -226,7 +227,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
 		// 2017-02-27
 		// The payment method
-		['payment_method' => $m->optionT()] + !$m->isIdeal() ? [] : [
+		['payment_method' => $m->optionT()] + (SO::IDEAL !== $m->optionT()) ? [] : [
 			// 2017-02-27
 			// Extra details required for this payment method
 			'payment_method_details' => [

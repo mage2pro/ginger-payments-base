@@ -14,7 +14,7 @@ abstract class Ideal extends \Df\GingerPaymentsBase\T\CreateOrder {
 	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
 	 * @return string
 	 */
-	final protected function method() {return M::IDEAL;}
+	final protected function method() {return 'ideal';}
 
 	/**
 	 * 2017-02-27

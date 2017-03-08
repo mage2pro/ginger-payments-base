@@ -40,20 +40,11 @@ abstract class Method extends \Df\PaypalClone\Method {
 	final function bank() {return $this->iia(self::$II_BANK);}
 
 	/**
-	 * 2017-03-06
-	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
-	 * @return bool
-	 */
-	final function isIdeal() {return GM::IDEAL === $this->option();}
-
-	/**
 	 * 2017-03-07
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
-	final function optionT() {return dftr($this->option(), [
-		SO::BANK_TRANSFER => $this->bankTransferId()
-	]);}
+	final function optionT() {return dftr($this->option(), [SO::BT => $this->bankTransferId()]);}
 
 	/**
 	 * 2017-02-25
@@ -80,11 +71,10 @@ abstract class Method extends \Df\PaypalClone\Method {
 		/** @var array(string => mixed) $p */
 		$p = Charge::p($this);
 		df_sentry_extra($this, 'Request Params', $p);
-		$this->api()->postOrder($p);
+		/** @var array(string => mixed) $responseA */
+		$responseA = $this->api()->postOrder($p);
 		/** @var string $responseJson */
 		$responseJson = $this->api()->lastResponse();
-		/** @var array(string => mixed) $responseA */
-		$responseA = df_json_decode($responseJson);
 		return null;
 	}
 
