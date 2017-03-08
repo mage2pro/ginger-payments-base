@@ -31,15 +31,6 @@ abstract class Method extends \Df\PaypalClone\Method {
 	abstract protected function bankTransferId();
 
 	/**
-	 * 2017-02-26
-	 * @see \Dfe\GingerPayments\Method::apiDomain()
-	 * @see \Dfe\KassaCompleet\Method::apiDomain()
-	 * @used-by \Df\GingerPaymentsBase\Api::__construct()
-	 * @return string
-	 */
-	abstract function apiDomain();
-
-	/**
 	 * 2017-03-06
 	 * @used-by getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()

@@ -11,7 +11,7 @@ final class Api {
 	 */
 	function __construct(Method $m) {$this->_guzzle = new HttpClient([
 		'auth' => [$m->s()->privateKey(), '']
-		,'base_uri' => "https://api.{$m->apiDomain()}/v1/"
+		,'base_uri' => "https://api.{$m->s('apiDomain')}/v1/"
 		,'headers' => ['User-Agent' => df_cc_s(
 			'Mage2.PRO', $m->titleB(), df_package_version($m)
 		)] + df_headers()
