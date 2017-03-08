@@ -14,6 +14,7 @@ use Df\GingerPaymentsBase\Settings as S;
  * https://github.com/mage2pro/kassa-compleet/tree/0.1.3/etc/frontend/di.xml?ts=4#L13-L15
  * https://github.com/mage2pro/kassa-compleet/tree/0.1.3/etc/frontend/di.xml?ts=4#L9
  *
+ * @method Method m()
  * @method S s()
  */
 final class ConfigProvider extends \Df\Payment\ConfigProvider {
@@ -28,7 +29,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 		// 2017-03-04
 		// @used-by Df_GingerPaymentsBase/main::banks()
 	  	// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21
-		'banks' => $this->s()->api()->idealBanks()
+		'banks' => $this->m()->api()->idealBanks()
 		// 2017-03-04
 		// @used-by Df_Payments/withOptions::options()
 		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55

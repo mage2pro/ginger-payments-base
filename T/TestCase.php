@@ -17,5 +17,5 @@ abstract class TestCase extends \Df\Payment\TestCase {
 	 * @param object|string|null $m [optional]
 	 * @return Api
 	 */
-	final protected function api($m = null) {return $this->s($m)->api();}
+	final protected function api($m = null) {return $this->m()->api();}
 }

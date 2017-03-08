@@ -1,6 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
+use GuzzleHttp\Client as HttpClient;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
@@ -29,6 +30,30 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return string
 	 */
 	abstract protected function bankTransferId();
+
+	/**
+	 * 2017-02-26
+	 * @see \Dfe\GingerPayments\Method::apiDomain()
+	 * @see \Dfe\KassaCompleet\Method::apiDomain()
+	 * @used-by api()
+	 * @return string
+	 */
+	abstract protected function apiDomain();
+
+	/**
+	 * 2017-03-06
+	 * @used-by getConfigPaymentAction()
+	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
+	 * @used-by \Df\GingerPaymentsBase\T\TestCase::api()
+	 * @return Api
+	 */
+	final function api() {return dfc($this, function() {return new Api(new HttpClient([
+		'auth' => [$this->s()->privateKey(), '']
+		,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
+		,'headers' => ['User-Agent' => df_cc_s(
+			'Mage2.PRO', $this->titleB(), df_package_version($this)
+		)] + df_headers()
+	]));});}
 
 	/**
 	 * 2017-03-06
@@ -84,12 +109,6 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return string[]
 	 */
 	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
-
-	/**
-	 * 2017-03-06
-	 * @return Api
-	 */
-	private function api() {return $this->s()->api();}
 
 	/**
 	 * 2017-03-06
