@@ -29,17 +29,13 @@ abstract class Settings extends \Df\Payment\Settings {
 	 * @param null|string|int|S|Store $s [optional]
 	 * @return Api
 	 */
-	final function api($s = null) {return dfc($this, function($s) {
-		/** @var string $apiKey */
-		$apiKey = $this->privateKey($s);
-        return new Api(new HttpClient([
-			'auth' => [$apiKey, '']
-			,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
-			,'headers' => ['User-Agent' => df_cc_s(
-				'Mage2.PRO', $this->titleB(), df_package_version($this)
-			)] + df_headers()
-		]));
-	}, [$s]);}
+	final function api($s = null) {return dfc($this, function($s) {return new Api(new HttpClient([
+		'auth' => [$this->privateKey($s), '']
+		,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
+		,'headers' => ['User-Agent' => df_cc_s(
+			'Mage2.PRO', $this->titleB(), df_package_version($this)
+		)] + df_headers()
+	]));}, [$s]);}
 
 	/**
 	 * 2017-03-03
