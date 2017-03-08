@@ -11,6 +11,9 @@ final class Api {
 	 */
 	function __construct(Method $m) {$this->_guzzle = new HttpClient([
 		'auth' => [$m->s()->privateKey(), '']
+		// 2017-03-08
+		// https://github.com/mage2pro/ginger-payments/blob/0.2.1/etc/config.xml?ts=4#L11
+		// https://github.com/mage2pro/kassa-compleet/blob/0.2.1/etc/config.xml?ts=4#L11
 		,'base_uri' => "https://api.{$m->s('apiDomain')}/v1/"
 		,'headers' => ['User-Agent' => df_cc_s(
 			'Mage2.PRO', $m->titleB(), df_package_version($m)
