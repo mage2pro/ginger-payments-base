@@ -3,7 +3,6 @@ namespace Df\GingerPaymentsBase;
 use Assert\Assertion as Guard;
 use Df\GingerPaymentsBase\Source\Option as OS;
 use Df\Payment\Settings\Options as O;
-use GingerPayments\Payment\Client as API;
 use GuzzleHttp\Client as HttpClient;
 use Magento\Framework\App\ScopeInterface as S;
 use Magento\Store\Model\Store;
@@ -28,13 +27,13 @@ abstract class Settings extends \Df\Payment\Settings {
 	 * @used-by account()
 	 * @used-by \Df\GingerPaymentsBase\Method::api()
 	 * @param null|string|int|S|Store $s [optional]
-	 * @return API
+	 * @return Api
 	 */
 	final function api($s = null) {return dfc($this, function($s) {
 		/** @var string $apiKey */
 		$apiKey = $this->privateKey($s);
 		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
-        return new API(new HttpClient([
+        return new Api(new HttpClient([
 			'auth' => [$apiKey, '']
 			,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
 			,'headers' => ['User-Agent' => df_cc_s(
