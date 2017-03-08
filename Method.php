@@ -22,15 +22,6 @@ abstract class Method extends \Df\PaypalClone\Method {
 	abstract function vatIsInteger();
 
 	/**
-	 * 2017-03-07
-	 * @see \Dfe\GingerPayments\Method::bankTransferId()
-	 * @see \Dfe\KassaCompleet\Method::bankTransferId()
-	 * @used-by optionT()
-	 * @return string
-	 */
-	abstract protected function bankTransferId();
-
-	/**
 	 * 2017-03-06
 	 * @used-by getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
@@ -48,10 +39,11 @@ abstract class Method extends \Df\PaypalClone\Method {
 
 	/**
 	 * 2017-03-07
+	 * https://mage2.pro/t/3355/2
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
-	final function optionT() {return dftr($this->option(), [SO::BT => $this->bankTransferId()]);}
+	final function optionT() {return dftr($this->option(), [SO::BT => $this->s('bankTransferId')]);}
 
 	/**
 	 * 2017-02-25
