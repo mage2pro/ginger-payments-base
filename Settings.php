@@ -32,7 +32,6 @@ abstract class Settings extends \Df\Payment\Settings {
 	final function api($s = null) {return dfc($this, function($s) {
 		/** @var string $apiKey */
 		$apiKey = $this->privateKey($s);
-		Guard::uuid(self::apiKeyToUuid($apiKey), "API key is invalid: «{$apiKey}».");
         return new Api(new HttpClient([
 			'auth' => [$apiKey, '']
 			,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
