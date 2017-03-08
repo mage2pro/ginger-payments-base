@@ -1,7 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
-use GuzzleHttp\Client as HttpClient;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
@@ -35,10 +34,10 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * 2017-02-26
 	 * @see \Dfe\GingerPayments\Method::apiDomain()
 	 * @see \Dfe\KassaCompleet\Method::apiDomain()
-	 * @used-by api()
+	 * @used-by \Df\GingerPaymentsBase\Api::__construct()
 	 * @return string
 	 */
-	abstract protected function apiDomain();
+	abstract function apiDomain();
 
 	/**
 	 * 2017-03-06
@@ -47,13 +46,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @used-by \Df\GingerPaymentsBase\T\TestCase::api()
 	 * @return Api
 	 */
-	final function api() {return dfc($this, function() {return new Api(new HttpClient([
-		'auth' => [$this->s()->privateKey(), '']
-		,'base_uri' => "https://api.{$this->apiDomain()}/v1/"
-		,'headers' => ['User-Agent' => df_cc_s(
-			'Mage2.PRO', $this->titleB(), df_package_version($this)
-		)] + df_headers()
-	]));});}
+	final function api() {return dfc($this, function() {return new Api($this);});}
 
 	/**
 	 * 2017-03-06

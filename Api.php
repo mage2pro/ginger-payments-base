@@ -7,9 +7,15 @@ final class Api {
 	/**
 	 * 2017-02-25
 	 * @used-by \Df\GingerPaymentsBase\Settings::api()
-	 * @param HttpClient $httpClient
+	 * @param Method $m
 	 */
-	function __construct(HttpClient $httpClient) {$this->_guzzle = $httpClient;}
+	function __construct(Method $m) {$this->_guzzle = new HttpClient([
+		'auth' => [$m->s()->privateKey(), '']
+		,'base_uri' => "https://api.{$m->apiDomain()}/v1/"
+		,'headers' => ['User-Agent' => df_cc_s(
+			'Mage2.PRO', $m->titleB(), df_package_version($m)
+		)] + df_headers()
+	]);}
 
 	/**
 	 * 2017-03-04
