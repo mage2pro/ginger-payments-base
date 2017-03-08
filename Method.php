@@ -76,7 +76,17 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @see \Df\Payment\Method::getConfigPaymentAction()
 	 * @return string
 	 */
-	final function getConfigPaymentAction() {return null;}
+	final function getConfigPaymentAction() {
+		/** @var array(string => mixed) $p */
+		$p = Charge::p($this);
+		df_sentry_extra($this, 'Request Params', $p);
+		$this->api()->postOrder($p);
+		/** @var string $responseJson */
+		$responseJson = $this->api()->lastResponse();
+		/** @var array(string => mixed) $responseA */
+		$responseA = df_json_decode($responseJson);
+		return null;
+	}
 
 	/**
 	 * 2017-03-02
