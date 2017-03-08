@@ -18,6 +18,7 @@ final class Api {
 		,'headers' => ['User-Agent' => df_cc_s(
 			'Mage2.PRO', $m->titleB(), df_package_version($m)
 		)] + df_headers()
+		,'timeout' => 10
 	]);}
 
 	/**
@@ -29,25 +30,18 @@ final class Api {
 	function idealBanks() {return array_column($this->req('ideal/issuers/'), 'name', 'id');}
 
 	/**
-	 * Get a single order.
-	 *
-	 * @param string $id The order ID.
-	 * @return array(string => mixed)
-	 */
-	function getOrder($id) {return $this->req("orders/$id");}
-
-	/**
-	 * Check if account is in test mode.
-	 *
-	 * @return bool
-	 */
-	function isInTestMode() {return $this->isTestMode($this->req('merchants/self/projects/self/'));}
-
-	/**
 	 * 2017-02-26
+	 * @used-by \Df\GingerPaymentsBase\Method::getConfigPaymentAction()
 	 * @return string
 	 */
 	function lastResponse() {return $this->_lastResponse;}
+
+	/**
+	 * 2017-03-09
+	 * @param string $id The order ID.
+	 * @return array(string => mixed)
+	 */
+	function orderGet($id) {return $this->req("orders/$id");}
 
 	/**
 	 * 2017-02-27
@@ -55,73 +49,17 @@ final class Api {
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	function postOrder(array $o) {return $this->req('orders/', 'post', [
+	function orderPost(array $o) {return $this->req('orders/', 'post', [
 		'body' => json_encode($o)
 		,'headers' => ['Content-Type' => 'application/json']
-		,'timeout' => 10
 	]);}
 
 	/**
-	 * Update an existing order.
-	 *
+	 * 2017-03-09
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	function updateOrder(array $o) {return $this->putOrder($o);}
-
-	/**
-	 * Process test-mode API response.
-	 *
-	 * @param array $projectDetails
-	 * @return bool
-	 */
-	private function isTestMode($projectDetails)
-	{
-		if (!array_key_exists('status', $projectDetails)) {
-			return false;
-		}
-
-		return ($projectDetails['status'] == 'active-testing');
-	}
-
-	/**
-	 * Process the API response with allowed payment methods.
-	 *
-	 * @param array $details
-	 * @return array
-	 */
-	private function processProducts($details)
-	{
-		$result = array();
-
-		if (!array_key_exists('permissions', $details)) {
-			return $result;
-		}
-
-		if (array_key_exists('status', $details)
-			&& $details['status'] == 'active-testing') {
-			return array('ideal');
-		}
-
-		$products_to_check = array(
-			'ideal' => 'ideal',
-			'bank-transfer' => 'banktransfer',
-			'bancontact' => 'bancontact',
-			'cash-on-delivery' => 'cashondelivery',
-			'credit-card' => 'creditcard',
-		);
-
-		foreach ($products_to_check as $permission_id => $id) {
-			if (array_key_exists('/payment-methods/'.$permission_id.'/', $details['permissions']) &&
-				array_key_exists('POST', $details['permissions']['/payment-methods/'.$permission_id.'/']) &&
-				$details['permissions']['/payment-methods/'.$permission_id.'/']['POST']
-			) {
-				$result[] = $id;
-			}
-		}
-
-		return $result;
-	}
+	function orderUpdate(array $o) {return $this->putOrder($o);}
 
 	/**
 	 * 2017-03-01
@@ -140,13 +78,10 @@ final class Api {
 	 * @param string $pId [optional]
 	 * @return array
 	 */
-	function products($mId = 'self', $pId = 'self') {return $this->processProducts(
-		$this->req("merchants/{$mId}/projects/{$pId}/")
-	);}
+	function products($mId = 'self', $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
 
 	/**
-	 * PUT order data to Ginger API.
-	 *
+	 * 2017-03-09
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */

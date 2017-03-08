@@ -74,7 +74,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 		$p = Charge::p($this);
 		df_sentry_extra($this, 'Request Params', $p);
 		/** @var array(string => mixed) $responseA */
-		$responseA = $this->api()->postOrder($p);
+		$responseA = $this->api()->orderPost($p);
 		/** @var string $responseJson */
 		$responseJson = $this->api()->lastResponse();
 		return null;

@@ -25,7 +25,7 @@ abstract class CreateOrder extends TestCase {
 	 * [Kassa Compleet] A JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3411
 	 */
 	final function t01_success() {
-		$this->api()->postOrder([
+		$this->api()->orderPost([
 			// 2017-02-27
 			// «Order amount (including VAT)».
 			'amount' => 2500
