@@ -1,6 +1,8 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
+use Df\Payment\PlaceOrder;
+use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
@@ -70,13 +72,41 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return string
 	 */
 	final function getConfigPaymentAction() {
-		/** @var array(string => mixed) $p */
-		$p = Charge::p($this);
-		df_sentry_extra($this, 'Request Params', $p);
-		/** @var array(string => mixed) $responseA */
-		$responseA = $this->api()->orderPost($p);
-		/** @var string $responseJson */
-		$responseJson = $this->api()->lastResponse();
+		/** @var array(string => mixed) $req */
+		$req = Charge::p($this);
+		df_sentry_extra($this, 'Request Params', $req);
+		/** @var array(string => mixed) $res */
+		$res = $this->api()->orderPost($req);
+		if ($this->s()->log()) {
+			dfp_report($this, $res, 'response');
+		}
+		if ($this->s()->log()) {
+			// 2017-01-12
+			// В локальный лог попадает только response, а в Sentry: и request, и response.
+			dfp_report($this, $res, df_caller_ff(-1));
+		}
+		$this->iiaSetTRR($req, $res);
+		// 2016-07-01
+		// К сожалению, если передавать в качестве результата ассоциативный массив,
+		// то его ключи почему-то теряются. Поэтому запаковываем массив в JSON.
+		$this->iiaSet(PlaceOrder::DATA, df_json_encode([
+			'uri' => dfa($res['transactions'][0], 'payment_url')
+		]));
+		// 2016-05-06
+		// Письмо-оповещение о заказе здесь ещё не должно отправляться.
+		// «How is a confirmation email sent on an order placement?» https://mage2.pro/t/1542
+		$this->o()->setCanSendNewEmailFlag(false);
+		// 2017-03-09
+		// Строка типа «95b5bacf-1686-4295-9706-55282af64a80».
+		$this->ii()->setTransactionId(self::e2i($res['id']));
+		/**
+		 * 2016-07-10
+		 * @uses \Magento\Sales\Model\Order\Payment\Transaction::TYPE_PAYMENT —
+		 * это единственный транзакция без специального назначения,
+		 * и поэтому мы можем безопасно его использовать
+		 * для сохранения информации о нашем запросе к платёжной системе.
+		 */
+		$this->ii()->addTransaction(T::TYPE_PAYMENT);
 		return null;
 	}
 
