@@ -31,4 +31,15 @@ class Webhook extends \Df\PaypalClone\Confirmation {
 	 * @return string
 	 */
 	final protected function parentIdRawKey() {return 'order_id';}
+
+	/**
+	 * 2017-03-09
+	 * Kassa Compleet и Ginger Payments не подписывают оповещения.
+	 * @override
+	 * @see \Df\PaypalClone\Webhook::validate()
+	 * @used-by \Df\Payment\Webhook::handle()
+	 * @return void
+	 * @throws \Exception
+	 */
+	final protected function validate() {}
 }
