@@ -215,6 +215,9 @@ final class Charge extends \Df\Payment\Charge {
 		// 2017-03-06
 		// «Type: physical, discount or shipping_fee»
 		,'type' => 'shipping_fee'
+		// 2017-03-09
+		// Это поле обязательно.
+		,'vat_percentage' => 0
 	];}
 
 	/**
@@ -227,7 +230,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
 		// 2017-02-27
 		// The payment method
-		['payment_method' => $m->optionT()] + (SO::IDEAL !== $m->optionT()) ? [] : [
+		['payment_method' => $m->optionT()] + (SO::IDEAL !== $m->optionT() ? [] : [
 			// 2017-02-27
 			// Extra details required for this payment method
 			'payment_method_details' => [
@@ -237,7 +240,7 @@ final class Charge extends \Df\Payment\Charge {
 				// https://www.gingerpayments.com/docs#creating-an-ideal-order
 				'issuer_id' => $m->bank()
 			]
-		]
+		])
 	];}
 
 	/**

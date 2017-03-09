@@ -1,8 +1,8 @@
 <?php
 namespace Df\GingerPaymentsBase;
+use Df\Core\Exception as DFE;
 use GuzzleHttp\Client as HttpClient;
 use GuzzleHttp\Exception\RequestException as ERequest;
-use RuntimeException as E;
 final class Api {
 	/**
 	 * 2017-02-25
@@ -89,15 +89,16 @@ final class Api {
 		"orders/{$o['id']}/", 'put', ['timeout' => 10, 'json' => $o])
 	;}
 
+	/** @noinspection PhpInconsistentReturnPointsInspection */
 	/**
 	 * 2017-02-26
 	 * @param string $uri
 	 * @param string $method [optional]
 	 * @param array(string => mixed) $params
-	 * @param mixed|null $onError [optional]
 	 * @return array(string => mixed)
+	 * @throws DFE
 	 */
-	private function req($uri, $method = 'get', $params = [], $onError = null) {
+	private function req($uri, $method = 'get', $params = []) {
 		try {
 			/** @var array(string => mixed) $result */
 			$result = df_json_decode((string)$this->_guzzle->request($method, $uri, $params)->getBody());
@@ -108,15 +109,7 @@ final class Api {
 			return $result;
 		}
 		catch (ERequest $e) {
-			if (!is_null($onError)) {
-				return $onError;
-			}
-			if (404 == $e->getCode()) {
-				throw new E('An object with he ID given is absent.', 404, $e);
-			}
-			/** @var string $message */
-			$message = "An error occurred: {$e->getMessage()}" . (string)$e->getResponse()->getBody();
-			throw new E($message, $e->getCode(), $e);
+			df_error((string)$e->getResponse()->getBody());
 		}
 	}
 
