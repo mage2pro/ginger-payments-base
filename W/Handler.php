@@ -1,5 +1,5 @@
 <?php
-namespace Df\GingerPaymentsBase;
+namespace Df\GingerPaymentsBase\W;
 /**
  * 2017-03-09
  * https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#webhooks
@@ -9,15 +9,15 @@ namespace Df\GingerPaymentsBase;
  *		"order_id": "0125e02b-557c-4fb5-956a-d22662d71ad9",
  *		"project_id": "1ef558ed-d77d-470d-b43b-c0f4a131bcef"
  *	}
- * @see \Dfe\GingerPayments\Webhook
- * @see \Dfe\KassaCompleet\Webhook
+ * @see \Dfe\GingerPayments\W\Handler
+ * @see \Dfe\KassaCompleet\W\Handler
  */
-class Webhook extends \Df\PaypalClone\Confirmation {
+class Handler extends \Df\PaypalClone\W\Confirmation {
 	/**
 	 * 2017-03-09
 	 * @override
-	 * @see \Df\Payment\Webhook::config()
-	 * @used-by \Df\Payment\Webhook::configCached()
+	 * @see \Df\Payment\W\Handler::config()
+	 * @used-by \Df\Payment\W\Handler::configCached()
 	 * @return array(string => mixed)
 	 */
 	final protected function config() {return [
@@ -31,8 +31,8 @@ class Webhook extends \Df\PaypalClone\Confirmation {
 	/**
 	 * 2017-03-09
 	 * @override
-	 * @see \Df\Payment\Webhook::parentIdRawKey()
-	 * @used-by \Df\Payment\Webhook::parentIdRaw()
+	 * @see \Df\Payment\W\Handler::parentIdRawKey()
+	 * @used-by \Df\Payment\W\Handler::parentIdRaw()
 	 * @return string
 	 */
 	final protected function parentIdRawKey() {return 'order_id';}
@@ -42,8 +42,8 @@ class Webhook extends \Df\PaypalClone\Confirmation {
 	 * Kassa Compleet и Ginger Payments не подписывают оповещения.
 	 * @todo Мы должны валидировать оповещение посредством запроса к API.
 	 * @override
-	 * @see \Df\PaypalClone\Webhook::validate()
-	 * @used-by \Df\Payment\Webhook::handle()
+	 * @see \Df\PaypalClone\W\Handler::validate()
+	 * @used-by \Df\Payment\W\Handler::handle()
 	 * @return void
 	 * @throws \Exception
 	 */

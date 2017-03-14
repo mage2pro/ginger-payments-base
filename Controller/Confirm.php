@@ -5,4 +5,4 @@ namespace Df\GingerPaymentsBase\Controller;
  * @see \Dfe\GingerPayments\Controller\Confirm\Index
  * @see \Dfe\KassaCompleet\Controller\Confirm\Index
  */
-abstract class Confirm extends \Df\Payment\WebhookA {}
+abstract class Confirm extends \Df\Payment\W\Action {}

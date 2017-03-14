@@ -249,5 +249,5 @@ final class Charge extends \Df\Payment\Charge {
 	 * @param Method $m
 	 * @return array(string, array(string => mixed))
 	 */
-	static function p(Method $m) {return (new self([self::$P__METHOD => $m]))->pCharge();}
+	static function p(Method $m) {return (new self($m))->pCharge();}
 }
