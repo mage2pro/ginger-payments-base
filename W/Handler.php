@@ -15,30 +15,6 @@ namespace Df\GingerPaymentsBase\W;
 class Handler extends \Df\PaypalClone\W\Confirmation {
 	/**
 	 * 2017-03-09
-	 * @override
-	 * @see \Df\Payment\W\Handler::config()
-	 * @used-by \Df\Payment\W\Handler::configCached()
-	 * @return array(string => mixed)
-	 */
-	final protected function config() {return [
-		self::$externalIdKey => 'STUB'
-		,self::$needCapture => true
-		,self::$readableStatusKey => 'STUB'
-		,self::$statusExpected => 1
-		,self::$statusKey => 'STUB'
-	];}
-
-	/**
-	 * 2017-03-09
-	 * @override
-	 * @see \Df\Payment\W\Handler::parentIdRawKey()
-	 * @used-by \Df\Payment\W\Handler::parentIdRaw()
-	 * @return string
-	 */
-	final protected function parentIdRawKey() {return 'order_id';}
-
-	/**
-	 * 2017-03-09
 	 * Kassa Compleet и Ginger Payments не подписывают оповещения.
 	 * @todo Мы должны валидировать оповещение посредством запроса к API.
 	 * @override

@@ -98,7 +98,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 		$this->o()->setCanSendNewEmailFlag(false);
 		// 2017-03-09
 		// Строка типа «95b5bacf-1686-4295-9706-55282af64a80».
-		$this->ii()->setTransactionId(self::e2i($res['id']));
+		$this->ii()->setTransactionId($this->e2i($res['id']));
 		/**
 		 * 2016-07-10
 		 * @uses \Magento\Sales\Model\Order\Payment\Transaction::TYPE_PAYMENT —
