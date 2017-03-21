@@ -1,7 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
-use Df\Payment\PlaceOrder;
+use Df\Payment\PlaceOrderInternal as PO;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-02-25
@@ -86,12 +86,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 			dfp_report($this, $res, df_caller_ff(-1));
 		}
 		$this->iiaSetTRR($req, $res);
-		// 2016-07-01
-		// К сожалению, если передавать в качестве результата ассоциативный массив,
-		// то его ключи почему-то теряются. Поэтому запаковываем массив в JSON.
-		$this->iiaSet(PlaceOrder::DATA, df_json_encode([
-			'uri' => dfa($res['transactions'][0], 'payment_url')
-		]));
+		PO::setData($this, dfa($res['transactions'][0], 'payment_url'));
 		// 2016-05-06
 		// Письмо-оповещение о заказе здесь ещё не должно отправляться.
 		// «How is a confirmation email sent on an order placement?» https://mage2.pro/t/1542
