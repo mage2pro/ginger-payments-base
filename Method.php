@@ -59,47 +59,7 @@ abstract class Method extends \Df\PaypalClone\Method {
 	 * @return null
 	 */
 	final protected function amountLimits() {return null;}
-
-	/**
-	 * 2017-03-05
-	 * Сюда мы попадаем только из метода @used-by \Magento\Sales\Model\Order\Payment::place()
-	 * причём там наш метод вызывается сразу из двух мест и по-разному.
-	 * Умышленно возвращаем null.
-	 * @used-by \Magento\Sales\Model\Order\Payment::place()
-	 * https://github.com/magento/magento2/blob/2.1.5/app/code/Magento/Sales/Model/Order/Payment.php#L334-L355
-	 * @override
-	 * @see \Df\Payment\Method::getConfigPaymentAction()
-	 * @return string
-	 */
-	final function getConfigPaymentAction() {
-		/** @var array(string => mixed) $req */
-		$req = Charge::p($this);
-		df_sentry_extra($this, 'Request Params', $req);
-		/** @var array(string => mixed) $res */
-		$res = $this->api()->orderPost($req);
-		if ($this->s()->log()) {
-			dfp_report($this, $res, 'response');
-		}
-		$this->iiaSetTRR($req, $res);
-		PO::setData($this, dfa($res['transactions'][0], 'payment_url'));
-		// 2016-05-06
-		// Письмо-оповещение о заказе здесь ещё не должно отправляться.
-		// «How is a confirmation email sent on an order placement?» https://mage2.pro/t/1542
-		$this->o()->setCanSendNewEmailFlag(false);
-		// 2017-03-09
-		// Строка типа «95b5bacf-1686-4295-9706-55282af64a80».
-		$this->ii()->setTransactionId($this->e2i($res['id']));
-		/**
-		 * 2016-07-10
-		 * @uses \Magento\Sales\Model\Order\Payment\Transaction::TYPE_PAYMENT —
-		 * это единственный транзакция без специального назначения,
-		 * и поэтому мы можем безопасно его использовать
-		 * для сохранения информации о нашем запросе к платёжной системе.
-		 */
-		$this->ii()->addTransaction(T::TYPE_PAYMENT);
-		return null;
-	}
-
+	
 	/**
 	 * 2017-03-02
 	 * @override
