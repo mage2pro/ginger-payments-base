@@ -80,11 +80,6 @@ abstract class Method extends \Df\PaypalClone\Method {
 		if ($this->s()->log()) {
 			dfp_report($this, $res, 'response');
 		}
-		if ($this->s()->log()) {
-			// 2017-01-12
-			// В локальный лог попадает только response, а в Sentry: и request, и response.
-			dfp_report($this, $res, df_caller_ff(-1));
-		}
 		$this->iiaSetTRR($req, $res);
 		PO::setData($this, dfa($res['transactions'][0], 'payment_url'));
 		// 2016-05-06
