@@ -22,7 +22,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by action()
 	 * @return string|null
 	 */
-	protected function transId() {return $this->m()->e2i($this->res()['id']);}
+	protected function transId() {return $this->m()->tid()->e2i($this->res()['id']);}
 
 	/**
 	 * 2017-03-22
