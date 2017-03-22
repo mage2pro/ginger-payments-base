@@ -12,7 +12,7 @@ namespace Df\GingerPaymentsBase\W;
  * @see \Dfe\GingerPayments\W\Handler
  * @see \Dfe\KassaCompleet\W\Handler
  */
-class Handler extends \Df\PaypalClone\W\Confirmation {
+class Handler extends \Df\PaypalClone\W\Handler {
 	/**
 	 * 2017-03-09
 	 * Kassa Compleet и Ginger Payments не подписывают оповещения.
