@@ -8,7 +8,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * @see \Dfe\GingerPayments\Method
  * @see \Dfe\KassaCompleet\Method
  */
-abstract class Method extends \Df\PaypalClone\Method {
+abstract class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-03-06
 	 * @used-by getConfigPaymentAction()
