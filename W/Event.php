@@ -13,6 +13,15 @@ namespace Df\GingerPaymentsBase\W;
 final class Event extends \Df\StripeClone\W\Event {
 	/**
 	 * 2017-03-26
+	 * @override
+	 * @see \Df\StripeClone\W\Event::k_pidSuffix()
+	 * @used-by \Df\StripeClone\W\Event::k_pid()
+	 * @return string
+	 */
+	protected function k_pidSuffix() {return 'order_id';}
+
+	/**
+	 * 2017-03-26
 	 * Основные данные события расположены на верхнем уровне вложенности.
 	 * @override
 	 * @see \Df\StripeClone\W\Event::roPath()
