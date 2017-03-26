@@ -1,7 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
-use Df\Payment\PlaceOrderInternal as PO;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-02-25
