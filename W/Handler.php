@@ -1,6 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase\W;
-use \Df\StripeClone\W\Strategy\CapturePreauthorized as Strategy;
+use Df\StripeClone\W\Strategy\ConfirmPending;
 // 2017-03-09
 final class Handler extends \Df\StripeClone\W\Handler {
 	/**
@@ -10,5 +10,5 @@ final class Handler extends \Df\StripeClone\W\Handler {
 	 * @used-by \Df\StripeClone\W\Handler::_handle()
 	 * @return string
 	 */
-	protected function strategyC() {return Strategy::class;}
+	protected function strategyC() {return ConfirmPending::class;}
 }
