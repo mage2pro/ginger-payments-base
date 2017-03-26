@@ -35,6 +35,7 @@ final class Action extends \Df\Payment\Init\Action {
 		/** @var M $m */
 		/** @var array(string => mixed) $result */
 		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p($m));
+		$m->iiaSetTRR($result);
 		return $result;
 	});}
 
@@ -45,10 +46,11 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @return array(string => mixed)
 	 */
 	private function res() {return dfc($this, function() {
+		/** @var M $m */ $m = $this->m();
 		/** @var array(string => mixed) $result */
-		$this->m()->iiaSetTRR(null, $result = $this->m()->api()->orderPost($this->req()));
+		$m->iiaSetTRR(null, $result = $m->api()->orderPost($this->req()));
 		if ($this->s()->log()) {
-			dfp_report($this->m(), $result, 'response');
+			dfp_report($m, $result, 'response');
 		}
 		return $result;
 	});}
