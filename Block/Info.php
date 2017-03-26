@@ -2,12 +2,12 @@
 namespace Df\GingerPaymentsBase\Block;
 // 2017-03-09
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
-final class Info extends \Df\Payment\Block\Info {
+class Info extends \Df\Payment\Block\Info {
 	/**
 	 * 2017-03-09
 	 * @override
 	 * @see \Df\Payment\Block\Info::prepare()
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
-	protected function prepare() {}
+	final protected function prepare() {}
 }
