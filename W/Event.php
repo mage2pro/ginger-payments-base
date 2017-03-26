@@ -20,5 +20,33 @@ final class Event extends \Df\StripeClone\W\Event {
 	 * @used-by \Df\StripeClone\W\Event::ro()
 	 * @return null
 	 */
-	final protected function roPath() {return null;}
+	protected function roPath() {return null;}
+
+	/**
+	 * 2017-03-26
+	 * @override
+	 * @see \Df\StripeClone\W\Event::ttCurrent()
+	 * @used-by \Df\StripeClone\W\Event::id()
+	 * @used-by \Df\StripeClone\W\Strategy\Charge::action()
+	 * @return string
+	 */
+	function ttCurrent() {return self::T_CAPTURE;}
+
+	/**
+	 * 2017-03-26
+	 * @override
+	 * @see \Df\StripeClone\W\Event::ttParent()
+	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
+	 * @return string
+	 */
+	function ttParent() {return self::T_INIT;}
+
+	/**
+	 * 2017-03-26
+	 * Первичная транзакция.
+	 * Она всегда соответствует неподтверждённому состоянию платежа.
+	 * @used-by ttParent()
+	 * @used-by \Df\GingerPaymentsBase\Init\Action::transId()
+	 */
+	const T_INIT = 'init';
 }

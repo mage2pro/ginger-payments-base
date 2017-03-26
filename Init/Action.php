@@ -1,6 +1,8 @@
 <?php
 namespace Df\GingerPaymentsBase\Init;
 use Df\GingerPaymentsBase\Charge;
+use Df\GingerPaymentsBase\Method as M;
+use Df\GingerPaymentsBase\W\Event as Ev;
 // 2017-03-22
 /** @method \Df\GingerPaymentsBase\Method m() */
 final class Action extends \Df\Payment\Init\Action {
@@ -22,7 +24,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by action()
 	 * @return string|null
 	 */
-	protected function transId() {return $this->m()->tid()->e2i($this->res()['id']);}
+	protected function transId() {return $this->e2i($this->res()['id'], Ev::T_INIT);}
 
 	/**
 	 * 2017-03-22
@@ -30,8 +32,9 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @return array(string => mixed)
 	 */
 	private function req() {return dfc($this, function() {
+		/** @var M $m */
 		/** @var array(string => mixed) $result */
-		df_sentry_extra($this->m(), 'Request Params', $result = Charge::p($this->m()));
+		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p($m));
 		return $result;
 	});}
 
