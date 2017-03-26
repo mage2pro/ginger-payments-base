@@ -1,6 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase\W;
-use Df\StripeClone\W\Strategy\Charge\Captured as Strategy;
+use \Df\StripeClone\W\Strategy\Captured as Strategy;
 // 2017-03-09
 final class Handler extends \Df\StripeClone\W\Handler {
 	/**
