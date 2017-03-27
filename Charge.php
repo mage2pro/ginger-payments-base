@@ -3,11 +3,8 @@ namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
-/**
- * 2017-03-05
- * @method Method m()
- * @method Settings ss()
- */
+// 2017-03-05
+/** @method Method m() */
 final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-06
