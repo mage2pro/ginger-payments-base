@@ -4,6 +4,7 @@ use Df\GingerPaymentsBase\Charge as C;
 /**
  * 2017-03-09
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
+ * @method \Df\GingerPaymentsBase\Method m()
  * @method \Df\GingerPaymentsBase\Settings s()
  */
 class Info extends \Df\Payment\Block\Info {
@@ -38,7 +39,7 @@ class Info extends \Df\Payment\Block\Info {
 		$this->si('Payment Option', dftr($o[C::K_PAYMENT_METHOD], $this->s()->os()->map()));
 		/** @var array(string => mixed)|null $d */
 		if ($bank = dfa_deep($o, [C::K_PAYMENT_METHOD_DETAILS, C::K_ISSUER_ID])) {
-			$this->si('Bank', $bank);
+			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
 		}
 	}
 }

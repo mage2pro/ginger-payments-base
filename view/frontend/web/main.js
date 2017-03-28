@@ -10,17 +10,9 @@ define([
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L6
 	 * @returns {Object}[]
 	 */
-	banks: function () {
-		/** @type {Boolean} */
-		var t = this.isTest();
-		// 2017-03-05
-		// I make the banks names in the test mode more real (and shorter).
-		/** @type {Object} */
-		var tm = {INGBNL2A: 'ING Bank', RABONL2U: 'Rabobank'};
-		return $.map(this.config('banks'), function(v, k) {return {
-			label: t && tm[k] ? tm[k] : v, value: k
-		};});
-	},
+	banks: function () {return $.map(this.config('banks'), function(v, k) {return {
+		label: v, value: k
+	};});},
 	defaults: {
 		// 2017-03-05
 		// @used-by dfData()

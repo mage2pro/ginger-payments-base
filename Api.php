@@ -6,7 +6,7 @@ use GuzzleHttp\Exception\RequestException as ERequest;
 final class Api {
 	/**
 	 * 2017-02-25
-	 * @used-by \Df\GingerPaymentsBase\Settings::api()
+	 * @used-by \Df\GingerPaymentsBase\Method::api()
 	 * @param Method $m
 	 */
 	function __construct(Method $m) {$this->_guzzle = new HttpClient([
@@ -27,7 +27,14 @@ final class Api {
 	 * @used-by \Df\GingerPaymentsBase\T\GetIdealBanks::t01()
 	 * @return array(string => string)
 	 */
-	function idealBanks() {return array_column($this->req('ideal/issuers/'), 'name', 'id');}
+	function idealBanks() {return dfc($this, function() {return
+		// 2017-03-05
+		// I make the banks names in the test mode more real (and shorter).
+		['INGBNL2A' => __('ING Bank'), 'RABONL2U' => __('Rabobank')]
+		+ df_cache_get_simple(null, function() {return array_column(
+			$this->req('ideal/issuers/'), 'name', 'id'
+		);})
+	;});}
 
 	/**
 	 * 2017-02-26
