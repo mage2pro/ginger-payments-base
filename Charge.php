@@ -63,7 +63,7 @@ final class Charge extends \Df\Payment\Charge {
 		// Замечение №2
 		// [Ginger Payments] The referenced «transactions.json» part
 		// is missed in the JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3456
-		,'transactions' => $this->pTransactions()
+		,self::K_TRANSACTIONS => $this->pTransactions()
 		// 2017-02-28
 		// [Kassa Compleet] The «webhook_url» property allows to set the webhook URL dynamically
 		// in a «POST /v1/orders/» request: https://mage2.pro/t/3453
@@ -227,18 +227,46 @@ final class Charge extends \Df\Payment\Charge {
 	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
 		// 2017-02-27
 		// The payment method
-		['payment_method' => $m->optionT()] + (SO::IDEAL !== $m->optionT() ? [] : [
+		[self::K_PAYMENT_METHOD => $m->optionT()] + (SO::IDEAL !== $m->optionT() ? [] : [
 			// 2017-02-27
 			// Extra details required for this payment method
-			'payment_method_details' => [
+			self::K_PAYMENT_METHOD_DETAILS => [
 				// 2017-02-27
 				// This parameter is required:
 				// https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
 				// https://www.gingerpayments.com/docs#creating-an-ideal-order
-				'issuer_id' => $m->bank()
+				self::K_ISSUER_ID => $m->bank()
 			]
 		])
 	];}
+
+	/**
+	 * 2017-03-28
+	 * @used-by pTransactions()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 */
+	const K_ISSUER_ID = 'issuer_id';
+
+	/**
+	 * 2017-03-28
+	 * @used-by pTransactions()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 */
+	const K_PAYMENT_METHOD = 'payment_method';
+
+	/**
+	 * 2017-03-28
+	 * @used-by pTransactions()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 */
+	const K_PAYMENT_METHOD_DETAILS = 'payment_method_details';
+
+	/**
+	 * 2017-03-28
+	 * @used-by pCharge()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 */
+	const K_TRANSACTIONS = 'transactions';
 
 	/**
 	 * 2017-03-06

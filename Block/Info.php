@@ -1,5 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase\Block;
+use Df\GingerPaymentsBase\Charge as C;
 // 2017-03-09
 /** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
 class Info extends \Df\Payment\Block\Info {
@@ -30,10 +31,10 @@ class Info extends \Df\Payment\Block\Info {
 	 */
 	private function siOption() {
 		/** @var array(string => string|array) $o */
-		$o = df_tm($this->m())->req('transactions/0');
-		$this->si('Payment Option', $o['payment_method']);
+		$o = df_first(df_tm($this->m())->req(C::K_TRANSACTIONS));
+		$this->si('Payment Option', $o[C::K_PAYMENT_METHOD]);
 		/** @var array(string => mixed)|null $d */
-		if ($bank = dfa_deep($o, 'payment_method_details/issuer_id')) {
+		if ($bank = dfa_deep($o, [C::K_PAYMENT_METHOD_DETAILS, C::K_ISSUER_ID])) {
 			$this->si('Bank', $bank);
 		}
 	}
