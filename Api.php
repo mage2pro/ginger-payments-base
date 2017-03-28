@@ -50,8 +50,7 @@ final class Api {
 	 * @return array(string => mixed)
 	 */
 	function orderPost(array $o) {return $this->req('orders/', 'post', [
-		'body' => json_encode($o)
-		,'headers' => ['Content-Type' => 'application/json']
+		'body' => json_encode($o), 'headers' => ['Content-Type' => 'application/json']
 	]);}
 
 	/**
@@ -78,7 +77,9 @@ final class Api {
 	 * @param string $pId [optional]
 	 * @return array
 	 */
-	function products($mId = 'self', $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
+	function products($mId = 'self', $pId = 'self') {return $this->req(
+		"merchants/{$mId}/projects/{$pId}/"
+	);}
 
 	/**
 	 * 2017-03-09
