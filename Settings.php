@@ -10,9 +10,17 @@ final class Settings extends \Df\Payment\Settings {
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @return O
 	 */
-	function options() {
-		/** @var OS $os */
-		$os = df_sc(df_con_heir($this->m(), OS::class));
-		return $this->test() ? $os->optionsTest() : $this->_options($os)->o();
-	}
+	function options() {return
+		$this->test() ? $this->os()->optionsTest() : $this->_options($this->os())->o()
+	;}
+
+	/**
+	 * 2017-03-28
+	 * @used-by options()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @return OS
+	 */
+	function os() {return dfc($this, function() {return df_sc(
+		df_con_heir($this->m(), OS::class)
+	);});}
 }

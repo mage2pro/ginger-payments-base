@@ -1,8 +1,11 @@
 <?php
 namespace Df\GingerPaymentsBase\Block;
 use Df\GingerPaymentsBase\Charge as C;
-// 2017-03-09
-/** @final Unable to use the PHP «final» keyword here because of the M2 code generation. */
+/**
+ * 2017-03-09
+ * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
+ * @method \Df\GingerPaymentsBase\Settings s()
+ */
 class Info extends \Df\Payment\Block\Info {
 	/**
 	 * 2017-03-09
@@ -32,7 +35,7 @@ class Info extends \Df\Payment\Block\Info {
 	private function siOption() {
 		/** @var array(string => string|array) $o */
 		$o = df_first(df_tm($this->m())->req(C::K_TRANSACTIONS));
-		$this->si('Payment Option', $o[C::K_PAYMENT_METHOD]);
+		$this->si('Payment Option', dftr($o[C::K_PAYMENT_METHOD], $this->s()->os()->map()));
 		/** @var array(string => mixed)|null $d */
 		if ($bank = dfa_deep($o, [C::K_PAYMENT_METHOD_DETAILS, C::K_ISSUER_ID])) {
 			$this->si('Bank', $bank);

@@ -34,9 +34,10 @@ abstract class Option extends \Df\Config\Source {
 	 * @override
 	 * @see \Df\Config\Source::map()
 	 * @used-by \Df\Config\Source::toOptionArray()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
 	 * @return array(string => string)
 	 */
-	final protected function map() {return [
+	final function map() {return [
 		// 2017-03-01
 		// What is Bancontact? https://mage2.pro/t/3395
 		// 2017-03-03
