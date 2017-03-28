@@ -8,7 +8,7 @@ namespace Df\GingerPaymentsBase\Source;
  * @see \Dfe\KassaCompleet\Source\Option
  * @method static Option s()
  */
-abstract class Option extends \Df\Config\SourceT {
+abstract class Option extends \Df\Config\Source {
 	/**
 	 * 2017-03-01
 	 * @used-by map()
