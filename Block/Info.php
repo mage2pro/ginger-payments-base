@@ -9,6 +9,26 @@ use Df\GingerPaymentsBase\Charge as C;
  */
 class Info extends \Df\Payment\Block\Info {
 	/**
+	 * 2017-03-29
+	 * @override
+	 * @see \Df\Payment\Block\Info::checkoutSuccessHtml()
+	 * @used-by \Df\Payment\Block\Info::_toHtml()
+	 * @return string|null
+	 */
+	final protected function checkoutSuccessHtml() {
+		/** @var string $result */
+		if ($this->s()->bankTransferId() !== $this->optionCode()) {
+			$result = null;
+		}
+		else {
+			/** @var array(string => mixed) $res0 */
+			$res0 = $this->psTransaction($this->tm()->res0());
+			$result = df_tag('div', 'df-checkout-success', $this->psDetails($res0, 'reference'));
+		}
+		return $result;
+	}
+
+	/**
 	 * 2017-03-09
 	 * @override
 	 * @see \Df\Payment\Block\Info::prepare()
@@ -29,16 +49,54 @@ class Info extends \Df\Payment\Block\Info {
 	final protected function prepareUnconfirmed() {$this->siOption();}
 
 	/**
+	 * 2017-03-29
+	 * @used-by optionCode()
+	 * @used-by siOption()
+	 * @return array(string => string|array)
+	 */
+	private function option() {return dfc($this, function() {return $this->psTransaction(
+		$this->tm()->req()
+	);});}
+
+	/**
+	 * 2017-03-29
+	 * @used-by checkoutSuccessHtml()
+	 * @used-by siOption()
+	 * @return array(string => string|array)
+	 */
+	private function optionCode() {return $this->option()[C::K_PAYMENT_METHOD];}
+
+	/**
+	 * 2017-03-29
+	 * @used-by siOption()
+	 * @param array(string => mixed) $trans
+	 * @param string $k
+	 * @return string|null
+	 */
+	private function psDetails(array $trans, $k) {return dfa_deep($trans, [
+		C::K_PAYMENT_METHOD_DETAILS, $k
+	]);}
+
+	/**
+	 * 2017-03-29
+	 * @used-by checkoutSuccessHtml()
+	 * @used-by option()
+	 * @param array(string => mixed) $data
+	 * @return array(string => mixed)
+	 */
+	private function psTransaction(array $data) {return df_first($data[C::K_TRANSACTIONS]);}
+
+	/**
 	 * 2017-03-28
 	 * @used-by prepare()
 	 * @used-by prepareUnconfirmed()
 	 */
 	private function siOption() {
 		/** @var array(string => string|array) $o */
-		$o = df_first(df_tm($this->m())->req(C::K_TRANSACTIONS));
-		$this->si('Payment Option', dftr($o[C::K_PAYMENT_METHOD], $this->s()->os()->map()));
+		$o = $this->option();
+		$this->si('Payment Option', dftr($this->optionCode(), $this->s()->os()->map()));
 		/** @var array(string => mixed)|null $d */
-		if ($bank = dfa_deep($o, [C::K_PAYMENT_METHOD_DETAILS, C::K_ISSUER_ID])) {
+		if ($bank = $this->psDetails($o, C::K_ISSUER_ID)) {
 			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
 		}
 	}

@@ -250,21 +250,21 @@ final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-28
 	 * @used-by pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCode()
 	 */
 	const K_PAYMENT_METHOD = 'payment_method';
 
 	/**
 	 * 2017-03-28
 	 * @used-by pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::psDetails()
 	 */
 	const K_PAYMENT_METHOD_DETAILS = 'payment_method_details';
 
 	/**
 	 * 2017-03-28
 	 * @used-by pCharge()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::psTransaction()
 	 */
 	const K_TRANSACTIONS = 'transactions';
 
