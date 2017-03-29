@@ -59,7 +59,7 @@ abstract class Option extends \Df\Config\Source {
 	/**
 	 * 2017-03-01
 	 * @used-by map()
-	 * @used-by \Df\GingerPaymentsBase\Method::optionT()
+	 * @used-by \Df\GingerPaymentsBase\Method::optionI2E()
 	 */
 	const BT = 'bank-transfer';
 	/**

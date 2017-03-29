@@ -96,7 +96,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by prepareCommon()
 	 * @return array(string => string|array)
 	 */
-	private function optionCode() {return $this->option()[C::K_PAYMENT_METHOD];}
+	private function optionCode() {return $this->m()->optionI($this->option()[C::K_PAYMENT_METHOD]);}
 
 	/**
 	 * 2017-03-28

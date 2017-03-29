@@ -30,7 +30,15 @@ abstract class Method extends \Df\Payment\Method {
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
-	final function optionT() {return dftr($this->option(), [SO::BT => $this->s()->btId()]);}
+	final function optionE() {return dftr($this->option(), $this->optionI2E());}
+
+	/**
+	 * 2017-03-29 https://mage2.pro/t/3355/2
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCode()
+	 * @param string $v
+	 * @return string
+	 */
+	final function optionI($v) {return dftr($v, array_flip($this->optionI2E()));}
 
 	/**
 	 * 2017-02-28
@@ -84,10 +92,18 @@ abstract class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-03-06
 	 * @used-by isIdeal()
-	 * @used-by optionT()
+	 * @used-by optionE()
 	 * @return string
 	 */
 	private function option() {return df_result_sne($this->iia(self::$II_OPTION));}
+
+	/**
+	 * 2017-03-29
+	 * @used-by optionE()
+	 * @used-by optionI()
+	 * @return array(string => string)
+	 */
+	private function optionI2E() {return dfc($this, function() {return [SO::BT => $this->s()->btId()];});}
 
 	/**
 	 * 2017-03-05

@@ -227,7 +227,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
 		// 2017-02-27
 		// The payment method
-		[self::K_PAYMENT_METHOD => $m->optionT()] + (SO::IDEAL !== $m->optionT() ? [] : [
+		[self::K_PAYMENT_METHOD => $m->optionE()] + (SO::IDEAL !== $m->optionE() ? [] : [
 			// 2017-02-27
 			// Extra details required for this payment method
 			self::K_PAYMENT_METHOD_DETAILS => [
