@@ -67,6 +67,8 @@ abstract class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-03-29
+	 * https://github.com/mage2pro/ginger-payments/blob/1.0.7/etc/config.xml#L27
+	 * https://github.com/mage2pro/kassa-compleet/blob/1.0.7/etc/config.xml#L27
 	 * @override
 	 * @see \Df\Payment\Method::transUrl()
 	 * @used-by \Df\Payment\Method::tidFormat()
