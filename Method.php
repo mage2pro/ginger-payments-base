@@ -41,6 +41,18 @@ abstract class Method extends \Df\Payment\Method {
 	final function optionI($v) {return dftr($v, array_flip($this->optionI2E()));}
 
 	/**
+	 * 2017-03-29
+	 * @override
+	 * @see \Df\Payment\Method::transUrl()
+	 * @used-by \Df\Payment\Method::tidFormat()
+	 * @param T $t
+	 * @return string|null
+	 */
+	final protected function transUrl(T $t) {/** @var string|null $tmpl */ return
+		!($tmpl = $this->s('transUrl')) ? null :sprintf($tmpl, df_trd($t, self::IIA_TR_RESPONSE)['id'])
+	;}
+
+	/**
 	 * 2017-02-28
 	 * Kassa Compleet and Ginger Payments use different formats
 	 * for the «order_lines/order_line/vat_percentage» property
@@ -72,22 +84,6 @@ abstract class Method extends \Df\Payment\Method {
 	 * @return string[]
 	 */
 	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
-
-	/**
-	 * 2017-03-29
-	 * https://github.com/mage2pro/ginger-payments/blob/1.0.7/etc/config.xml#L27
-	 * https://github.com/mage2pro/kassa-compleet/blob/1.0.7/etc/config.xml#L27
-	 * @override
-	 * @see \Df\Payment\Method::transUrl()
-	 * @used-by \Df\Payment\Method::tidFormat()
-	 * @param T $t
-	 * @return string|null
-	 */
-	final protected function transUrl(T $t) {
-		/** @var string $id */
-		$id = df_trd($t, self::IIA_TR_RESPONSE)['id'];
-		return "https://{$this->s('portal')}.{$this->s()->domain()}/orders/{$id}/raw";
-	}
 
 	/**
 	 * 2017-03-06
