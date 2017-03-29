@@ -5,7 +5,7 @@ use Df\GingerPaymentsBase\Charge as C;
  * 2017-03-09
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  * @method \Df\GingerPaymentsBase\Method m()
- * @method \Df\GingerPaymentsBase\Settings s()
+ * @method \Df\GingerPaymentsBase\Settings s($k = null)
  */
 class Info extends \Df\Payment\Block\Info {
 	/**
@@ -55,7 +55,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by msgUnconfirmed()
 	 * @return bool
 	 */
-	private function bt() {return $this->s()->bankTransferId() === $this->optionCode();}
+	private function bt() {return $this->s()->btId() === $this->optionCode();}
 
 	/**
 	 * 2017-03-29
@@ -63,9 +63,12 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by msgUnconfirmed()
 	 * @return string
 	 */
-	private function btInstructions() {return df_tag('div', 'dfp-instructions',
-		$this->btReference()
-	);}
+	private function btInstructions() {return df_tag('div', 'dfp-instructions', df_var(
+		$this->s('btInstructions'), [
+			'amount' => $this->m()->amountParse($this->tm()->req(C::K_AMOUNT))
+			,'reference' => $this->btReference()
+		]
+	));}
 
 	/**
 	 * 2017-03-29 A string like «0210201701122323».

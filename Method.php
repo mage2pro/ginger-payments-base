@@ -30,7 +30,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * @return string
 	 */
-	final function optionT() {return dftr($this->option(), [SO::BT => $this->s()->bankTransferId()]);}
+	final function optionT() {return dftr($this->option(), [SO::BT => $this->s()->btId()]);}
 
 	/**
 	 * 2017-02-28

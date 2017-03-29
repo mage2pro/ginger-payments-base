@@ -14,7 +14,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pCharge() {return [
 		// 2017-02-27
 		// «Order amount (including VAT)».
-		'amount' => $this->amountF()
+		self::K_AMOUNT => $this->amountF()
 		// 2017-02-28
 		// The «client» property is present only in the Kassa Compleet's JSON schema,
 		// but Ginger Payments does not fail if it is specified (just silently ignores it).
@@ -239,6 +239,13 @@ final class Charge extends \Df\Payment\Charge {
 			]
 		])
 	];}
+
+	/**
+	 * 2017-03-29
+	 * @used-by pCharge()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::btInstructions()
+	 */
+	const K_AMOUNT = 'amount';
 
 	/**
 	 * 2017-03-28

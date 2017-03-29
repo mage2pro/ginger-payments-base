@@ -32,7 +32,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 		'banks' => $this->m()->api()->idealBanks()
 		// 2017-03-09
 		// @used-by Df_GingerPaymentsBase/bankTransfer
-		,'bankTransferCheckoutMessage' => $s->v('bankTransferCheckoutMessage')
+		,'btCheckoutMessage' => $s->v('btCheckoutMessage')
 		// 2017-03-04
 		// @used-by Df_Payments/withOptions::options()
 		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55

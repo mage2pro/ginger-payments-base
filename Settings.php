@@ -13,7 +13,7 @@ final class Settings extends \Df\Payment\Settings {
 	 * @used-by \Df\GingerPaymentsBase\Method::optionT()
 	 * @return string
 	 */
-	function bankTransferId() {return $this->v();}
+	function btId() {return $this->v();}
 
 	/**
 	 * 2017-03-03
