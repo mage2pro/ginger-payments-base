@@ -15,9 +15,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by \Df\Payment\Block\Info::_toHtml()
 	 * @return string|null
 	 */
-	final protected function msgCheckoutSuccess() {return
-		!$this->isBankTransfer() ? null : $this->bankTransferInstructions()
-	;}
+	final protected function msgCheckoutSuccess() {return !$this->bt() ? null : $this->btInstructions();}
 
 	/**
 	 * 2017-03-29
@@ -27,8 +25,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @return string|null
 	 */
 	final protected function msgUnconfirmed() {return
-		df_is_backend() || !$this->isBankTransfer() ? parent::msgUnconfirmed() :
-			$this->bankTransferInstructions()
+		df_is_backend() || !$this->bt() ? parent::msgUnconfirmed() : $this->btInstructions()
 	;}
 
 	/**
@@ -37,7 +34,12 @@ class Info extends \Df\Payment\Block\Info {
 	 * @see \Df\Payment\Block\Info::prepare()
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
-	final protected function prepare() {$this->siOption();}
+	final protected function prepare() {
+		$this->siOption();
+		if ($this->bt()) {
+			$this->siEx('Reference', $this->btReference());
+		}
+	}
 
 	/**
 	 * 2017-03-28
@@ -53,24 +55,30 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
+	 * @used-by prepare()
 	 * @used-by msgCheckoutSuccess()
 	 * @used-by msgUnconfirmed()
-	 * @return string
+	 * @return bool
 	 */
-	private function bankTransferInstructions() {
-		/** @var array(string => mixed) $res0 */
-		$res0 = $this->psTransaction($this->tm()->res0());
-		$this->psDetails($res0, 'reference');
-		return df_tag('div', 'dfp-instructions', $this->psDetails($res0, 'reference'));
-	}		
+	private function bt() {return $this->s()->bankTransferId() === $this->optionCode();}
 
 	/**
 	 * 2017-03-29
 	 * @used-by msgCheckoutSuccess()
 	 * @used-by msgUnconfirmed()
-	 * @return bool
+	 * @return string
 	 */
-	private function isBankTransfer() {return $this->s()->bankTransferId() === $this->optionCode();}
+	private function btInstructions() {return df_tag('div', 'dfp-instructions',
+		$this->btReference()
+	);}
+
+	/**
+	 * 2017-03-29 A string like «0210201701122323».
+	 * @used-by btInstructions()
+	 * @used-by prepare()
+	 * @return string
+	 */
+	private function btReference() {return $this->psDetails($this->res0(), 'reference');}
 
 	/**
 	 * 2017-03-29
@@ -84,7 +92,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by isBankTransfer()
+	 * @used-by bt()
 	 * @used-by siOption()
 	 * @return array(string => string|array)
 	 */
@@ -92,7 +100,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by bankTransferInstructions()
+	 * @used-by btReference()
 	 * @used-by siOption()
 	 * @param array(string => mixed) $trans
 	 * @param string $k
@@ -104,12 +112,21 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by bankTransferInstructions()
 	 * @used-by option()
+	 * @used-by res0()
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
 	 */
 	private function psTransaction(array $data) {return df_first($data[C::K_TRANSACTIONS]);}
+
+	/**
+	 * 2017-03-29
+	 * @used-by btReference()
+	 * @return array(string => mixed)
+	 */
+	private function res0() {return dfc($this, function() {return $this->psTransaction(
+		$this->tm()->res0())
+	;});}
 
 	/**
 	 * 2017-03-28
