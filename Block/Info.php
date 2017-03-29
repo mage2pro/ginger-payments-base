@@ -107,8 +107,13 @@ class Info extends \Df\Payment\Block\Info {
 		/** @var array(string => string|array) $o */
 		$o = $this->option();
 		$this->si('Payment Option', dftr($this->optionCode(), $this->s()->os()->map()));
-		if ($this->bt()) {
-			$this->si('Bank', dftr($this->psDetails($o, C::K_ISSUER_ID), $this->m()->api()->idealBanks()));
+		// 2017-03-29 iDEAL
+		/** @var string|null $bank */
+		if ($bank = $this->psDetails($o, C::K_ISSUER_ID)) {
+			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
+		}
+		// 2017-03-29 Bank Transfer
+		else if ($this->bt()) {
 			$this->siEx('Bank Transfer Reference', $this->btReference());
 		}
 	}
