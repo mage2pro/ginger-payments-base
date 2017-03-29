@@ -15,18 +15,9 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by \Df\Payment\Block\Info::_toHtml()
 	 * @return string|null
 	 */
-	final protected function checkoutSuccessHtml() {
-		/** @var string $result */
-		if ($this->s()->bankTransferId() !== $this->optionCode()) {
-			$result = null;
-		}
-		else {
-			/** @var array(string => mixed) $res0 */
-			$res0 = $this->psTransaction($this->tm()->res0());
-			$result = df_tag('div', 'df-checkout-success', $this->psDetails($res0, 'reference'));
-		}
-		return $result;
-	}
+	final protected function checkoutSuccessHtml() {return
+		!$this->isBankTransfer() ? null : $this->bankTransferInstructions()
+	;}
 
 	/**
 	 * 2017-03-09
@@ -50,6 +41,25 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
+	 * @used-by checkoutSuccessHtml()
+	 * @return string
+	 */
+	private function bankTransferInstructions() {
+		/** @var array(string => mixed) $res0 */
+		$res0 = $this->psTransaction($this->tm()->res0());
+		$this->psDetails($res0, 'reference');
+		return df_tag('div', 'dfp-instructions', $this->psDetails($res0, 'reference'));
+	}		
+
+	/**
+	 * 2017-03-29
+	 * @used-by checkoutSuccessHtml()
+	 * @return bool
+	 */
+	private function isBankTransfer() {return $this->s()->bankTransferId() === $this->optionCode();}
+
+	/**
+	 * 2017-03-29
 	 * @used-by optionCode()
 	 * @used-by siOption()
 	 * @return array(string => string|array)
@@ -60,7 +70,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by checkoutSuccessHtml()
+	 * @used-by isBankTransfer()
 	 * @used-by siOption()
 	 * @return array(string => string|array)
 	 */
@@ -68,6 +78,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
+	 * @used-by bankTransferInstructions()
 	 * @used-by siOption()
 	 * @param array(string => mixed) $trans
 	 * @param string $k
@@ -79,7 +90,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by checkoutSuccessHtml()
+	 * @used-by bankTransferInstructions()
 	 * @used-by option()
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
