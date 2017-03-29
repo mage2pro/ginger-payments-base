@@ -11,12 +11,24 @@ class Info extends \Df\Payment\Block\Info {
 	/**
 	 * 2017-03-29
 	 * @override
-	 * @see \Df\Payment\Block\Info::checkoutSuccessHtml()
+	 * @see \Df\Payment\Block\Info::msgCheckoutSuccess()
 	 * @used-by \Df\Payment\Block\Info::_toHtml()
 	 * @return string|null
 	 */
-	final protected function checkoutSuccessHtml() {return
+	final protected function msgCheckoutSuccess() {return
 		!$this->isBankTransfer() ? null : $this->bankTransferInstructions()
+	;}
+
+	/**
+	 * 2017-03-29
+	 * @override
+	 * @see \Df\Payment\Block\Info::msgUnconfirmed()
+	 * @used-by \Df\Payment\Block\Info::rUnconfirmed()
+	 * @return string|null
+	 */
+	final protected function msgUnconfirmed() {return
+		df_is_backend() || !$this->isBankTransfer() ? parent::msgUnconfirmed() :
+			$this->bankTransferInstructions()
 	;}
 
 	/**
@@ -41,7 +53,8 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by checkoutSuccessHtml()
+	 * @used-by msgCheckoutSuccess()
+	 * @used-by msgUnconfirmed()
 	 * @return string
 	 */
 	private function bankTransferInstructions() {
@@ -53,7 +66,8 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by checkoutSuccessHtml()
+	 * @used-by msgCheckoutSuccess()
+	 * @used-by msgUnconfirmed()
 	 * @return bool
 	 */
 	private function isBankTransfer() {return $this->s()->bankTransferId() === $this->optionCode();}
