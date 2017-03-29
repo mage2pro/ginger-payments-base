@@ -243,7 +243,7 @@ final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-28
 	 * @used-by pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 */
 	const K_ISSUER_ID = 'issuer_id';
 

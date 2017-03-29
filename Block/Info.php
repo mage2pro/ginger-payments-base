@@ -34,12 +34,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @see \Df\Payment\Block\Info::prepare()
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
-	final protected function prepare() {
-		$this->siOption();
-		if ($this->bt()) {
-			$this->siEx('Reference', $this->btReference());
-		}
-	}
+	final protected function prepare() {$this->prepareCommon();}
 
 	/**
 	 * 2017-03-28
@@ -51,7 +46,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @see \Df\Payment\Block\Info::prepareUnconfirmed()
 	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
 	 */
-	final protected function prepareUnconfirmed() {$this->siOption();}
+	final protected function prepareUnconfirmed() {$this->prepareCommon();}
 
 	/**
 	 * 2017-03-29
@@ -83,7 +78,7 @@ class Info extends \Df\Payment\Block\Info {
 	/**
 	 * 2017-03-29
 	 * @used-by optionCode()
-	 * @used-by siOption()
+	 * @used-by prepareCommon()
 	 * @return array(string => string|array)
 	 */
 	private function option() {return dfc($this, function() {return $this->psTransaction(
@@ -93,15 +88,30 @@ class Info extends \Df\Payment\Block\Info {
 	/**
 	 * 2017-03-29
 	 * @used-by bt()
-	 * @used-by siOption()
+	 * @used-by prepareCommon()
 	 * @return array(string => string|array)
 	 */
 	private function optionCode() {return $this->option()[C::K_PAYMENT_METHOD];}
 
 	/**
+	 * 2017-03-28
+	 * @used-by prepare()
+	 * @used-by prepareUnconfirmed()
+	 */	
+	private function prepareCommon() {
+		/** @var array(string => string|array) $o */
+		$o = $this->option();
+		$this->si('Payment Option', dftr($this->optionCode(), $this->s()->os()->map()));
+		if ($this->bt()) {
+			$this->si('Bank', dftr($this->psDetails($o, C::K_ISSUER_ID), $this->m()->api()->idealBanks()));
+			$this->siEx('Bank Transfer Reference', $this->btReference());
+		}
+	}
+
+	/**
 	 * 2017-03-29
 	 * @used-by btReference()
-	 * @used-by siOption()
+	 * @used-by prepareCommon()
 	 * @param array(string => mixed) $trans
 	 * @param string $k
 	 * @return string|null
@@ -127,19 +137,4 @@ class Info extends \Df\Payment\Block\Info {
 	private function res0() {return dfc($this, function() {return $this->psTransaction(
 		$this->tm()->res0())
 	;});}
-
-	/**
-	 * 2017-03-28
-	 * @used-by prepare()
-	 * @used-by prepareUnconfirmed()
-	 */
-	private function siOption() {
-		/** @var array(string => string|array) $o */
-		$o = $this->option();
-		$this->si('Payment Option', dftr($this->optionCode(), $this->s()->os()->map()));
-		/** @var array(string => mixed)|null $d */
-		if ($bank = $this->psDetails($o, C::K_ISSUER_ID)) {
-			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
-		}
-	}
 }

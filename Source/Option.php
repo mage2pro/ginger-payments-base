@@ -34,7 +34,7 @@ abstract class Option extends \Df\Config\Source {
 	 * @override
 	 * @see \Df\Config\Source::map()
 	 * @used-by \Df\Config\Source::toOptionArray()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return array(string => string)
 	 */
 	final function map() {return [

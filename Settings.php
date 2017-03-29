@@ -27,7 +27,7 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-03-28
 	 * @used-by options()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::siOption()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return OS
 	 */
 	function os() {return dfc($this, function() {return df_sc(
