@@ -65,7 +65,9 @@ class Info extends \Df\Payment\Block\Info {
 	 */
 	private function btInstructions() {return df_tag('div', 'dfp-instructions', df_var(
 		$this->s('btInstructions'), [
-			'amount' => $this->m()->amountParse($this->tm()->req(C::K_AMOUNT))
+			'amount' => $this->ii()->getOrder()->formatPrice($this->m()->amountParse(
+				$this->tm()->req(C::K_AMOUNT)
+			))
 			,'reference' => $this->btReference()
 		]
 	));}
