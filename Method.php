@@ -66,6 +66,20 @@ abstract class Method extends \Df\Payment\Method {
 	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
 
 	/**
+	 * 2017-03-29
+	 * @override
+	 * @see \Df\Payment\Method::transUrl()
+	 * @used-by \Df\Payment\Method::tidFormat()
+	 * @param T $t
+	 * @return string|null
+	 */
+	final protected function transUrl(T $t) {
+		/** @var string $id */
+		$id = df_trd($t, self::IIA_TR_RESPONSE)['id'];
+		return "https://{$this->s('portal')}.{$this->s()->domain()}/orders/{$id}/raw";
+	}
+
+	/**
 	 * 2017-03-06
 	 * @used-by isIdeal()
 	 * @used-by optionT()

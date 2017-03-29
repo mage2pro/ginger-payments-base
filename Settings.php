@@ -16,6 +16,14 @@ final class Settings extends \Df\Payment\Settings {
 	function btId() {return $this->v();}
 
 	/**
+	 * 2017-03-29
+	 * @used-by \Df\GingerPaymentsBase\Api::__construct()
+	 * @used-by \Df\GingerPaymentsBase\Method::transUrl()
+	 * @return string
+	 */
+	function domain() {return $this->v();}
+
+	/**
 	 * 2017-03-03
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @return O
