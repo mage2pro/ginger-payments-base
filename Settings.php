@@ -9,7 +9,6 @@ final class Settings extends \Df\Payment\Settings {
 	 * 2017-03-29
 	 * https://github.com/mage2pro/ginger-payments/blob/1.0.3/etc/config.xml?ts=4#L17
 	 * https://github.com/mage2pro/kassa-compleet/blob/1.0.3/etc/config.xml?ts=4#L17
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::bt()
 	 * @used-by \Df\GingerPaymentsBase\Method::optionI2E()
 	 * @return string
 	 */

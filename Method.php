@@ -34,7 +34,7 @@ abstract class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-03-29 https://mage2.pro/t/3355/2
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCode()
+	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCodeI()
 	 * @param string $v
 	 * @return string
 	 */
