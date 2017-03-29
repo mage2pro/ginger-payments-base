@@ -104,6 +104,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by prepareUnconfirmed()
 	 */	
 	private function prepareCommon() {
+		$this->siID();
 		/** @var array(string => string|array) $o */
 		$o = $this->option();
 		$this->si('Payment Option', dftr($this->optionCode(), $this->s()->os()->map()));
