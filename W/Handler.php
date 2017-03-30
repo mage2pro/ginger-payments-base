@@ -8,7 +8,7 @@ final class Handler extends \Df\StripeClone\W\Handler {
 	 * @override
 	 * @see \Df\StripeClone\W\Handler::strategyC()
 	 * @used-by \Df\StripeClone\W\Handler::_handle()
-	 * @return string
+	 * @return string|null
 	 */
 	protected function strategyC() {return ConfirmPending::class;}
 }
