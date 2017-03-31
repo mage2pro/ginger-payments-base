@@ -13,7 +13,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * 2017-03-29
 	 * @override
 	 * @see \Df\Payment\Block\Info::msgCheckoutSuccess()
-	 * @used-by \Df\Payment\Block\Info::_toHtml()
+	 * @used-by \Df\Payment\Block\Info::checkoutSuccess()
 	 * @return string|null
 	 */
 	final protected function msgCheckoutSuccess() {return !$this->bt() ? null : $this->btInstructions();}
