@@ -45,6 +45,8 @@ final class Api {
 
 	/**
 	 * 2017-03-09
+	 * https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#requesting-the-order-status
+	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
 	 * @param string $id The order ID.
 	 * @return array(string => mixed)
 	 */

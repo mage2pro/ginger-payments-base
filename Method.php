@@ -14,6 +14,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * @used-by getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @used-by \Df\GingerPaymentsBase\T\TestCase::api()
+	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
 	 * @return Api
 	 */
 	final function api() {return dfc($this, function() {return new Api($this);});}
