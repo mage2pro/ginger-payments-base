@@ -21,7 +21,7 @@ define([
 		bank: ''
 		// 2017-03-02
 		// @used-by Df_Payment/main
-		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/template/main.html?ts=4#L36-L38
+		// https://github.com/mage2pro/core/blob/2.4.21/Payment/view/frontend/web/template/main.html#L36-L38
 		,df: {formTemplate: 'Df_GingerPaymentsBase/form'}
 	},
 	/**
