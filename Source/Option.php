@@ -67,7 +67,6 @@ abstract class Option extends \Df\Config\Source {
 	 * 2017-02-27
 	 * @used-by map()
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
-	 * @used-by Df_GingerPaymentsBase/form::optionAfter()
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.5/view/frontend/web/main.js?ts=4#L82
 	 */
 	const IDEAL = 'ideal';
