@@ -19,7 +19,7 @@ use Df\GingerPaymentsBase\Settings as S;
  */
 final class ConfigProvider extends \Df\Payment\ConfigProvider {
 	/**
-	 * 2016-08-04
+	 * 2017-03-03
 	 * @override
 	 * @see \Df\Payment\ConfigProvider::config()
 	 * @used-by \Df\Payment\ConfigProvider::getConfig()
