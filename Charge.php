@@ -42,7 +42,7 @@ final class Charge extends \Df\Payment\Charge {
 		,'extra' => $this->metadata()
 		// 2017-02-27
 		// Your identifier for the order (optional)
-		,'merchant_order_id' => $this->oii()
+		,'merchant_order_id' => $this->id()
 		// 2017-02-28
 		// [Ginger Payments] Is any documentation on the «order_lines» property
 		// of the «POST /v1/orders/» request? https://mage2.pro/t/3450
