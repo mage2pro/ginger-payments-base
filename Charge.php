@@ -1,7 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
-use Df\Payment\Operation\Source\Order as OpSource;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
 // 2017-03-05
@@ -282,5 +281,5 @@ final class Charge extends \Df\Payment\Charge {
 	 * @param Method $m
 	 * @return array(string, array(string => mixed))
 	 */
-	static function p(Method $m) {return (new self(new OpSource($m)))->pCharge();}
+	static function p(Method $m) {return (new self($m))->pCharge();}
 }
