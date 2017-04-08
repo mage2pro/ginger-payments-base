@@ -158,7 +158,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pOrderLines_products() {return $this->oiLeafs(function(OI $i) {return [
 		// 2017-03-06
 		// «Amount for a single item (including VAT) in cents»
-		'amount' => $this->cFromOrderF(df_oi_price($i, true))
+		'amount' => $this->cFromDocF(df_oi_price($i, true))
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
 		,'ean' => ''
@@ -197,7 +197,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pOrderLines_shipping() {return [
 		// 2017-03-06
 		// «Amount for a single item (including VAT) in cents»
-		'amount' => $this->cFromOrderF($this->o()->getShippingAmount())
+		'amount' => $this->cFromDocF($this->o()->getShippingAmount())
 		,'currency' => $this->currencyC()
 		// 2017-03-06
 		// «Order line identifier»
