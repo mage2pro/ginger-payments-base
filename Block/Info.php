@@ -1,11 +1,11 @@
 <?php
 namespace Df\GingerPaymentsBase\Block;
 use Df\GingerPaymentsBase\Charge as C;
-use Df\GingerPaymentsBase\Source\Option as SO;
 /**
  * 2017-03-09
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  * @method \Df\GingerPaymentsBase\Method m()
+ * @method \Df\GingerPaymentsBase\Choice choice()
  * @method \Df\GingerPaymentsBase\Settings s($k = null)
  */
 class Info extends \Df\Payment\Block\Info {
@@ -56,7 +56,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by msgUnconfirmed()
 	 * @return bool
 	 */
-	private function bt() {return SO::BT === $this->optionCodeI();}
+	function bt() {return $this->choice()->bt();}
 
 	/**
 	 * 2017-03-29
@@ -82,38 +82,16 @@ class Info extends \Df\Payment\Block\Info {
 	private function btReference() {return $this->psDetails($this->res0(), 'reference');}
 
 	/**
-	 * 2017-03-29
-	 * @used-by optionCode()
-	 * @used-by prepareCommon()
-	 * @return array(string => string|array)
-	 */
-	private function option() {return dfc($this, function() {return $this->psTransaction(
-		$this->tm()->req()
-	);});}
-
-	/**
-	 * 2017-03-29
-	 * @used-by bt()
-	 * @used-by prepareCommon()
-	 * @return array(string => string|array)
-	 */
-	private function optionCodeI() {return dfc($this, function() {return $this->m()->optionI(
-		$this->option()[C::K_PAYMENT_METHOD]
-	);});}
-
-	/**
 	 * 2017-03-28
 	 * @used-by prepare()
 	 * @used-by prepareUnconfirmed()
 	 */	
 	private function prepareCommon() {
 		$this->siID();
-		/** @var array(string => string|array) $o */
-		$o = $this->option();
-		$this->si('Payment Option', dftr($this->optionCodeI(), $this->s()->os()->map()));
+		$this->si('Payment Option', $this->choiceT());
 		// 2017-03-29 iDEAL
 		/** @var string|null $bank */
-		if ($bank = $this->psDetails($o, C::K_ISSUER_ID)) {
+		if ($bank = $this->psDetails($this->psTransaction($this->tm()->req()), C::K_ISSUER_ID)) {
 			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
 		}
 		// 2017-03-29 Bank Transfer
@@ -148,7 +126,5 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by btReference()
 	 * @return array(string => mixed)
 	 */
-	private function res0() {return dfc($this, function() {return $this->psTransaction(
-		$this->tm()->res0())
-	;});}
+	private function res0() {return dfc($this, function() {return $this->psTransaction($this->tm()->res0());});}
 }
