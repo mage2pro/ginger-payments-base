@@ -158,7 +158,7 @@ final class Charge extends \Df\Payment\Charge {
 	private function pOrderLines_products() {return $this->oiLeafs(function(OI $i) {return [
 		// 2017-03-06
 		// «Amount for a single item (including VAT) in cents»
-		'amount' => $this->cFromDocF(df_oi_price($i, true))
+		'amount' => $this->cFromDocF(df_oqi_price($i, true))
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
 		,'ean' => ''
@@ -167,17 +167,17 @@ final class Charge extends \Df\Payment\Charge {
 		,'id' => $i->getSku()
 		// 2017-03-06
 		// «Item image URI»
-		,'image_url' => df_oi_image($i)
+		,'image_url' => df_oqi_image($i)
 		// 2017-03-06
 		// «Merchant's internal order line identifier»
 		,'merchant_order_line_id' => $i->getSku()
 		// 2017-03-06
 		// «Name, usually a short description»
 		,'name' => $i->getName()
-		,'quantity' => df_oi_qty($i)
+		,'quantity' => df_oqi_qty($i)
 		// 2017-03-06
 		// «Item product page URI»
-		,'url' => df_oi_url($i)
+		,'url' => df_oqi_url($i)
 		// 2017-03-06
 		// «Type: physical, discount or shipping_fee»
 		,'type' => 'physical'
@@ -185,7 +185,7 @@ final class Charge extends \Df\Payment\Charge {
 		// Kassa Compleet and Ginger Payments use different formats
 		// for the «order_lines/order_line/vat_percentage» property
 		// of a «POST /v1/orders/» request: https://mage2.pro/t/3451
-		,'vat_percentage' => df_oi_tax_rate($i, $this->m()->vatIsInteger())
+		,'vat_percentage' => df_oqi_tax_rate($i, $this->m()->vatIsInteger())
 	];});}
 
 	/**
