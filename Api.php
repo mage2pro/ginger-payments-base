@@ -115,7 +115,7 @@ final class Api {
 			// 2017-02-26
 			// Намеренно выполняем двойное кодирование-декодирование,
 			// чтобы привести форматирование JSON к удобному для нас виду.
-			$this->_lastResponse = df_json_encode_pretty($result);
+			$this->_lastResponse = df_json_encode($result);
 			return $result;
 		}
 		catch (ERequest $e) {
