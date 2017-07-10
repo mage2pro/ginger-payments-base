@@ -95,7 +95,7 @@ class Info extends \Df\Payment\Block\Info {
 			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
 		}
 		// 2017-03-29 Bank Transfer
-		else if ($this->bt()) {
+		elseif ($this->bt()) {
 			$this->siEx('Bank Transfer Reference', $this->btReference());
 		}
 	}
