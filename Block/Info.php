@@ -108,9 +108,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @param string $k
 	 * @return string|null
 	 */
-	private function psDetails(array $trans, $k) {return dfa_deep($trans, [
-		C::K_PAYMENT_METHOD_DETAILS, $k
-	]);}
+	private function psDetails(array $trans, $k) {return dfa_deep($trans, [C::K_PAYMENT_METHOD_DETAILS, $k]);}
 
 	/**
 	 * 2017-03-29
