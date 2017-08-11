@@ -22,14 +22,13 @@ final class Api {
 	]);}
 
 	/**
-	 * 2017-03-04
+	 * 2017-03-04     
+	 * 2017-03-05 I make the banks names in the test mode more real (and shorter).
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @used-by \Df\GingerPaymentsBase\T\GetIdealBanks::t01()
 	 * @return array(string => string)
 	 */
 	function idealBanks() {return dfc($this, function() {return
-		// 2017-03-05
-		// I make the banks names in the test mode more real (and shorter).
 		['INGBNL2A' => __('ING Bank'), 'RABONL2U' => __('Rabobank')]
 		+ df_cache_get_simple(null, function() {return array_column(
 			$this->req('ideal/issuers/'), 'name', 'id'
