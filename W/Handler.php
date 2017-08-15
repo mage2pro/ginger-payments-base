@@ -1,7 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase\W;
 use Df\GingerPaymentsBase\Method as M;
-use Df\StripeClone\W\Strategy\ConfirmPending;
+use Df\Payment\W\Strategy\ConfirmPending;
 // 2017-03-09
 /** @method M m() */
 final class Handler extends \Df\StripeClone\W\Handler {
