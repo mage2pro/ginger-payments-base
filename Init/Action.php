@@ -45,12 +45,11 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @return array(string => mixed)
 	 */
 	private function res() {return dfc($this, function() {
-		/** @var M $m */ $m = $this->m();
-		/** @var array(string => mixed) $result */
-		$m->iiaSetTRR(null, $result = $m->api()->orderPost($this->req()));
+		$m = $this->m(); /** @var M $m */
+		$m->iiaSetTRR(null, $r = $m->api()->orderPost($this->req())); /** @var array(string => mixed) $r */
 		if ($this->s()->log()) {
-			dfp_report($m, $result, 'response');
+			dfp_report($m, $r, 'response');
 		}
-		return $result;
+		return $r;
 	});}
 }
