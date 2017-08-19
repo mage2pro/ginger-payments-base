@@ -94,7 +94,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by pCharge()
 	 * @return array(string => string|string[])
 	 */
-	private function pCustomer() {/** @var OA $a */ $a = $this->addressBS(); return [
+	private function pCustomer() {/** @var OA $a */ $a = $this->addressB(); return [
 		// 2017-02-28 Test addresses for some countries: https://mage2.pro/t/2555
 		'address' => df_cc_s($a->getStreet())
 		,'address_type' => 'billing'
@@ -112,7 +112,7 @@ final class Charge extends \Df\Payment\Charge {
 		,'email_address' => $this->customerEmail()
 		,'first_name' => $this->customerNameF()
 		,'forwarded_ip' => $this->customerIp()
-		// "male", "female", "other", null
+		// 2017-02-28 "male", "female", "other", null
 		,'gender' => $this->customerGender('male', 'female')
 		,'housenumber' => ''
 		,'ip_address' => $this->customerIp()
@@ -129,11 +129,9 @@ final class Charge extends \Df\Payment\Charge {
 		,'locale' => $this->locale()
 		,'merchant_customer_id' => $this->o()->getCustomerId() ?: $this->customerName()
 		,'phone_numbers' => df_clean([$a->getTelephone()])
-		// 2017-02-28
-		// Test addresses for some countries: https://mage2.pro/t/2555
+		// 2017-02-28 Test addresses for some countries: https://mage2.pro/t/2555
 		,'postal_code' => $a->getPostcode()
-		// 2017-03-06
-		// I did it intentionally.
+		// 2017-03-06 I did it intentionally.
 		,'referrer' => 'https://mage2.pro'
 		,'user_agent' => 'Mage2.PRO'
 	];}

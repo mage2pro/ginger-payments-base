@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/ginger-payments-base"
-	,"version": "1.1.6"
+	,"version": "1.1.7"
 	,"description": "The common implementation part of my «Kassa Compleet» and «Ginger Payments» payment extensions for Magento 2."
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions"
