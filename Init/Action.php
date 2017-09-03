@@ -47,9 +47,7 @@ final class Action extends \Df\Payment\Init\Action {
 	private function res() {return dfc($this, function() {
 		$m = $this->m(); /** @var M $m */
 		$m->iiaSetTRR(null, $r = $m->api()->orderPost($this->req())); /** @var array(string => mixed) $r */
-		if ($this->s()->log()) {
-			dfp_report($m, $r, 'response');
-		}
+		dfp_report($m, $r, 'response');
 		return $r;
 	});}
 }
