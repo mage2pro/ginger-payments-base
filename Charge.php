@@ -276,7 +276,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * 2017-03-06
 	 * @used-by \Df\GingerPaymentsBase\Init\Action::req()
 	 * @param Method $m
-	 * @return array(string, array(string => mixed))
+	 * @return array(string => mixed)
 	 */
 	static function p(Method $m) {return (new self($m))->pCharge();}
 }
