@@ -40,7 +40,7 @@ final class Action extends \Df\Payment\Init\Action {
 
 	/**
 	 * 2017-03-22
-	 * 2used-by redirectUrl()
+	 * @used-by redirectUrl()
 	 * @used-by transId()
 	 * @return array(string => mixed)
 	 */

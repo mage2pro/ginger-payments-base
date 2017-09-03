@@ -49,13 +49,4 @@ final class Event extends \Df\StripeClone\W\Event {
 	 * @return string
 	 */
 	function ttParent() {return self::T_INIT;}
-
-	/**
-	 * 2017-03-26
-	 * Первичная транзакция.
-	 * Она всегда соответствует неподтверждённому состоянию платежа.
-	 * @used-by ttParent()
-	 * @used-by \Df\GingerPaymentsBase\Init\Action::transId()
-	 */
-	const T_INIT = 'init';
 }
