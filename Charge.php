@@ -3,8 +3,12 @@ namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
-// 2017-03-05
-// 2017-09-04 `[Ginger Payments] The JSON Schema of a «POST /v1/orders/» request`: https://mage2.pro/t/3410
+/**
+ * 2017-03-05 
+ * 2017-09-04
+ * `[Ginger Payments] The JSON Schema of a «POST /v1/orders/» request`: https://mage2.pro/t/3410
+ * `[Kassa Compleet] The JSON Schema of a «POST /v1/orders/» request`: https://mage2.pro/t/3411
+ */
 /** @method Method m() */
 final class Charge extends \Df\Payment\Charge {
 	/**
