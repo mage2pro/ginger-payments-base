@@ -4,6 +4,7 @@ use Df\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
 // 2017-03-05
+// 2017-09-04 `[Ginger Payments] The JSON Schema of a «POST /v1/orders/» request`: https://mage2.pro/t/3410
 /** @method Method m() */
 final class Charge extends \Df\Payment\Charge {
 	/**
@@ -12,8 +13,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @return array(string => mixed)
 	 */
 	private function pCharge() {return [
-		// 2017-02-27
-		// «Order amount (including VAT)».
+		// 2017-02-27 «Order amount (including VAT)».
 		self::K_AMOUNT => $this->amountF()
 		// 2017-02-28
 		// The «client» property is present only in the Kassa Compleet's JSON schema,
@@ -26,22 +26,17 @@ final class Charge extends \Df\Payment\Charge {
 		// pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 		// https://mage2.pro/t/3445
 		,'customer' => $this->pCustomer()
-		// 2017-02-27
-		// The currency
+		// 2017-02-27 «The currency».
 		,'currency' => $this->currencyC()
-		// 2017-02-27
-		// «A description (optional)»
-		// I did not find any limitations on it.
+		// 2017-02-27 «A description (optional)». I did not find any limitations on it.
 		,'description' => $this->description()
 		// 2017-02-27
 		// The expiration period in ISO 8601 format (optional)
 		// [Ginger Payments] The «expiration_period» parameter for POST /v1/orders/ is undocumented: https://mage2.pro/t/3388
 		,'expiration_period' => 'PT15M'
-		// 2017-02-28
-		// Arbitrary data.
+		// 2017-02-28 «Arbitrary data».
 		,'extra' => $this->metadata()
-		// 2017-02-27
-		// Your identifier for the order (optional)
+		// 2017-02-27 «Your identifier for the order (optional)».
 		,'merchant_order_id' => $this->id()
 		// 2017-02-28
 		// [Ginger Payments] Is any documentation on the «order_lines» property
