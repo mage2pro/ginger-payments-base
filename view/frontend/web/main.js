@@ -3,7 +3,9 @@
 // @see https://github.com/mage2pro/kassa-compleet/blob/0.1.1/view/frontend/web/main.js
 define([
 	'df', 'df-lodash', 'Df_Payment/withOptions', 'jquery'
-], function(df, _, parent, $) {'use strict'; return parent.extend({
+], function(df, _, parent, $) {'use strict';
+/** 2017-09-06 @uses Class::extend() https://github.com/magento/magento2/blob/2.2.0-rc2.3/app/code/Magento/Ui/view/base/web/js/lib/core/class.js#L106-L140 */	
+return parent.extend({
 	/**
 	 * 2017-03-04
 	 * @used-by Df_GingerPaymentsBase/ideal
