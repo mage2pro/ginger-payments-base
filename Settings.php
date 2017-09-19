@@ -1,7 +1,6 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as OS;
-use Df\Payment\Settings\Options as O;
 // 2017-02-25
 /** @method static Settings s() */
 final class Settings extends \Df\Payment\Settings {
@@ -23,12 +22,10 @@ final class Settings extends \Df\Payment\Settings {
 
 	/**
 	 * 2017-03-03
-	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
-	 * @return O
+	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::options()
+	 * @return array(<value> => <label>)
 	 */
-	function options() {return
-		$this->test() ? $this->os()->optionsTest() : $this->_options($this->os())->o()
-	;}
+	function options() {return $this->test() ? $this->os()->optionsTest() : $this->_options($this->os())->o();}
 
 	/**
 	 * 2017-03-28
@@ -36,7 +33,5 @@ final class Settings extends \Df\Payment\Settings {
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return OS
 	 */
-	function os() {return dfc($this, function() {return df_sc(
-		df_con_heir($this->m(), OS::class)
-	);});}
+	function os() {return dfc($this, function() {return df_sc(df_con_heir($this->m(), OS::class));});}
 }

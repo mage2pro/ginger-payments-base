@@ -1,6 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Settings as S;
+use Df\Payment\ConfigProvider\IOptions;
 /**
  * 2017-03-03
  * The class is not abstract,
@@ -17,7 +18,16 @@ use Df\GingerPaymentsBase\Settings as S;
  * @method Method m()
  * @method S s()
  */
-final class ConfigProvider extends \Df\Payment\ConfigProvider {
+final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOptions {
+	/**
+	 * 2017-09-18
+	 * @override
+	 * @see \Df\Payment\ConfigProvider\IOptions::options()
+	 * @used-by \Df\Payment\ConfigProvider::configOptions()
+	 * @return array(array('label' => string, 'value' => int|string))
+	 */
+	function options() {return $this->s()->options();}
+	
 	/**
 	 * 2017-03-03
 	 * @override
@@ -33,9 +43,5 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider {
 		// 2017-03-09
 		// @used-by Df_GingerPaymentsBase/bankTransfer
 		,'btCheckoutMessage' => $s->v('btCheckoutMessage')
-		// 2017-03-04
-		// @used-by Df_Payments/withOptions::options()
-		// https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L55
-	  	,'options' => $s->options()
-	] + parent::config();}
+	] + self::configOptions($this) + parent::config();}
 }
