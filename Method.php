@@ -103,8 +103,7 @@ abstract class Method extends \Df\Payment\Method {
 	private function optionI2E() {return dfc($this, function() {return [SO::BT => $this->s()->btId()];});}
 
 	/**
-	 * 2017-03-05
-	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/main.js?ts=4#L25
+	 * 2017-03-05 https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/main.js?ts=4#L25
 	 * @used-by bank()
 	 * @used-by iiaKeys()
 	 */
@@ -112,7 +111,7 @@ abstract class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-03-05
-	 * https://github.com/mage2pro/core/blob/2.0.36/Payment/view/frontend/web/withOptions.js?ts=4#L23
+	 * https://github.com/mage2pro/core/blob/2.12.17/Payment/view/frontend/web/withOptions.js#L56-L72
 	 * @used-by iiaKeys()
 	 * @used-by option()
 	 */
