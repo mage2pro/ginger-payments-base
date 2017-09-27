@@ -128,7 +128,7 @@ abstract class CreateOrder extends TestCase {
 			 */
 			,'webhook_url' => 'https://mage2.pro'
 		]);
-		echo $this->api()->lastResponse();
+		print_r($this->api()->lastResponse());
 	}
 
 	/**

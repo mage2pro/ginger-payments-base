@@ -12,6 +12,6 @@ abstract class GetIdealBanks extends TestCase {
 	 */
 	final function t01() {
 		print_r($this->api()->idealBanks());
-		echo $this->api()->lastResponse();
+		print_r($this->api()->lastResponse());
 	}
 }

@@ -23,7 +23,7 @@ abstract class GetMerchant extends TestCase {
 	 */
 	final function t01() {
 		print_r($this->api()->products($this->merchantId(), $this->projectId()));
-		echo $this->api()->lastResponse();
+		print_r($this->api()->lastResponse());
 	}
 
 	/**
