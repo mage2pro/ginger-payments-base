@@ -6,7 +6,7 @@ namespace Df\GingerPaymentsBase\T;
  * @see \Dfe\GingerPayments\T\CreateOrder\BankTransfer
  * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer
  */
-abstract class CreateOrder extends TestCase {
+abstract class CreateOrder extends CaseT {
 	/**
 	 * 2017-02-27
 	 * @used-by t01_success()

@@ -5,7 +5,7 @@ namespace Df\GingerPaymentsBase\T;
  * @see \Dfe\GingerPayments\T\GetIdealBanks
  * @see \Dfe\KassaCompleet\T\GetIdealBanks
  */
-abstract class GetIdealBanks extends TestCase {
+abstract class GetIdealBanks extends CaseT {
 	/**
 	 * @test
 	 * 2017-02-27

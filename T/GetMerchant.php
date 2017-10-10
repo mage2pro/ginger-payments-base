@@ -5,7 +5,7 @@ namespace Df\GingerPaymentsBase\T;
  * @see \Dfe\GingerPayments\T\GetMerchant
  * @see \Dfe\KassaCompleet\T\GetMerchant
  */
-abstract class GetMerchant extends TestCase {
+abstract class GetMerchant extends CaseT {
 	/**
 	 * @test
 	 * 2017-03-01

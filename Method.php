@@ -13,7 +13,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * 2017-03-06
 	 * @used-by getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
-	 * @used-by \Df\GingerPaymentsBase\T\TestCase::api()
+	 * @used-by \Df\GingerPaymentsBase\T\CaseT::api()
 	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
 	 * @return Api
 	 */
