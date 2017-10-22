@@ -39,7 +39,7 @@ return parent.extend({
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/Method.php?ts=4#L75
 	 * @returns {Object}
 	 */
-	dfData: function() {return df.o.merge(this._super(), df.clean({
+	dfData: function() {return _.assign(this._super(), df.clean({
 		bank: 'ideal' === this.option() ? this.bank : null
 	}));},
 	/**
