@@ -108,11 +108,9 @@ abstract class CreateOrder extends CaseT {
 			 * is missed in the JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3456
 			 */
 			,'transactions' => [df_clean([
-				// 2017-02-27
-				// The payment method
+				// 2017-02-27 The payment method.
 				'payment_method' => $this->method()
-				// 2017-02-27
-				// Extra details required for this payment method
+				// 2017-02-27 Extra details required for this payment method.
 				,'payment_method_details' => $this->params()
 			])]
 			/**
