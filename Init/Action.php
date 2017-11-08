@@ -2,7 +2,7 @@
 namespace Df\GingerPaymentsBase\Init;
 use Df\GingerPaymentsBase\Charge;
 use Df\GingerPaymentsBase\Method as M;
-use Df\GingerPaymentsBase\W\Event as Ev;
+use Df\Payment\W\Event as Ev;
 // 2017-03-22
 /** @method \Df\GingerPaymentsBase\Method m() */
 final class Action extends \Df\Payment\Init\Action {
