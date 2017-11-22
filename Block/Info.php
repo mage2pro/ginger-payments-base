@@ -33,7 +33,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * 2017-03-09
 	 * @override
 	 * @see \Df\Payment\Block\Info::prepare()
-	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
+	 * @used-by \Df\Payment\Block\Info::prepareToRendering()
 	 */
 	final protected function prepare() {$this->prepareCommon();}
 
@@ -45,7 +45,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * и, возможно, просто закрыл страницу оплаты и уже ничего не оплатит.
 	 * @override
 	 * @see \Df\Payment\Block\Info::prepareUnconfirmed()
-	 * @used-by \Df\Payment\Block\Info::_prepareSpecificInformation()
+	 * @used-by \Df\Payment\Block\Info::prepareToRendering()
 	 */
 	final protected function prepareUnconfirmed() {$this->prepareCommon();}
 
