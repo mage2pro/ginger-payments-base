@@ -21,8 +21,7 @@ final class Event extends \Df\StripeClone\W\Event {
 	protected function k_pidSuffix() {return 'order_id';}
 
 	/**
-	 * 2017-03-26
-	 * Основные данные события расположены на верхнем уровне вложенности.
+	 * 2017-03-26 The primary data have a flat structure.
 	 * @override
 	 * @see \Df\StripeClone\W\Event::roPath()
 	 * @used-by \Df\StripeClone\W\Event::k_pid()
