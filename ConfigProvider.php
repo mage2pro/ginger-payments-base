@@ -40,8 +40,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 		// @used-by Df_GingerPaymentsBase/main::banks()
 	  	// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21
 		'banks' => $this->m()->api()->idealBanks()
-		// 2017-03-09
-		// @used-by Df_GingerPaymentsBase/bankTransfer
+		// 2017-03-09 @used-by Df_GingerPaymentsBase/bankTransfer
 		,'btCheckoutMessage' => $s->v('btCheckoutMessage')
 	] + self::configOptions($this) + parent::config();}
 }
