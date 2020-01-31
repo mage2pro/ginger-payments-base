@@ -3,7 +3,7 @@ namespace Df\GingerPaymentsBase\Test;
 /**
  * 2017-03-01
  * @see \Dfe\GingerPayments\Test\GetMerchant
- * @see \Dfe\KassaCompleet\T\GetMerchant
+ * @see \Dfe\KassaCompleet\Test\GetMerchant
  */
 abstract class GetMerchant extends CaseT {
 	/**

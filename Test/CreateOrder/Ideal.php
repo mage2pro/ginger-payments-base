@@ -3,7 +3,7 @@ namespace Df\GingerPaymentsBase\Test\CreateOrder;
 /**
  * 2017-02-27
  * @see \Dfe\GingerPayments\Test\CreateOrder\Ideal
- * @see \Dfe\KassaCompleet\T\CreateOrder\Ideal
+ * @see \Dfe\KassaCompleet\Test\CreateOrder\Ideal
  */
 abstract class Ideal extends \Df\GingerPaymentsBase\Test\CreateOrder {
 	/**

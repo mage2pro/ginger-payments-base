@@ -4,7 +4,7 @@ namespace Df\GingerPaymentsBase\Test;
  * 2017-02-27
  * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal
  * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer
- * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer
+ * @see \Dfe\KassaCompleet\Test\CreateOrder\BankTransfer
  */
 abstract class CreateOrder extends CaseT {
 	/**
@@ -12,7 +12,7 @@ abstract class CreateOrder extends CaseT {
 	 * @used-by t01_success()
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::method()
 	 * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer::method()
-	 * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer::method()
+	 * @see \Dfe\KassaCompleet\Test\CreateOrder\BankTransfer::method()
 	 * @return string
 	 */
 	abstract protected function method();
