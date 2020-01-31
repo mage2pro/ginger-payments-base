@@ -1,8 +1,8 @@
 <?php
-namespace Df\GingerPaymentsBase\T;
+namespace Df\GingerPaymentsBase\Test;
 /**
  * 2017-03-01
- * @see \Dfe\GingerPayments\T\GetMerchant
+ * @see \Dfe\GingerPayments\Test\GetMerchant
  * @see \Dfe\KassaCompleet\T\GetMerchant
  */
 abstract class GetMerchant extends CaseT {
@@ -29,7 +29,7 @@ abstract class GetMerchant extends CaseT {
 	/**
 	 * 2017-03-01
 	 * @used-by t01()
-	 * @see \Dfe\GingerPayments\T\GetMerchant::merchantId()
+	 * @see \Dfe\GingerPayments\Test\GetMerchant::merchantId()
 	 * @return string
 	 */
 	protected function merchantId() {return 'self';}
@@ -37,7 +37,7 @@ abstract class GetMerchant extends CaseT {
 	/**
 	 * 2017-03-01
 	 * @used-by t01()
-	 * @see \Dfe\GingerPayments\T\GetMerchant::projectId()
+	 * @see \Dfe\GingerPayments\Test\GetMerchant::projectId()
 	 * @return string
 	 */
 	protected function projectId() {return 'self';}

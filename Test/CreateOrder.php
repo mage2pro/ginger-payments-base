@@ -1,17 +1,17 @@
 <?php
-namespace Df\GingerPaymentsBase\T;
+namespace Df\GingerPaymentsBase\Test;
 /**
  * 2017-02-27
- * @see \Df\GingerPaymentsBase\T\CreateOrder\Ideal
- * @see \Dfe\GingerPayments\T\CreateOrder\BankTransfer
+ * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal
+ * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer
  * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer
  */
 abstract class CreateOrder extends CaseT {
 	/**
 	 * 2017-02-27
 	 * @used-by t01_success()
-	 * @see \Df\GingerPaymentsBase\T\CreateOrder\Ideal::method()
-	 * @see \Dfe\GingerPayments\T\CreateOrder\BankTransfer::method()
+	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::method()
+	 * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer::method()
 	 * @see \Dfe\KassaCompleet\T\CreateOrder\BankTransfer::method()
 	 * @return string
 	 */
@@ -132,7 +132,7 @@ abstract class CreateOrder extends CaseT {
 	/**
 	 * 2017-02-27
 	 * @used-by t01_success()
-	 * @see \Df\GingerPaymentsBase\T\CreateOrder\Ideal::params()
+	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::params()
 	 * @return string
 	 */
 	protected function params() {return [];}

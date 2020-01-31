@@ -25,7 +25,7 @@ final class Api {
 	 * 2017-03-04     
 	 * 2017-03-05 I make the banks names in the test mode more real (and shorter).
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
-	 * @used-by \Df\GingerPaymentsBase\T\GetIdealBanks::t01()
+	 * @used-by \Df\GingerPaymentsBase\Test\GetIdealBanks::t01()
 	 * @return array(string => string)
 	 */
 	function idealBanks() {return dfc($this, function() {return
@@ -79,7 +79,7 @@ final class Api {
 	 * [Kassa Compleet] An example of a response to «GET merchants/self/projects/self/»
 	 * https://mage2.pro/t/3458
 	 *
-	 * @used-by \Df\GingerPaymentsBase\T\GetMerchant::t01()
+	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
 	 *
 	 * @param string $mId [optional]
 	 * @param string $pId [optional]

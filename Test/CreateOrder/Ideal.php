@@ -1,16 +1,16 @@
 <?php
-namespace Df\GingerPaymentsBase\T\CreateOrder;
+namespace Df\GingerPaymentsBase\Test\CreateOrder;
 /**
  * 2017-02-27
- * @see \Dfe\GingerPayments\T\CreateOrder\Ideal
+ * @see \Dfe\GingerPayments\Test\CreateOrder\Ideal
  * @see \Dfe\KassaCompleet\T\CreateOrder\Ideal
  */
-abstract class Ideal extends \Df\GingerPaymentsBase\T\CreateOrder {
+abstract class Ideal extends \Df\GingerPaymentsBase\Test\CreateOrder {
 	/**
 	 * 2017-02-27
 	 * @override
-	 * @see \Df\GingerPaymentsBase\T\CreateOrder::method()
-	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
+	 * @see \Df\GingerPaymentsBase\Test\CreateOrder::method()
+	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 * @return string
 	 */
 	final protected function method() {return 'ideal';}
@@ -18,8 +18,8 @@ abstract class Ideal extends \Df\GingerPaymentsBase\T\CreateOrder {
 	/**
 	 * 2017-02-27
 	 * @override
-	 * @see \Df\GingerPaymentsBase\T\CreateOrder::params()
-	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
+	 * @see \Df\GingerPaymentsBase\Test\CreateOrder::params()
+	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 * @return string
 	 */
 	final protected function params() {return [

@@ -1,8 +1,8 @@
 <?php
-namespace Df\GingerPaymentsBase\T;
+namespace Df\GingerPaymentsBase\Test;
 /**
  * 2017-02-27
- * @see \Dfe\GingerPayments\T\GetIdealBanks
+ * @see \Dfe\GingerPayments\Test\GetIdealBanks
  * @see \Dfe\KassaCompleet\T\GetIdealBanks
  */
 abstract class GetIdealBanks extends CaseT {

@@ -13,7 +13,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * 2017-03-06
 	 * @used-by getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
-	 * @used-by \Df\GingerPaymentsBase\T\CaseT::api()
+	 * @used-by \Df\GingerPaymentsBase\Test\CaseT::api()
 	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
 	 * @return Api
 	 */
@@ -59,7 +59,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * for the «order_lines/order_line/vat_percentage» property
 	 * of a «POST /v1/orders/» request: https://mage2.pro/t/3451
 	 * @used-by \Df\GingerPaymentsBase\Charge::pOrderLines_products()
-	 * @used-by \Df\GingerPaymentsBase\T\CreateOrder::t01_success()
+	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 * 2017-03-08
 	 * https://github.com/mage2pro/ginger-payments/blob/0.2.3/etc/config.xml?ts=4#L23
 	 * https://github.com/mage2pro/kassa-compleet/blob/0.2.3/etc/config.xml?ts=4#L23
