@@ -89,12 +89,12 @@ class Info extends \Df\Payment\Block\Info {
 	private function prepareCommon() {
 		$this->siID();
 		$this->si('Payment Option', $this->choiceT());
-		// 2017-03-29 iDEAL
+		# 2017-03-29 iDEAL
 		/** @var string|null $bank */
 		if ($bank = $this->psDetails($this->psTransaction($this->tm()->req()), C::K_ISSUER_ID)) {
 			$this->si('Bank', dftr($bank, $this->m()->api()->idealBanks()));
 		}
-		// 2017-03-29 Bank Transfer
+		# 2017-03-29 Bank Transfer
 		elseif ($this->bt()) {
 			$this->siEx('Bank Transfer Reference', $this->btReference());
 		}

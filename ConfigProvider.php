@@ -36,9 +36,9 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 	 * @return array(string => mixed)
 	 */
 	protected function config() {/** @var S $s */ $s = $this->s(); return [
-		// 2017-03-04
-		// @used-by Df_GingerPaymentsBase/main::banks()
-	  	// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21
+		# 2017-03-04
+		# @used-by Df_GingerPaymentsBase/main::banks()
+	  	# https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21
 		'banks' => $this->m()->api()->idealBanks()
 		  /**
 		   * 2017-03-09 @used-by Df_GingerPaymentsBase/bankTransfer

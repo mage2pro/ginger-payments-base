@@ -1,7 +1,7 @@
 <?php
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Source\Option as OS;
-// 2017-02-25
+# 2017-02-25
 /** @method static Settings s() */
 final class Settings extends \Df\Payment\Settings {
 	/**
