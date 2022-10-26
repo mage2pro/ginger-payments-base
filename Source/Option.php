@@ -37,12 +37,9 @@ abstract class Option extends \Df\Config\Source {
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return array(string => string)
 	 */
-	final function map() {return [
-		# 2017-03-01
-		# What is Bancontact? https://mage2.pro/t/3395
-		# 2017-03-03
-		# Whether Kassa Compleet allows to accept payments via Bancontact?
-		# https://mage2.pro/t/3493
+	final function map():array {return [
+		# 2017-03-01 What is Bancontact? https://mage2.pro/t/3395
+		# 2017-03-03 Whether Kassa Compleet allows to accept payments via Bancontact? https://mage2.pro/t/3493
 		'bancontact' => 'Bancontact', 'credit-card' => 'Bank Card'
 	] + $this->mapTest() + $this->mapExtra();}
 
