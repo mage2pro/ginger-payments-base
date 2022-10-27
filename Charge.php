@@ -13,7 +13,7 @@ use Magento\Sales\Model\Order\Item as OI;
 final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-06
-	 * @used-by p()
+	 * @used-by self::p()
 	 * @return array(string => mixed)
 	 */
 	private function pCharge() {return [
@@ -77,20 +77,19 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-03-06
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
 	private function pClient() {return [
 		'platform_name' => "Mage2.PRO «{$this->m()->titleB()}» extension for Magento 2 (https://mage2.pro)"
 		,'platform_version' => df_package_version($this->m())
-		# 2017-02-28
-		# It will be rewritten to «Ginger-Python-ApiClient/0.8.1 Requests/2.11.1 Python/2.7.10».
+		# 2017-02-28 It will be rewritten to «Ginger-Python-ApiClient/0.8.1 Requests/2.11.1 Python/2.7.10».
 		,'user_agent' => 'Mage2.PRO (https://mage2.pro)'
 	];}
 
 	/**
 	 * 2017-03-06
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @return array(string => string|string[])
 	 */
 	private function pCustomer() {/** @var OA $a */ $a = $this->addressB(); return [
@@ -136,46 +135,35 @@ final class Charge extends \Df\Payment\Charge {
 	];}
 
 	/**
-	 * 2017-03-06
-	 * https://mage2.pro/t/3411
-	 * @used-by pCharge()
+	 * 2017-03-06 https://mage2.pro/t/3411
+	 * @used-by self::pCharge()
 	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines() {return array_merge(
-		$this->pOrderLines_products(), [$this->pOrderLines_shipping()]
-	);}
+	private function pOrderLines() {return array_merge($this->pOrderLines_products(), [$this->pOrderLines_shipping()]);}
 
 	/**
-	 * 2017-03-06
-	 * https://mage2.pro/t/3411
-	 * @used-by pOrderLines()
+	 * 2017-03-06 https://mage2.pro/t/3411
+	 * @used-by self::pOrderLines()
 	 * @return array(string => string|int|float)
 	 */
 	private function pOrderLines_products() {return $this->oiLeafs(function(OI $i) {return [
-		# 2017-03-06
-		# «Amount for a single item (including VAT) in cents»
+		# 2017-03-06 «Amount for a single item (including VAT) in cents»
 		'amount' => $this->cFromDocF(df_oqi_price($i, true))
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
 		,'ean' => ''
-		# 2017-03-06
-		# «Order line identifier»
+		# 2017-03-06 «Order line identifier»
 		,'id' => $i->getSku()
-		# 2017-03-06
-		# «Item image URI»
+		# 2017-03-06 «Item image URI»
 		,'image_url' => df_oqi_image($i)
-		# 2017-03-06
-		# «Merchant's internal order line identifier»
+		# 2017-03-06 «Merchant's internal order line identifier»
 		,'merchant_order_line_id' => $i->getSku()
-		# 2017-03-06
-		# «Name, usually a short description»
+		# 2017-03-06 «Name, usually a short description»
 		,'name' => $i->getName()
 		,'quantity' => df_oqi_qty($i)
-		# 2017-03-06
-		# «Item product page URI»
+		# 2017-03-06 «Item product page URI»
 		,'url' => df_oqi_url($i)
-		# 2017-03-06
-		# «Type: physical, discount or shipping_fee»
+		# 2017-03-06 «Type: physical, discount or shipping_fee»
 		,'type' => 'physical'
 		# 2017-02-28
 		# Kassa Compleet and Ginger Payments use different formats
@@ -185,31 +173,24 @@ final class Charge extends \Df\Payment\Charge {
 	];});}
 
 	/**
-	 * 2017-03-06
-	 * https://mage2.pro/t/3411
-	 * @used-by pOrderLines()
+	 * 2017-03-06 https://mage2.pro/t/3411
+	 * @used-by self::pOrderLines()
 	 * @return array(string => string|int|float)
 	 */
 	private function pOrderLines_shipping() {return [
-		# 2017-03-06
-		# «Amount for a single item (including VAT) in cents»
+		# 2017-03-06 «Amount for a single item (including VAT) in cents»
 		'amount' => $this->cFromDocF($this->o()->getShippingAmount())
 		,'currency' => $this->currencyC()
-		# 2017-03-06
-		# «Order line identifier»
+		# 2017-03-06 «Order line identifier»
 		,'id' => 'shipping'
-		# 2017-03-06
-		# «Merchant's internal order line identifier»
+		# 2017-03-06 «Merchant's internal order line identifier»
 		,'merchant_order_line_id' => 'shipping'
-		# 2017-03-06
-		# «Name, usually a short description»
+		# 2017-03-06 «Name, usually a short description»
 		,'name' => $this->o()->getShippingDescription()
 		,'quantity' => 1
-		# 2017-03-06
-		# «Type: physical, discount or shipping_fee»
+		# 2017-03-06 «Type: physical, discount or shipping_fee»
 		,'type' => 'shipping_fee'
-		# 2017-03-09
-		# Это поле обязательно.
+		# 2017-03-09 Это поле обязательно.
 		,'vat_percentage' => 0
 	];}
 
@@ -217,15 +198,13 @@ final class Charge extends \Df\Payment\Charge {
 	 * 2017-03-07
 	 * Значением «payment_method_details» не может быть пустой массив:
 	 * «[] is not valid under any of the given schemas»
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
 	private function pTransactions() {/** @var Method $m */ $m = $this->m(); return [
-		# 2017-02-27
-		# The payment method
+		# 2017-02-27 The payment method
 		[self::K_PAYMENT_METHOD => $m->optionE()] + (SO::IDEAL !== $m->optionE() ? [] : [
-			# 2017-02-27
-			# Extra details required for this payment method
+			# 2017-02-27 Extra details required for this payment method
 			self::K_PAYMENT_METHOD_DETAILS => [
 				# 2017-02-27
 				# This parameter is required:
@@ -238,35 +217,35 @@ final class Charge extends \Df\Payment\Charge {
 
 	/**
 	 * 2017-03-29
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::btInstructions()
 	 */
 	const K_AMOUNT = 'amount';
 
 	/**
 	 * 2017-03-28
-	 * @used-by pTransactions()
+	 * @used-by self::pTransactions()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 */
 	const K_ISSUER_ID = 'issuer_id';
 
 	/**
 	 * 2017-03-28
-	 * @used-by pTransactions()
+	 * @used-by self::pTransactions()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCode()
 	 */
 	const K_PAYMENT_METHOD = 'payment_method';
 
 	/**
 	 * 2017-03-28
-	 * @used-by pTransactions()
+	 * @used-by self::pTransactions()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::psDetails()
 	 */
 	const K_PAYMENT_METHOD_DETAILS = 'payment_method_details';
 
 	/**
 	 * 2017-03-28
-	 * @used-by pCharge()
+	 * @used-by self::pCharge()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::psTransaction()
 	 */
 	const K_TRANSACTIONS = 'transactions';

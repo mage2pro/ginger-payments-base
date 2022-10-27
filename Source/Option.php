@@ -11,7 +11,7 @@ namespace Df\GingerPaymentsBase\Source;
 abstract class Option extends \Df\Config\Source {
 	/**
 	 * 2017-03-01
-	 * @used-by map()
+	 * @used-by self::map()
 	 * @see \Dfe\GingerPayments\Source\Option::mapExtra()
 	 * @see \Dfe\KassaCompleet\Source\Option::mapExtra()
 	 * @return array(string => string)
@@ -47,22 +47,22 @@ abstract class Option extends \Df\Config\Source {
 	 * 2017-03-04
 	 * [Ginger Payments] Which payment options are available in the test mode? https://mage2.pro/t/3492
 	 * [Kassa Compleet] Which payment options are available in the test mode? https://mage2.pro/t/3272
-	 * @used-by map()
-	 * @used-by optionsTest()
+	 * @used-by self::map()
+	 * @used-by self::optionsTest()
 	 * @return array(string => string)
 	 */
 	private function mapTest() {return [self::IDEAL => 'iDEAL', self::BT => 'Bank Transfer'];}
 
 	/**
 	 * 2017-03-01
-	 * @used-by map()
+	 * @used-by self::map()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::bt()
 	 * @used-by \Df\GingerPaymentsBase\Method::optionI2E()
 	 */
 	const BT = 'bank-transfer';
 	/**
 	 * 2017-02-27
-	 * @used-by map()
+	 * @used-by self::map()
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.5/view/frontend/web/main.js?ts=4#L82
 	 */

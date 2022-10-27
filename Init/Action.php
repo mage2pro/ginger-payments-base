@@ -21,14 +21,14 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::transId()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @used-by action()
+	 * @used-by self::action()
 	 * @return string|null
 	 */
 	protected function transId() {return $this->e2i($this->res()['id'], Ev::T_INIT);}
 
 	/**
 	 * 2017-03-22
-	 * @used-by res()
+	 * @used-by self::res()
 	 * @return array(string => mixed)
 	 */
 	private function req() {return dfc($this, function() {
@@ -40,8 +40,8 @@ final class Action extends \Df\Payment\Init\Action {
 
 	/**
 	 * 2017-03-22
-	 * @used-by redirectUrl()
-	 * @used-by transId()
+	 * @used-by self::redirectUrl()
+	 * @used-by self::transId()
 	 * @return array(string => mixed)
 	 */
 	private function res() {return dfc($this, function() {

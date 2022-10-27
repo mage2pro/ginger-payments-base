@@ -9,7 +9,7 @@ namespace Df\GingerPaymentsBase\Test;
 abstract class CreateOrder extends CaseT {
 	/**
 	 * 2017-02-27
-	 * @used-by t01_success()
+	 * @used-by self::t01_success()
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::method()
 	 * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer::method()
 	 * @see \Dfe\KassaCompleet\Test\CreateOrder\BankTransfer::method()
@@ -131,7 +131,7 @@ abstract class CreateOrder extends CaseT {
 
 	/**
 	 * 2017-02-27
-	 * @used-by t01_success()
+	 * @used-by self::t01_success()
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::params()
 	 * @return string
 	 */
@@ -142,12 +142,11 @@ abstract class CreateOrder extends CaseT {
 	 * The official Ginger Payments and Kassa Compleet extensions for Magento 1.x
 	 * pass the same customer data to «POST /v1/orders/» besides the «customer/locale» format:
 	 * https://mage2.pro/t/3445
-	 * @used-by t01_success()
+	 * @used-by self::t01_success()
 	 * @return array(string => string)
 	 */
 	private function customer() {return [
-		# 2017-02-28
-		# Test addresses for some countries: https://mage2.pro/t/2555
+		# 2017-02-28 Test addresses for some countries: https://mage2.pro/t/2555
 		'address' => 'Amsterdam Rusland 17'
 		,'address_type' => 'billing'
 		# 2017-02-28

@@ -29,7 +29,7 @@ final class Settings extends \Df\Payment\Settings {
 
 	/**
 	 * 2017-03-28
-	 * @used-by options()
+	 * @used-by self::options()
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return OS
 	 */

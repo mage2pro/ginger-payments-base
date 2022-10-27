@@ -11,7 +11,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
 abstract class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-03-06
-	 * @used-by getConfigPaymentAction()
+	 * @used-by self::getConfigPaymentAction()
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
 	 * @used-by \Df\GingerPaymentsBase\Test\CaseT::api()
 	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
@@ -88,32 +88,32 @@ abstract class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-03-06
-	 * @used-by isIdeal()
-	 * @used-by optionE()
+	 * @used-by self::isIdeal()
+	 * @used-by self::optionE()
 	 * @return string
 	 */
 	private function option() {return df_result_sne($this->iia(self::$II_OPTION));}
 
 	/**
 	 * 2017-03-29
-	 * @used-by optionE()
-	 * @used-by optionI()
+	 * @used-by self::optionE()
+	 * @used-by self::optionI()
 	 * @return array(string => string)
 	 */
 	private function optionI2E() {return dfc($this, function() {return [SO::BT => $this->s()->btId()];});}
 
 	/**
 	 * 2017-03-05 https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/view/frontend/web/main.js?ts=4#L25
-	 * @used-by bank()
-	 * @used-by iiaKeys()
+	 * @used-by self::bank()
+	 * @used-by self::iiaKeys()
 	 */
 	private static $II_BANK = 'bank';
 
 	/**
 	 * 2017-03-05
 	 * https://github.com/mage2pro/core/blob/2.12.17/Payment/view/frontend/web/withOptions.js#L56-L72
-	 * @used-by iiaKeys()
-	 * @used-by option()
+	 * @used-by self::iiaKeys()
+	 * @used-by self::option()
 	 */
 	private static $II_OPTION = 'option';
 }

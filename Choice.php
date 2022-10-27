@@ -28,16 +28,16 @@ final class Choice extends \Df\Payment\Choice {
 
 	/**
 	 * 2017-03-29
-	 * @used-by optionCode()
-	 * @used-by prepareCommon()
+	 * @used-by self::optionCode()
+	 * @used-by self::prepareCommon()
 	 * @return array(string => string|array)
 	 */
 	private function option() {return dfc($this, function() {return $this->psTransaction($this->req());});}
 
 	/**
 	 * 2017-03-29
-	 * @used-by bt()
-	 * @used-by prepareCommon()
+	 * @used-by self::bt()
+	 * @used-by self::prepareCommon()
 	 * @return array(string => string|array)
 	 */
 	private function optionCodeI() {return dfc($this, function() {return $this->m()->optionI(
@@ -46,8 +46,8 @@ final class Choice extends \Df\Payment\Choice {
 
 	/**
 	 * 2017-03-29
-	 * @used-by option()
-	 * @used-by res0()
+	 * @used-by self::option()
+	 * @used-by self::res0()
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
 	 */

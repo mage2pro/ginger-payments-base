@@ -15,9 +15,7 @@ final class Api {
 		# https://github.com/mage2pro/ginger-payments/blob/0.2.1/etc/config.xml?ts=4#L11
 		# https://github.com/mage2pro/kassa-compleet/blob/0.2.1/etc/config.xml?ts=4#L11
 		,'base_uri' => "https://api.{$m->s()->domain()}/v1/"
-		,'headers' => ['User-Agent' => df_cc_s(
-			'Mage2.PRO', $m->titleB(), df_package_version($m)
-		)] + df_headers()
+		,'headers' => ['User-Agent' => df_cc_s('Mage2.PRO', $m->titleB(), df_package_version($m))] + df_headers()
 		,'timeout' => 10
 	]);}
 
@@ -30,9 +28,7 @@ final class Api {
 	 */
 	function idealBanks() {return dfc($this, function() {return
 		['INGBNL2A' => __('ING Bank'), 'RABONL2U' => __('Rabobank')]
-		+ df_cache_get_simple(null, function() {return array_column(
-			$this->req('ideal/issuers/'), 'name', 'id'
-		);})
+		+ df_cache_get_simple(null, function() {return array_column($this->req('ideal/issuers/'), 'name', 'id');})
 	;});}
 
 	/**
@@ -85,18 +81,14 @@ final class Api {
 	 * @param string $pId [optional]
 	 * @return array
 	 */
-	function products($mId = 'self', $pId = 'self') {return $this->req(
-		"merchants/{$mId}/projects/{$pId}/"
-	);}
+	function products($mId = 'self', $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
 
 	/**
 	 * 2017-03-09
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	private function putOrder(array $o) {return $this->req(
-		"orders/{$o['id']}/", 'put', ['timeout' => 10, 'json' => $o])
-	;}
+	private function putOrder(array $o) {return $this->req("orders/{$o['id']}/", 'put', ['timeout' => 10, 'json' => $o]);}
 
 	/** @noinspection PhpInconsistentReturnPointsInspection */
 	/**
@@ -109,13 +101,13 @@ final class Api {
 	 */
 	private function req($uri, $method = 'get', $params = []) {
 		try {
-			/** @var array(string => mixed) $result */
-			$result = df_json_decode((string)$this->_guzzle->request($method, $uri, $params)->getBody());
+			/** @var array(string => mixed) $r */
+			$r = df_json_decode((string)$this->_guzzle->request($method, $uri, $params)->getBody());
 			# 2017-02-26
 			# Намеренно выполняем двойное кодирование-декодирование,
 			# чтобы привести форматирование JSON к удобному для нас виду.
-			$this->_lastResponse = df_json_encode($result);
-			return $result;
+			$this->_lastResponse = df_json_encode($r);
+			return $r;
 		}
 		catch (ERequest $e) {
 			df_error((string)$e->getResponse()->getBody());
@@ -124,16 +116,16 @@ final class Api {
 
 	/**
 	 * 2017-02-26   
-	 * @used-by __construct()
-	 * @used-by req()
+	 * @used-by self::__construct()
+	 * @used-by self::req()
 	 * @var HttpClient
 	 */
 	private $_guzzle;
 
 	/**
 	 * 2017-02-26
-	 * @used-by lastResponse()
-	 * @used-by req()
+	 * @used-by self::lastResponse()
+	 * @used-by self::req()
 	 * @var string
 	 */
 	private $_lastResponse;

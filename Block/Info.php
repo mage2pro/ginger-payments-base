@@ -51,17 +51,17 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by prepare()
-	 * @used-by msgCheckoutSuccess()
-	 * @used-by msgUnconfirmed()
+	 * @used-by self::prepare()
+	 * @used-by self::msgCheckoutSuccess()
+	 * @used-by self::msgUnconfirmed()
 	 * @return bool
 	 */
 	function bt() {return $this->choice()->bt();}
 
 	/**
 	 * 2017-03-29
-	 * @used-by msgCheckoutSuccess()
-	 * @used-by msgUnconfirmed()
+	 * @used-by self::msgCheckoutSuccess()
+	 * @used-by self::msgUnconfirmed()
 	 * @return string
 	 */
 	private function btInstructions() {return df_tag('div', 'dfp-instructions', df_var(
@@ -75,16 +75,16 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29 A string like «0210201701122323».
-	 * @used-by btInstructions()
-	 * @used-by prepare()
+	 * @used-by self::btInstructions()
+	 * @used-by self::prepare()
 	 * @return string
 	 */
 	private function btReference() {return $this->psDetails($this->res0(), 'reference');}
 
 	/**
 	 * 2017-03-28
-	 * @used-by prepare()
-	 * @used-by prepareUnconfirmed()
+	 * @used-by self::prepare()
+	 * @used-by self::prepareUnconfirmed()
 	 */	
 	private function prepareCommon() {
 		$this->siID();
@@ -102,8 +102,8 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by btReference()
-	 * @used-by prepareCommon()
+	 * @used-by self::btReference()
+	 * @used-by self::prepareCommon()
 	 * @param array(string => mixed) $trans
 	 * @param string $k
 	 * @return string|null
@@ -112,8 +112,8 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by option()
-	 * @used-by res0()
+	 * @used-by self::option()
+	 * @used-by self::res0()
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
 	 */
@@ -121,7 +121,7 @@ class Info extends \Df\Payment\Block\Info {
 
 	/**
 	 * 2017-03-29
-	 * @used-by btReference()
+	 * @used-by self::btReference()
 	 * @return array(string => mixed)
 	 */
 	private function res0() {return dfc($this, function() {return $this->psTransaction($this->tm()->res0());});}

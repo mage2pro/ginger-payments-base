@@ -28,7 +28,7 @@ abstract class GetMerchant extends CaseT {
 
 	/**
 	 * 2017-03-01
-	 * @used-by t01()
+	 * @used-by self::t01()
 	 * @see \Dfe\GingerPayments\Test\GetMerchant::merchantId()
 	 * @return string
 	 */
@@ -36,7 +36,7 @@ abstract class GetMerchant extends CaseT {
 
 	/**
 	 * 2017-03-01
-	 * @used-by t01()
+	 * @used-by self::t01()
 	 * @see \Dfe\GingerPayments\Test\GetMerchant::projectId()
 	 * @return string
 	 */
