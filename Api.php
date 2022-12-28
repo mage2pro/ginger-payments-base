@@ -51,7 +51,7 @@ final class Api {
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	function orderPost(array $o) {return $this->req('orders/', 'post', [
+	function orderPost(array $o):array {return $this->req('orders/', 'post', [
 		'body' => json_encode($o), 'headers' => ['Content-Type' => 'application/json']
 	]);}
 
