@@ -71,9 +71,8 @@ class Info extends \Df\Payment\Block\Info {
 	 * 2017-03-29 A string like «0210201701122323».
 	 * @used-by self::btInstructions()
 	 * @used-by self::prepare()
-	 * @return string
 	 */
-	private function btReference() {return $this->psDetails($this->res0(), 'reference');}
+	private function btReference():string {return $this->psDetails($this->res0(), 'reference');}
 
 	/**
 	 * 2017-03-28
