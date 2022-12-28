@@ -83,9 +83,8 @@ abstract class Method extends \Df\Payment\Method {
 	 * 2017-03-06
 	 * @used-by self::isIdeal()
 	 * @used-by self::optionE()
-	 * @return string
 	 */
-	private function option() {return df_result_sne($this->iia(self::$II_OPTION));}
+	private function option():string {return df_result_sne($this->iia(self::$II_OPTION));}
 
 	/**
 	 * 2017-03-29
