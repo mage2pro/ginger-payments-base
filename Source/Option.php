@@ -16,7 +16,7 @@ abstract class Option extends \Df\Config\Source {
 	 * @see \Dfe\KassaCompleet\Source\Option::mapExtra()
 	 * @return array(string => string)
 	 */
-	abstract protected function mapExtra();
+	abstract protected function mapExtra():array;
 
 	/**
 	 * 2017-03-04
