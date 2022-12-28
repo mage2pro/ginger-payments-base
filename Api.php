@@ -25,7 +25,7 @@ final class Api {
 	 * @used-by \Df\GingerPaymentsBase\Test\GetIdealBanks::t01()
 	 * @return array(string => string)
 	 */
-	function idealBanks() {return dfc($this, function() {return
+	function idealBanks():array {return dfc($this, function():array {return
 		['INGBNL2A' => __('ING Bank'), 'RABONL2U' => __('Rabobank')]
 		+ df_cache_get_simple('', function() {return array_column($this->req('ideal/issuers/'), 'name', 'id');})
 	;});}
