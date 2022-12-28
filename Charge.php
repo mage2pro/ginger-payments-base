@@ -166,7 +166,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pOrderLines()
 	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines_shipping() {return [
+	private function pOrderLines_shipping():array {return [
 		# 2017-03-06 «Amount for a single item (including VAT) in cents»
 		'amount' => $this->cFromDocF($this->o()->getShippingAmount())
 		,'currency' => $this->currencyC()
