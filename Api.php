@@ -33,9 +33,8 @@ final class Api {
 	/**
 	 * 2017-02-26
 	 * @used-by \Df\GingerPaymentsBase\Method::getConfigPaymentAction()
-	 * @return string
 	 */
-	function lastResponse() {return $this->_lastResponse;}
+	function lastResponse():string {return $this->_lastResponse;}
 
 	/**
 	 * 2017-03-09
