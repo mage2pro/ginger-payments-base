@@ -170,17 +170,12 @@ final class Charge extends \Df\Payment\Charge {
 		# 2017-03-06 «Amount for a single item (including VAT) in cents»
 		'amount' => $this->cFromDocF($this->o()->getShippingAmount())
 		,'currency' => $this->currencyC()
-		# 2017-03-06 «Order line identifier»
-		,'id' => 'shipping'
-		# 2017-03-06 «Merchant's internal order line identifier»
-		,'merchant_order_line_id' => 'shipping'
-		# 2017-03-06 «Name, usually a short description»
-		,'name' => $this->o()->getShippingDescription()
+		,'id' => 'shipping' # 2017-03-06 «Order line identifier»
+		,'merchant_order_line_id' => 'shipping' # 2017-03-06 «Merchant's internal order line identifier»
+		,'name' => $this->o()->getShippingDescription() # 2017-03-06 «Name, usually a short description»
 		,'quantity' => 1
-		# 2017-03-06 «Type: physical, discount or shipping_fee»
-		,'type' => 'shipping_fee'
-		# 2017-03-09 Это поле обязательно.
-		,'vat_percentage' => 0
+		,'type' => 'shipping_fee' # 2017-03-06 «Type: physical, discount or shipping_fee»
+		,'vat_percentage' => 0 # 2017-03-09 Это поле обязательно.
 	];}
 
 	/**
