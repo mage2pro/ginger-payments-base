@@ -57,9 +57,8 @@ abstract class Method extends \Df\Payment\Method {
 	 * 2017-03-08
 	 * https://github.com/mage2pro/ginger-payments/blob/0.2.3/etc/config.xml?ts=4#L23
 	 * https://github.com/mage2pro/kassa-compleet/blob/0.2.3/etc/config.xml?ts=4#L23
-	 * @return bool
 	 */
-	final function vatIsInteger() {return df_bool($this->s('vatIsInteger'));}
+	final function vatIsInteger():bool {return df_bool($this->s('vatIsInteger'));}
 
 	/**
 	 * 2017-02-25
