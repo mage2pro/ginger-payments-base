@@ -57,6 +57,7 @@ final class Api {
 
 	/**
 	 * 2017-03-09
+	 * 2022-12-28 @deprecated It is unused.
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
