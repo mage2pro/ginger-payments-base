@@ -88,7 +88,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pCharge()
 	 * @return array(string => string|string[])
 	 */
-	private function pCustomer() {/** @var OA $a */ $a = $this->addressB(); return [
+	private function pCustomer():array {/** @var OA $a */ $a = $this->addressB(); return [
 		# 2017-02-28 Test addresses for some countries: https://mage2.pro/t/2555
 		'address' => df_cc_s($a->getStreet())
 		,'address_type' => 'billing'
