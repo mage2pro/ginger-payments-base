@@ -132,9 +132,9 @@ abstract class CreateOrder extends CaseT {
 	 * 2017-02-27
 	 * @used-by self::t01_success()
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::params()
-	 * @return string
+	 * @return array(string => string)
 	 */
-	protected function params() {return [];}
+	protected function params():array {return [];}
 
 	/**
 	 * 2017-02-28
