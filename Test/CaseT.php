@@ -16,6 +16,7 @@ abstract class CaseT extends \Df\Payment\TestCase {
 	 * 2017-02-26
 	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 * @used-by \Df\GingerPaymentsBase\Test\GetIdealBanks::t01()
+	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
 	 */
 	final protected function api():Api {return $this->m()->api();}
 }
