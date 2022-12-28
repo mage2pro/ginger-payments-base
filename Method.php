@@ -28,9 +28,8 @@ abstract class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-03-07 https://mage2.pro/t/3355/2
 	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
-	 * @return string
 	 */
-	final function optionE() {return dftr($this->option(), $this->optionI2E());}
+	final function optionE():string {return dftr($this->option(), $this->optionI2E());}
 
 	/**
 	 * 2017-03-29 https://mage2.pro/t/3355/2
