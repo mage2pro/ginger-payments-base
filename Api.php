@@ -43,7 +43,7 @@ final class Api {
 	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
 	 * @return array(string => mixed)
 	 */
-	function orderGet(string $id) {return $this->req("orders/$id");}
+	function orderGet(string $id):array {return $this->req("orders/$id");}
 
 	/**
 	 * 2017-02-27
