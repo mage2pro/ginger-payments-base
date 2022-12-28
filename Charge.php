@@ -147,19 +147,13 @@ final class Charge extends \Df\Payment\Charge {
 		,'currency' => $this->currencyC()
 		,'discount_rate' => 0
 		,'ean' => ''
-		# 2017-03-06 «Order line identifier»
-		,'id' => $i->getSku()
-		# 2017-03-06 «Item image URI»
-		,'image_url' => df_oqi_image($i)
-		# 2017-03-06 «Merchant's internal order line identifier»
-		,'merchant_order_line_id' => $i->getSku()
-		# 2017-03-06 «Name, usually a short description»
-		,'name' => $i->getName()
+		,'id' => $i->getSku() # 2017-03-06 «Order line identifier»
+		,'image_url' => df_oqi_image($i) # 2017-03-06 «Item image URI»
+		,'merchant_order_line_id' => $i->getSku() # 2017-03-06 «Merchant's internal order line identifier»
+		,'name' => $i->getName() # 2017-03-06 «Name, usually a short description»
 		,'quantity' => df_oqi_qty($i)
-		# 2017-03-06 «Item product page URI»
-		,'url' => df_oqi_url($i)
-		# 2017-03-06 «Type: physical, discount or shipping_fee»
-		,'type' => 'physical'
+		,'url' => df_oqi_url($i) # 2017-03-06 «Item product page URI»
+		,'type' => 'physical' # 2017-03-06 «Type: physical, discount or shipping_fee»
 		# 2017-02-28
 		# Kassa Compleet and Ginger Payments use different formats
 		# for the «order_lines/order_line/vat_percentage» property
