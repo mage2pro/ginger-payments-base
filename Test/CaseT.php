@@ -14,8 +14,7 @@ use Df\GingerPaymentsBase\Settings as S;
 abstract class CaseT extends \Df\Payment\TestCase {
 	/**
 	 * 2017-02-26
-	 * @param object|string|null $m [optional]
-	 * @return Api
+	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 */
-	final protected function api($m = null):Api {return $this->m()->api();}
+	final protected function api():Api {return $this->m()->api();}
 }
