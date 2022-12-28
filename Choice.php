@@ -36,7 +36,7 @@ final class Choice extends \Df\Payment\Choice {
 	 * @used-by self::bt()
 	 * @used-by self::title()
 	 */
-	private function optionCodeI():string {return dfc($this, function() {return $this->m()->optionI(
+	private function optionCodeI():string {return dfc($this, function():string {return $this->m()->optionI(
 		$this->option()[C::K_PAYMENT_METHOD]
 	);});}
 
