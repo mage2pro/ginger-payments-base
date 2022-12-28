@@ -42,10 +42,9 @@ abstract class Method extends \Df\Payment\Method {
 	 * @override
 	 * @see \Df\Payment\Method::transUrl()
 	 * @used-by \Df\Payment\Method::tidFormat()
-	 * @return string|null
 	 */
-	final protected function transUrl(T $t) {/** @var string|null $tmpl */ return
-		!($tmpl = $this->s('transUrl')) ? null :sprintf($tmpl, df_trd($t, self::IIA_TR_RESPONSE)['id'])
+	final protected function transUrl(T $t):string {/** @var string|null $tmpl */ return
+		!($tmpl = $this->s('transUrl')) ? '' :sprintf($tmpl, df_trd($t, self::IIA_TR_RESPONSE)['id'])
 	;}
 
 	/**
