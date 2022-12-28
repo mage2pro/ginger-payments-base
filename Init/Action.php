@@ -42,7 +42,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by self::transId()
 	 * @return array(string => mixed)
 	 */
-	private function res() {return dfc($this, function() {
+	private function res():array {return dfc($this, function():array {
 		$m = $this->m(); /** @var M $m */
 		$m->iiaSetTRR(null, $r = $m->api()->orderPost($this->req())); /** @var array(string => mixed) $r */
 		dfp_report($m, $r, 'response');
