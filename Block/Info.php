@@ -14,9 +14,8 @@ class Info extends \Df\Payment\Block\Info {
 	 * @override
 	 * @see \Df\Payment\Block\Info::msgCheckoutSuccess()
 	 * @used-by \Df\Payment\Block\Info::checkoutSuccess()
-	 * @return string|null
 	 */
-	final protected function msgCheckoutSuccess() {return !$this->bt() ? null : $this->btInstructions();}
+	final protected function msgCheckoutSuccess():string {return !$this->bt() ? '' : $this->btInstructions();}
 
 	/**
 	 * 2017-03-29
