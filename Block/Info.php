@@ -110,7 +110,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
 	 */
-	private function psTransaction(array $data) {return df_first($data[C::K_TRANSACTIONS]);}
+	private function psTransaction(array $data):array {return df_first($data[C::K_TRANSACTIONS]);}
 
 	/**
 	 * 2017-03-29
