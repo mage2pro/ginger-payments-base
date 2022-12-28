@@ -23,7 +23,7 @@ abstract class Option extends \Df\Config\Source {
 	 * @used-by \Df\GingerPaymentsBase\Settings::options()
 	 * @return array(<value> => <label>)
 	 */
-	final function optionsTest() {return $this->options(array_keys($this->mapTest()));}
+	final function optionsTest():array {return $this->options(array_keys($this->mapTest()));}
 
 	/**
 	 * 2017-03-01
