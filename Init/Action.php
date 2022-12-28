@@ -29,7 +29,7 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @used-by self::res()
 	 * @return array(string => mixed)
 	 */
-	private function req() {return dfc($this, function() {
+	private function req():array {return dfc($this, function() {
 		/** @var M $m */ /** @var array(string => mixed) $result */
 		df_sentry_extra($m = $this->m(), 'Request Params', $result = Charge::p($m));
 		$m->iiaSetTRR($result);
