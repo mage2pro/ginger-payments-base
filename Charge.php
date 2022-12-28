@@ -134,7 +134,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pCharge()
 	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines() {return array_merge($this->pOrderLines_products(), [$this->pOrderLines_shipping()]);}
+	private function pOrderLines():array {return array_merge($this->pOrderLines_products(), [$this->pOrderLines_shipping()]);}
 
 	/**
 	 * 2017-03-06 https://mage2.pro/t/3411
