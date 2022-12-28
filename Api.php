@@ -60,7 +60,7 @@ final class Api {
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	function orderUpdate(array $o) {return $this->putOrder($o);}
+	function orderUpdate(array $o):array {return $this->putOrder($o);}
 
 	/**
 	 * 2017-03-01
