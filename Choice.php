@@ -29,7 +29,7 @@ final class Choice extends \Df\Payment\Choice {
 	 * @used-by self::prepareCommon()
 	 * @return array(string => string|array)
 	 */
-	private function option() {return dfc($this, function() {return $this->psTransaction($this->req());});}
+	private function option():array {return dfc($this, function():array {return $this->psTransaction($this->req());});}
 
 	/**
 	 * 2017-03-29
