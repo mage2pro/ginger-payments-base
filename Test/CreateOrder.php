@@ -144,7 +144,7 @@ abstract class CreateOrder extends CaseT {
 	 * @used-by self::t01_success()
 	 * @return array(string => string)
 	 */
-	private function customer() {return [
+	private function customer():array {return [
 		# 2017-02-28 Test addresses for some countries: https://mage2.pro/t/2555
 		'address' => 'Amsterdam Rusland 17'
 		,'address_type' => 'billing'
