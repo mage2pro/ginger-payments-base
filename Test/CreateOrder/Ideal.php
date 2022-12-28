@@ -19,9 +19,8 @@ abstract class Ideal extends \Df\GingerPaymentsBase\Test\CreateOrder {
 	 * @override
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder::params()
 	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
-	 * @return string
 	 */
-	final protected function params() {return [
+	final protected function params():array {return [
 		# 2017-02-27
 		# This parameter is required:
 		# https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#creating-an-ideal-order
