@@ -7,7 +7,7 @@ namespace Df\GingerPaymentsBase\Test;
  */
 abstract class GetIdealBanks extends CaseT {
 	/** 2017-02-27 @test */
-	final function t01() {
+	final function t01():void {
 		print_r($this->api()->idealBanks());
 		print_r($this->api()->lastResponse());
 	}
