@@ -6,7 +6,7 @@ use Magento\Sales\Model\Order\Payment\Transaction as T;
  * 2017-02-25
  * @see \Dfe\GingerPayments\Method
  * @see \Dfe\KassaCompleet\Method
- * @method Settings s()
+ * @method Settings s(string $k = '', $d = null)
  */
 abstract class Method extends \Df\Payment\Method {
 	/**
