@@ -98,7 +98,6 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by self::btReference()
 	 * @used-by self::prepareCommon()
 	 * @param array(string => mixed) $trans
-	 * @param string $k
 	 * @return string|null
 	 */
 	private function psDetails(array $trans, string $k) {return dfa_deep($trans, [C::K_PAYMENT_METHOD_DETAILS, $k]);}
