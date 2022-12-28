@@ -94,7 +94,7 @@ final class Api {
 	 * @return array(string => mixed)
 	 * @throws DFE
 	 */
-	private function req(string $uri, string $method = 'get', $params = []) {
+	private function req(string $uri, string $method = 'get', array $params = []):array {
 		try {
 			/** @var array(string => mixed) $r */
 			$r = df_json_decode((string)$this->_guzzle->request($method, $uri, $params)->getBody());
