@@ -47,5 +47,5 @@ final class Choice extends \Df\Payment\Choice {
 	 * @param array(string => mixed) $data
 	 * @return array(string => mixed)
 	 */
-	private function psTransaction(array $data) {return df_first($data[C::K_TRANSACTIONS]);}
+	private function psTransaction(array $data):array {return df_first($data[C::K_TRANSACTIONS]);}
 }
