@@ -83,7 +83,7 @@ final class Api {
 	 * @param array(string => mixed) $o
 	 * @return array(string => mixed)
 	 */
-	private function putOrder(array $o) {return $this->req("orders/{$o['id']}/", 'put', ['timeout' => 10, 'json' => $o]);}
+	private function putOrder(array $o):array {return $this->req("orders/{$o['id']}/", 'put', ['timeout' => 10, 'json' => $o]);}
 
 	/** @noinspection PhpInconsistentReturnPointsInspection */
 	/**
