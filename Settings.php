@@ -23,7 +23,7 @@ final class Settings extends \Df\Payment\Settings {
 	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::options()
 	 * @return array(<value> => <label>)
 	 */
-	function options() {return $this->test() ? $this->os()->optionsTest() : $this->_options($this->os())->o();}
+	function options():array {return $this->test() ? $this->os()->optionsTest() : $this->_options($this->os())->o();}
 
 	/**
 	 * 2017-03-28
