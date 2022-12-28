@@ -79,7 +79,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by self::prepare()
 	 * @used-by self::prepareUnconfirmed()
 	 */	
-	private function prepareCommon() {
+	private function prepareCommon():void {
 		$this->siID();
 		$this->si('Payment Option', $this->choiceT());
 		# 2017-03-29 iDEAL
