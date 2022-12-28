@@ -7,7 +7,6 @@ final class Api {
 	/**
 	 * 2017-02-25
 	 * @used-by \Df\GingerPaymentsBase\Method::api()
-	 * @param Method $m
 	 */
 	function __construct(Method $m) {$this->_guzzle = new HttpClient([
 		'auth' => [$m->s()->privateKey(), '']
