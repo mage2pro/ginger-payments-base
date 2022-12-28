@@ -36,7 +36,6 @@ abstract class GetMerchant extends CaseT {
 	 * 2017-03-01
 	 * @used-by self::t01()
 	 * @see \Dfe\GingerPayments\Test\GetMerchant::projectId()
-	 * @return string
 	 */
-	protected function projectId() {return 'self';}
+	protected function projectId():string {return 'self';}
 }
