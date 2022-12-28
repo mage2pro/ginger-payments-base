@@ -23,7 +23,7 @@ abstract class CreateOrder extends CaseT {
 	 * [Ginger Payments] A JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3410
 	 * [Kassa Compleet] A JSON Schema of a «POST /v1/orders/» request: https://mage2.pro/t/3411
 	 */
-	final function t01_success() {
+	final function t01_success():void {
 		$this->api()->orderPost([
 			# 2017-02-27
 			# «Order amount (including VAT)».
