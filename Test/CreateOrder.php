@@ -13,9 +13,8 @@ abstract class CreateOrder extends CaseT {
 	 * @see \Df\GingerPaymentsBase\Test\CreateOrder\Ideal::method()
 	 * @see \Dfe\GingerPayments\Test\CreateOrder\BankTransfer::method()
 	 * @see \Dfe\KassaCompleet\Test\CreateOrder\BankTransfer::method()
-	 * @return string
 	 */
-	abstract protected function method();
+	abstract protected function method():string;
 
 	/**
 	 * 2017-02-27
