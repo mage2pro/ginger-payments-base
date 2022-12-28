@@ -52,9 +52,8 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by self::prepare()
 	 * @used-by self::msgCheckoutSuccess()
 	 * @used-by self::msgUnconfirmed()
-	 * @return bool
 	 */
-	function bt() {return $this->choice()->bt();}
+	function bt():bool {return $this->choice()->bt();}
 
 	/**
 	 * 2017-03-29
