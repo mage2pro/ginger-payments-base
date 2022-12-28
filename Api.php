@@ -65,17 +65,14 @@ final class Api {
 
 	/**
 	 * 2017-03-01
-	 * https://www.gingerpayments.com/docs#_merchants
-	 * [Ginger Payments] Why does a «GET merchants/self/projects/self/» request
+	 * 1) https://www.gingerpayments.com/docs#_merchants
+	 * 2) [Ginger Payments] Why does a «GET merchants/self/projects/self/» request
 	 * lead to the «You don't have the permission to access the requested resource» response?
 	 * https://mage2.pro/t/3457
-	 *
-	 * [Kassa Compleet] The «merchants/» API part is undocumented: https://mage2.pro/t/3459
-	 * [Kassa Compleet] An example of a response to «GET merchants/self/projects/self/»
+	 * 3) [Kassa Compleet] The «merchants/» API part is undocumented: https://mage2.pro/t/3459
+	 * 4) [Kassa Compleet] An example of a response to «GET merchants/self/projects/self/»
 	 * https://mage2.pro/t/3458
-	 *
 	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
-	 *
 	 * @param string $mId [optional]
 	 * @param string $pId [optional]
 	 * @return array
