@@ -73,9 +73,10 @@ final class Api {
 	 * 4) [Kassa Compleet] An example of a response to «GET merchants/self/projects/self/»
 	 * https://mage2.pro/t/3458
 	 * @used-by \Df\GingerPaymentsBase\Test\GetMerchant::t01()
-	 * @return array
 	 */
-	function products(string $mId = 'self', string $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
+	function products(string $mId = 'self', string $pId = 'self'):array {return $this->req(
+		"merchants/{$mId}/projects/{$pId}/"
+	);}
 
 	/**
 	 * 2017-03-09
