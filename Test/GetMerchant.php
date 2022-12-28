@@ -20,7 +20,7 @@ abstract class GetMerchant extends CaseT {
 	 * https://mage2.pro/t/3458
 	 * @test
 	 */
-	final function t01() {
+	final function t01():void {
 		print_r($this->api()->products($this->merchantId(), $this->projectId()));
 		print_r($this->api()->lastResponse());
 	}
