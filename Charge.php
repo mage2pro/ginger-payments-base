@@ -141,7 +141,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pOrderLines()
 	 * @return array(string => string|int|float)
 	 */
-	private function pOrderLines_products() {return $this->oiLeafs(function(OI $i) {return [
+	private function pOrderLines_products():array {return $this->oiLeafs(function(OI $i) {return [
 		# 2017-03-06 «Amount for a single item (including VAT) in cents»
 		'amount' => $this->cFromDocF(df_oqi_price($i, true))
 		,'currency' => $this->currencyC()
