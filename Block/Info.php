@@ -117,5 +117,5 @@ class Info extends \Df\Payment\Block\Info {
 	 * @used-by self::btReference()
 	 * @return array(string => mixed)
 	 */
-	private function res0() {return dfc($this, function() {return $this->psTransaction($this->tm()->res0());});}
+	private function res0():array {return dfc($this, function() {return $this->psTransaction($this->tm()->res0());});}
 }
