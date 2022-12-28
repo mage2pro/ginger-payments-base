@@ -90,13 +90,12 @@ final class Api {
 	/** @noinspection PhpInconsistentReturnPointsInspection */
 	/**
 	 * 2017-02-26
-	 * @param string $uri
 	 * @param string $method [optional]
 	 * @param array(string => mixed) $params
 	 * @return array(string => mixed)
 	 * @throws DFE
 	 */
-	private function req($uri, $method = 'get', $params = []) {
+	private function req(string $uri, $method = 'get', $params = []) {
 		try {
 			/** @var array(string => mixed) $r */
 			$r = df_json_decode((string)$this->_guzzle->request($method, $uri, $params)->getBody());
