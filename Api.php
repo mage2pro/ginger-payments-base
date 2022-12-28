@@ -77,7 +77,7 @@ final class Api {
 	 * @param string $pId [optional]
 	 * @return array
 	 */
-	function products($mId = 'self', $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
+	function products(string $mId = 'self', $pId = 'self') {return $this->req("merchants/{$mId}/projects/{$pId}/");}
 
 	/**
 	 * 2017-03-09
