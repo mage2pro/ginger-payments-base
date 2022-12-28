@@ -15,9 +15,8 @@ final class Settings extends \Df\Payment\Settings {
 	/**
 	 * 2017-03-29
 	 * @used-by \Df\GingerPaymentsBase\Api::__construct()
-	 * @return string
 	 */
-	function domain() {return $this->v();}
+	function domain():string {return $this->v();}
 
 	/**
 	 * 2017-03-03
