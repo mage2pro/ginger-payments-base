@@ -6,7 +6,7 @@ use Df\GingerPaymentsBase\Charge as C;
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
  * @method \Df\GingerPaymentsBase\Method m()
  * @method \Df\GingerPaymentsBase\Choice choice()
- * @method \Df\GingerPaymentsBase\Settings s($k = null)
+ * @method \Df\GingerPaymentsBase\Settings|string s($k = null)
  */
 class Info extends \Df\Payment\Block\Info {
 	/**
