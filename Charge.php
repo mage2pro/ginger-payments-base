@@ -76,7 +76,7 @@ final class Charge extends \Df\Payment\Charge {
 	 * @used-by self::pCharge()
 	 * @return array(string => mixed)
 	 */
-	private function pClient() {return [
+	private function pClient():array {return [
 		'platform_name' => "Mage2.PRO «{$this->m()->titleB()}» extension for Magento 2 (https://mage2.pro)"
 		,'platform_version' => df_package_version($this->m())
 		# 2017-02-28 It will be rewritten to «Ginger-Python-ApiClient/0.8.1 Requests/2.11.1 Python/2.7.10».
