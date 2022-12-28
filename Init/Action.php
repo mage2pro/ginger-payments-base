@@ -11,9 +11,8 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @override
 	 * @see \Df\Payment\Init\Action::redirectUrl()
 	 * @used-by \Df\Payment\Init\Action::action()
-	 * @return string
 	 */
-	protected function redirectUrl() {return dfa($this->res()['transactions'][0], 'payment_url');}
+	protected function redirectUrl():string {return dfa($this->res()['transactions'][0], 'payment_url');}
 
 	/**
 	 * 2017-03-22
@@ -22,9 +21,8 @@ final class Action extends \Df\Payment\Init\Action {
 	 * @see \Df\Payment\Init\Action::transId()
 	 * @used-by \Df\Payment\Init\Action::action()
 	 * @used-by self::action()
-	 * @return string|null
 	 */
-	protected function transId() {return $this->e2i($this->res()['id'], Ev::T_INIT);}
+	protected function transId():string {return $this->e2i($this->res()['id'], Ev::T_INIT);}
 
 	/**
 	 * 2017-03-22

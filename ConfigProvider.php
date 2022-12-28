@@ -17,6 +17,7 @@ use Df\Payment\ConfigProvider\IOptions;
  *
  * @method Method m()
  * @method S s()
+ * 2022-11-07 @noinspection PhpSuperClassIncompatibleWithInterfaceInspection It is a false positive.
  */
 final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOptions {
 	/**
@@ -26,7 +27,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 	 * @used-by \Df\Payment\ConfigProvider::configOptions()
 	 * @return array(array('label' => string, 'value' => int|string))
 	 */
-	function options() {return $this->s()->options();}
+	function options():array {return $this->s()->options();}
 	
 	/**
 	 * 2017-03-03
@@ -35,7 +36,7 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 	 * @used-by \Df\Payment\ConfigProvider::getConfig()
 	 * @return array(string => mixed)
 	 */
-	protected function config() {/** @var S $s */ $s = $this->s(); return [
+	protected function config():array {/** @var S $s */ $s = $this->s(); return [
 		# 2017-03-04
 		# @used-by Df_GingerPaymentsBase/main::banks()
 	  	# https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21

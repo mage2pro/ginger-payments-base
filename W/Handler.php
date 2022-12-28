@@ -14,11 +14,8 @@ final class Handler extends \Df\Payment\W\Handler {
 	 * @override
 	 * @see \Df\Payment\W\Handler::strategyC()
 	 * @used-by \Df\Payment\W\Handler::handle()
-	 * @return string|null
 	 */
-	protected function strategyC() {return
-		in_array($this->m()->api()->orderGet($this->e()->idBase())['status'], [
-			'completed', 'processing'
-		]) ? ConfirmPending::class : null
-	;}
+	protected function strategyC():string {return in_array($this->m()->api()->orderGet($this->e()->idBase())['status'], [
+		'completed', 'processing'
+	]) ? ConfirmPending::class : '';}
 }

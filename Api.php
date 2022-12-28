@@ -28,7 +28,7 @@ final class Api {
 	 */
 	function idealBanks() {return dfc($this, function() {return
 		['INGBNL2A' => __('ING Bank'), 'RABONL2U' => __('Rabobank')]
-		+ df_cache_get_simple(null, function() {return array_column($this->req('ideal/issuers/'), 'name', 'id');})
+		+ df_cache_get_simple('', function() {return array_column($this->req('ideal/issuers/'), 'name', 'id');})
 	;});}
 
 	/**

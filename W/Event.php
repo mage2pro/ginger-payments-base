@@ -16,9 +16,8 @@ final class Event extends \Df\StripeClone\W\Event {
 	 * @override
 	 * @see \Df\StripeClone\W\Event::k_pidSuffix()
 	 * @used-by \Df\StripeClone\W\Event::k_pid()
-	 * @return string
 	 */
-	protected function k_pidSuffix() {return 'order_id';}
+	protected function k_pidSuffix():string {return 'order_id';}
 
 	/**
 	 * 2017-03-26 The primary data have a flat structure.
@@ -26,26 +25,23 @@ final class Event extends \Df\StripeClone\W\Event {
 	 * @see \Df\StripeClone\W\Event::roPath()
 	 * @used-by \Df\StripeClone\W\Event::k_pid()
 	 * @used-by \Df\StripeClone\W\Event::ro()
-	 * @return null
 	 */
-	protected function roPath() {return null;}
+	protected function roPath():string {return '';}
 
 	/**
 	 * 2017-03-26
 	 * @override
-	 * @see \Df\StripeClone\W\Event::ttCurrent()
+	 * @see \Df\Payment\W\Event::ttCurrent()
 	 * @used-by \Df\StripeClone\W\Nav::id()
 	 * @used-by \Df\Payment\W\Strategy\ConfirmPending::_handle()
-	 * @return string
 	 */
-	function ttCurrent() {return self::T_CAPTURE;}
+	function ttCurrent():string {return self::T_CAPTURE;}
 
 	/**
 	 * 2017-03-26
 	 * @override
 	 * @see \Df\StripeClone\W\Event::ttParent()
 	 * @used-by \Df\StripeClone\W\Nav::pidAdapt()
-	 * @return string
 	 */
-	function ttParent() {return self::T_INIT;}
+	function ttParent():string {return self::T_INIT;}
 }

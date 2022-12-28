@@ -6,10 +6,7 @@ namespace Df\GingerPaymentsBase\Test;
  * @see \Dfe\KassaCompleet\Test\GetIdealBanks
  */
 abstract class GetIdealBanks extends CaseT {
-	/**
-	 * @test
-	 * 2017-02-27
-	 */
+	/** 2017-02-27 @test */
 	final function t01() {
 		print_r($this->api()->idealBanks());
 		print_r($this->api()->lastResponse());

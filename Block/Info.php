@@ -23,9 +23,8 @@ class Info extends \Df\Payment\Block\Info {
 	 * @override
 	 * @see \Df\Payment\Block\Info::msgUnconfirmed()
 	 * @used-by \Df\Payment\Block\Info::rUnconfirmed()
-	 * @return string|null
 	 */
-	final protected function msgUnconfirmed() {return
+	final protected function msgUnconfirmed():string {return
 		df_is_backend() || !$this->bt() ? parent::msgUnconfirmed() : $this->btInstructions()
 	;}
 
@@ -35,7 +34,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @see \Df\Payment\Block\Info::prepare()
 	 * @used-by \Df\Payment\Block\Info::prepareToRendering()
 	 */
-	final protected function prepare() {$this->prepareCommon();}
+	final protected function prepare():void {$this->prepareCommon();}
 
 	/**
 	 * 2017-03-28
@@ -47,7 +46,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @see \Df\Payment\Block\Info::prepareUnconfirmed()
 	 * @used-by \Df\Payment\Block\Info::prepareToRendering()
 	 */
-	final protected function prepareUnconfirmed() {$this->prepareCommon();}
+	final protected function prepareUnconfirmed():void {$this->prepareCommon();}
 
 	/**
 	 * 2017-03-29
@@ -62,13 +61,10 @@ class Info extends \Df\Payment\Block\Info {
 	 * 2017-03-29
 	 * @used-by self::msgCheckoutSuccess()
 	 * @used-by self::msgUnconfirmed()
-	 * @return string
 	 */
-	private function btInstructions() {return df_tag('div', 'dfp-instructions', df_var(
+	private function btInstructions():string {return df_tag('div', 'dfp-instructions', df_var(
 		$this->s('btInstructions'), [
-			'amount' => $this->ii()->getOrder()->formatPrice($this->m()->amountParse(
-				$this->tm()->req(C::K_AMOUNT)
-			))
+			'amount' => $this->ii()->getOrder()->formatPrice($this->m()->amountParse($this->tm()->req(C::K_AMOUNT)))
 			,'reference' => $this->btReference()
 		]
 	));}
@@ -108,7 +104,7 @@ class Info extends \Df\Payment\Block\Info {
 	 * @param string $k
 	 * @return string|null
 	 */
-	private function psDetails(array $trans, $k) {return dfa_deep($trans, [C::K_PAYMENT_METHOD_DETAILS, $k]);}
+	private function psDetails(array $trans, string $k) {return dfa_deep($trans, [C::K_PAYMENT_METHOD_DETAILS, $k]);}
 
 	/**
 	 * 2017-03-29

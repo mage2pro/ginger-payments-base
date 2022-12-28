@@ -35,18 +35,15 @@ abstract class Method extends \Df\Payment\Method {
 
 	/**
 	 * 2017-03-29 https://mage2.pro/t/3355/2
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCodeI()
-	 * @param string $v
-	 * @return string
+	 * @used-by \Df\GingerPaymentsBase\Choice::optionCodeI()
 	 */
-	final function optionI($v) {return dftr($v, array_flip($this->optionI2E()));}
+	final function optionI(string $v):string {return dftr($v, array_flip($this->optionI2E()));}
 
 	/**
 	 * 2017-03-29
 	 * @override
 	 * @see \Df\Payment\Method::transUrl()
 	 * @used-by \Df\Payment\Method::tidFormat()
-	 * @param T $t
 	 * @return string|null
 	 */
 	final protected function transUrl(T $t) {/** @var string|null $tmpl */ return
@@ -84,7 +81,7 @@ abstract class Method extends \Df\Payment\Method {
 	 * @used-by \Df\Payment\Method::assignData()
 	 * @return string[]
 	 */
-	final protected function iiaKeys() {return [self::$II_BANK, self::$II_OPTION];}
+	final protected function iiaKeys():array {return [self::$II_BANK, self::$II_OPTION];}
 
 	/**
 	 * 2017-03-06

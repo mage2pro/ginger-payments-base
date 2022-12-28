@@ -17,7 +17,6 @@ final class Reader extends \Df\Payment\W\Reader\Json {
 	 * @override
 	 * @see \Df\Payment\W\Reader::kt()
 	 * @used-by \Df\Payment\W\Reader::tRaw()
-	 * @return string
 	 */
-	protected function kt() {return 'event';}
+	protected function kt():string {return 'event';}
 }

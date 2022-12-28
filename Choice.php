@@ -2,7 +2,6 @@
 namespace Df\GingerPaymentsBase;
 use Df\GingerPaymentsBase\Charge as C;
 use Df\GingerPaymentsBase\Source\Option as SO;
-use Magento\Framework\Phrase;
 /**
  * 2017-04-17
  * @method \Df\GingerPaymentsBase\Method m()
@@ -15,16 +14,14 @@ final class Choice extends \Df\Payment\Choice {
 	 * @see \Df\Payment\Choice::title()
 	 * @used-by \Df\Payment\Block\Info::choiceT()
 	 * @used-by \Df\Payment\Observer\DataProvider\SearchResult::execute()
-	 * @return Phrase|string|null
 	 */
-	function title() {return dftr($this->optionCodeI(), $this->s()->os()->map());}
+	function title():string {return dftr($this->optionCodeI(), $this->s()->os()->map());}
 
 	/**
 	 * 2017-03-29
 	 * @used-by \Df\GingerPaymentsBase\Block\Info::bt()
-	 * @return bool
 	 */
-	function bt() {return SO::BT === $this->optionCodeI();}
+	function bt():bool {return SO::BT === $this->optionCodeI();}
 
 	/**
 	 * 2017-03-29
@@ -37,10 +34,9 @@ final class Choice extends \Df\Payment\Choice {
 	/**
 	 * 2017-03-29
 	 * @used-by self::bt()
-	 * @used-by self::prepareCommon()
-	 * @return array(string => string|array)
+	 * @used-by self::title()
 	 */
-	private function optionCodeI() {return dfc($this, function() {return $this->m()->optionI(
+	private function optionCodeI():string {return dfc($this, function() {return $this->m()->optionI(
 		$this->option()[C::K_PAYMENT_METHOD]
 	);});}
 
