@@ -1,11 +1,11 @@
 <?php
-namespace Df\GingerPaymentsBase;
-use Df\GingerPaymentsBase\Charge as C;
-use Df\GingerPaymentsBase\Source\Option as SO;
+namespace Dfe\GingerPaymentsBase;
+use Dfe\GingerPaymentsBase\Charge as C;
+use Dfe\GingerPaymentsBase\Source\Option as SO;
 /**
  * 2017-04-17
- * @method \Df\GingerPaymentsBase\Method m()
- * @method \Df\GingerPaymentsBase\Settings s($k = null)
+ * @method \Dfe\GingerPaymentsBase\Method m()
+ * @method \Dfe\GingerPaymentsBase\Settings s($k = null)
  */
 final class Choice extends \Df\Payment\Choice {
 	/**
@@ -19,7 +19,7 @@ final class Choice extends \Df\Payment\Choice {
 
 	/**
 	 * 2017-03-29
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::bt()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::bt()
 	 */
 	function bt():bool {return SO::BT === $this->optionCodeI();}
 

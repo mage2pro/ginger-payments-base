@@ -6,7 +6,7 @@
 >
 	<body>
 		<referenceContainer name='order.success.additional.info'>
-			<block class='Df\GingerPaymentsBase\Block\Info' name='Df_GingerPaymentsBase_Block_Info'/>
+			<block class='Dfe\GingerPaymentsBase\Block\Info' name='Dfe_GingerPaymentsBase_Block_Info'/>
 		</referenceContainer>
 	</body>
 </page>

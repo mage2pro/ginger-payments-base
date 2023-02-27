@@ -1,6 +1,6 @@
 <?php
-namespace Df\GingerPaymentsBase\W;
-use Df\GingerPaymentsBase\Method as M;
+namespace Dfe\GingerPaymentsBase\W;
+use Dfe\GingerPaymentsBase\Method as M;
 use Df\Payment\W\Strategy\ConfirmPending;
 /**
  * 2017-03-09

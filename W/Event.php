@@ -1,5 +1,5 @@
 <?php
-namespace Df\GingerPaymentsBase\W;
+namespace Dfe\GingerPaymentsBase\W;
 /**
  * 2017-03-16
  * https://s3-eu-west-1.amazonaws.com/wl1-apidocs/api.kassacompleet.nl/index.html#webhooks

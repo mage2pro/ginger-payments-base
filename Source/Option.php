@@ -1,5 +1,5 @@
 <?php
-namespace Df\GingerPaymentsBase\Source;
+namespace Dfe\GingerPaymentsBase\Source;
 /**
  * 2017-03-01
  * [Ginger Payments] Available payment options: https://mage2.pro/t/3463
@@ -20,7 +20,7 @@ abstract class Option extends \Df\Config\Source {
 
 	/**
 	 * 2017-03-04
-	 * @used-by \Df\GingerPaymentsBase\Settings::options()
+	 * @used-by \Dfe\GingerPaymentsBase\Settings::options()
 	 * @return array(<value> => <label>)
 	 */
 	final function optionsTest():array {return $this->options(array_keys($this->mapTest()));}
@@ -34,7 +34,7 @@ abstract class Option extends \Df\Config\Source {
 	 * @override
 	 * @see \Df\Config\Source::map()
 	 * @used-by \Df\Config\Source::toOptionArray()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::prepareCommon()
 	 * @return array(string => string)
 	 */
 	final function map():array {return [
@@ -56,14 +56,14 @@ abstract class Option extends \Df\Config\Source {
 	/**
 	 * 2017-03-01
 	 * @used-by self::map()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::bt()
-	 * @used-by \Df\GingerPaymentsBase\Method::optionI2E()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::bt()
+	 * @used-by \Dfe\GingerPaymentsBase\Method::optionI2E()
 	 */
 	const BT = 'bank-transfer';
 	/**
 	 * 2017-02-27
 	 * @used-by self::map()
-	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
+	 * @used-by \Dfe\GingerPaymentsBase\Charge::pTransactions()
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.5/view/frontend/web/main.js?ts=4#L82
 	 */
 	const IDEAL = 'ideal';

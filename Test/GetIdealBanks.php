@@ -1,5 +1,5 @@
 <?php
-namespace Df\GingerPaymentsBase\Test;
+namespace Dfe\GingerPaymentsBase\Test;
 /**
  * 2017-02-27
  * @see \Dfe\GingerPayments\Test\GetIdealBanks

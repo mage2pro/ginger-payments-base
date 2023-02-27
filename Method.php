@@ -1,6 +1,6 @@
 <?php
-namespace Df\GingerPaymentsBase;
-use Df\GingerPaymentsBase\Source\Option as SO;
+namespace Dfe\GingerPaymentsBase;
+use Dfe\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Payment\Transaction as T;
 /**
  * 2017-02-25
@@ -12,28 +12,28 @@ abstract class Method extends \Df\Payment\Method {
 	/**
 	 * 2017-03-06
 	 * @used-by self::getConfigPaymentAction()
-	 * @used-by \Df\GingerPaymentsBase\ConfigProvider::config()
-	 * @used-by \Df\GingerPaymentsBase\Test\CaseT::api()
-	 * @used-by \Df\GingerPaymentsBase\W\Handler::strategyC()
+	 * @used-by \Dfe\GingerPaymentsBase\ConfigProvider::config()
+	 * @used-by \Dfe\GingerPaymentsBase\Test\CaseT::api()
+	 * @used-by \Dfe\GingerPaymentsBase\W\Handler::strategyC()
 	 */
 	final function api():Api {return dfc($this, function():Api {return new Api($this);});}
 
 	/**
 	 * 2017-03-06
-	 * @used-by \Df\GingerPaymentsBase\Charge::pCharge()
+	 * @used-by \Dfe\GingerPaymentsBase\Charge::pCharge()
 	 * @return string|null
 	 */
 	final function bank() {return $this->iia(self::$II_BANK);}
 
 	/**
 	 * 2017-03-07 https://mage2.pro/t/3355/2
-	 * @used-by \Df\GingerPaymentsBase\Charge::pTransactions()
+	 * @used-by \Dfe\GingerPaymentsBase\Charge::pTransactions()
 	 */
 	final function optionE():string {return dftr($this->option(), $this->optionI2E());}
 
 	/**
 	 * 2017-03-29 https://mage2.pro/t/3355/2
-	 * @used-by \Df\GingerPaymentsBase\Choice::optionCodeI()
+	 * @used-by \Dfe\GingerPaymentsBase\Choice::optionCodeI()
 	 */
 	final function optionI(string $v):string {return dftr($v, array_flip($this->optionI2E()));}
 
@@ -52,8 +52,8 @@ abstract class Method extends \Df\Payment\Method {
 	 * Kassa Compleet and Ginger Payments use different formats
 	 * for the «order_lines/order_line/vat_percentage» property
 	 * of a «POST /v1/orders/» request: https://mage2.pro/t/3451
-	 * @used-by \Df\GingerPaymentsBase\Charge::pOrderLines_products()
-	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
+	 * @used-by \Dfe\GingerPaymentsBase\Charge::pOrderLines_products()
+	 * @used-by \Dfe\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 * 2017-03-08
 	 * https://github.com/mage2pro/ginger-payments/blob/0.2.3/etc/config.xml?ts=4#L23
 	 * https://github.com/mage2pro/kassa-compleet/blob/0.2.3/etc/config.xml?ts=4#L23

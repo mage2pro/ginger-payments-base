@@ -8,7 +8,7 @@ define([
 return parent.extend({
 	/**
 	 * 2017-03-04
-	 * @used-by Df_GingerPaymentsBase/ideal
+	 * @used-by Dfe_GingerPaymentsBase/ideal
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L6
 	 * @returns {Object}[]
 	 */
@@ -18,7 +18,7 @@ return parent.extend({
 	defaults: {
 		// 2017-03-05
 		// @used-by dfData()
-		// @used-by Df_GingerPaymentsBase/ideal
+		// @used-by Dfe_GingerPaymentsBase/ideal
 		// https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/template/bank.html?ts=4#L10
 		bank: ''
 	},
@@ -33,9 +33,9 @@ return parent.extend({
 	 * @override
 	 * @see Df_Payment/withOptions::dfData()
 	 * https://github.com/mage2pro/core/blob/2.8.4/Payment/view/frontend/web/withOptions.js#L19-L33
-	 * @see \Df\GingerPaymentsBase\Method::$II_BANK
+	 * @see \Dfe\GingerPaymentsBase\Method::$II_BANK
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/Method.php?ts=4#L68
-	 * @see \Df\GingerPaymentsBase\Method::$II_OPTION
+	 * @see \Dfe\GingerPaymentsBase\Method::$II_OPTION
 	 * https://github.com/mage2pro/ginger-payments-base/blob/0.2.2/Method.php?ts=4#L75
 	 * @returns {Object}
 	 */
@@ -64,7 +64,7 @@ return parent.extend({
 	 * @returns {String}
 	 */
 	optionAfter: function(v) {return df.k({
-		'bank-transfer': 'Df_GingerPaymentsBase/bankTransfer'
-		,ideal: 'Df_GingerPaymentsBase/ideal'
+		'bank-transfer': 'Dfe_GingerPaymentsBase/bankTransfer'
+		,ideal: 'Dfe_GingerPaymentsBase/ideal'
 	}, v, this._super(v));}
 });});

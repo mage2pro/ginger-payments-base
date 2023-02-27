@@ -1,6 +1,6 @@
 <?php
-namespace Df\GingerPaymentsBase;
-use Df\GingerPaymentsBase\Settings as S;
+namespace Dfe\GingerPaymentsBase;
+use Dfe\GingerPaymentsBase\Settings as S;
 use Df\Payment\ConfigProvider\IOptions;
 /**
  * 2017-03-03
@@ -38,11 +38,11 @@ final class ConfigProvider extends \Df\Payment\ConfigProvider implements IOption
 	 */
 	protected function config():array {/** @var S $s */ $s = $this->s(); return [
 		# 2017-03-04
-		# @used-by Df_GingerPaymentsBase/main::banks()
+		# @used-by Dfe_GingerPaymentsBase/main::banks()
 	  	# https://github.com/mage2pro/ginger-payments-base/blob/0.2.3/view/frontend/web/main.js?ts=4#L7-L21
 		'banks' => $this->m()->api()->idealBanks()
 		  /**
-		   * 2017-03-09 @used-by Df_GingerPaymentsBase/bankTransfer
+		   * 2017-03-09 @used-by Dfe_GingerPaymentsBase/bankTransfer
 		   * 2019-09-28
 		   * @see \Dfe\ACH\ConfigProvider::config()
 		   * https://github.com/mage2pro/ach/blob/0.0.4/ConfigProvider.php#L19

@@ -1,6 +1,6 @@
 {
 	"name": "mage2pro/ginger-payments-base"
-	,"version": "1.3.0"
+	,"version": "1.3.1"
 	,"description": "The common implementation part of my «Kassa Compleet» and «Ginger Payments» payment extensions for Magento 2"
 	,"type": "magento2-module"
 	,"homepage": "https://mage2.pro/c/extensions"
@@ -12,7 +12,7 @@
 		"role": "Developer"
 	}]
 	,"require": {"guzzlehttp/guzzle": ">=3.1.0", "mage2pro/core": ">=9.0.4"}
-	,"autoload": {"files": ["registration.php"], "psr-4": {"Df\\GingerPaymentsBase\\": ""}}
+	,"autoload": {"files": ["registration.php"], "psr-4": {"Dfe\\GingerPaymentsBase\\": ""}}
 	,"keywords": [
 		"3D Secure"
 		,"API"

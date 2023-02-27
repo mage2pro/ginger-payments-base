@@ -1,6 +1,6 @@
 <?php
-namespace Df\GingerPaymentsBase;
-use Df\GingerPaymentsBase\Source\Option as SO;
+namespace Dfe\GingerPaymentsBase;
+use Dfe\GingerPaymentsBase\Source\Option as SO;
 use Magento\Sales\Model\Order\Address as OA;
 use Magento\Sales\Model\Order\Item as OI;
 # 2017-03-05
@@ -202,41 +202,41 @@ final class Charge extends \Df\Payment\Charge {
 	/**
 	 * 2017-03-29
 	 * @used-by self::pCharge()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::btInstructions()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::btInstructions()
 	 */
 	const K_AMOUNT = 'amount';
 
 	/**
 	 * 2017-03-28
 	 * @used-by self::pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::prepareCommon()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::prepareCommon()
 	 */
 	const K_ISSUER_ID = 'issuer_id';
 
 	/**
 	 * 2017-03-28
 	 * @used-by self::pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::optionCode()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::optionCode()
 	 */
 	const K_PAYMENT_METHOD = 'payment_method';
 
 	/**
 	 * 2017-03-28
 	 * @used-by self::pTransactions()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::psDetails()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::psDetails()
 	 */
 	const K_PAYMENT_METHOD_DETAILS = 'payment_method_details';
 
 	/**
 	 * 2017-03-28
 	 * @used-by self::pCharge()
-	 * @used-by \Df\GingerPaymentsBase\Block\Info::psTransaction()
+	 * @used-by \Dfe\GingerPaymentsBase\Block\Info::psTransaction()
 	 */
 	const K_TRANSACTIONS = 'transactions';
 
 	/**
 	 * 2017-03-06
-	 * @used-by \Df\GingerPaymentsBase\Init\Action::req()
+	 * @used-by \Dfe\GingerPaymentsBase\Init\Action::req()
 	 * @return array(string => mixed)
 	 */
 	static function p(Method $m):array {return (new self($m))->pCharge();}

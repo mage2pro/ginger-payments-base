@@ -1,12 +1,12 @@
 <?php
-namespace Df\GingerPaymentsBase\Block;
-use Df\GingerPaymentsBase\Charge as C;
+namespace Dfe\GingerPaymentsBase\Block;
+use Dfe\GingerPaymentsBase\Charge as C;
 /**
  * 2017-03-09
  * @final Unable to use the PHP «final» keyword here because of the M2 code generation.
- * @method \Df\GingerPaymentsBase\Method m()
- * @method \Df\GingerPaymentsBase\Choice choice()
- * @method \Df\GingerPaymentsBase\Settings|string s($k = null)
+ * @method \Dfe\GingerPaymentsBase\Method m()
+ * @method \Dfe\GingerPaymentsBase\Choice choice()
+ * @method \Dfe\GingerPaymentsBase\Settings|string s($k = null)
  */
 class Info extends \Df\Payment\Block\Info {
 	/**

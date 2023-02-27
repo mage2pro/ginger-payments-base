@@ -1,24 +1,24 @@
 <?php
-namespace Df\GingerPaymentsBase\Test\CreateOrder;
+namespace Dfe\GingerPaymentsBase\Test\CreateOrder;
 /**
  * 2017-02-27
  * @see \Dfe\GingerPayments\Test\CreateOrder\Ideal
  * @see \Dfe\KassaCompleet\Test\CreateOrder\Ideal
  */
-abstract class Ideal extends \Df\GingerPaymentsBase\Test\CreateOrder {
+abstract class Ideal extends \Dfe\GingerPaymentsBase\Test\CreateOrder {
 	/**
 	 * 2017-02-27
 	 * @override
-	 * @see \Df\GingerPaymentsBase\Test\CreateOrder::method()
-	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
+	 * @see \Dfe\GingerPaymentsBase\Test\CreateOrder::method()
+	 * @used-by \Dfe\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 */
 	final protected function method():string {return 'ideal';}
 
 	/**
 	 * 2017-02-27
 	 * @override
-	 * @see \Df\GingerPaymentsBase\Test\CreateOrder::params()
-	 * @used-by \Df\GingerPaymentsBase\Test\CreateOrder::t01_success()
+	 * @see \Dfe\GingerPaymentsBase\Test\CreateOrder::params()
+	 * @used-by \Dfe\GingerPaymentsBase\Test\CreateOrder::t01_success()
 	 */
 	final protected function params():array {return [
 		# 2017-02-27

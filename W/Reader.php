@@ -1,5 +1,5 @@
 <?php
-namespace Df\GingerPaymentsBase\W;
+namespace Dfe\GingerPaymentsBase\W;
 /**
  * 2017-03-16
  * 2017-03-26

@@ -1,10 +1,10 @@
 <?php
-namespace Df\GingerPaymentsBase\Init;
-use Df\GingerPaymentsBase\Charge;
-use Df\GingerPaymentsBase\Method as M;
+namespace Dfe\GingerPaymentsBase\Init;
+use Dfe\GingerPaymentsBase\Charge;
+use Dfe\GingerPaymentsBase\Method as M;
 use Df\Payment\W\Event as Ev;
 # 2017-03-22
-/** @method \Df\GingerPaymentsBase\Method m() */
+/** @method \Dfe\GingerPaymentsBase\Method m() */
 final class Action extends \Df\Payment\Init\Action {
 	/**
 	 * 2017-03-22

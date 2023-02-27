@@ -3,5 +3,5 @@
 	xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
 	xsi:noNamespaceSchemaLocation='urn:magento:framework:ObjectManager/etc/config.xsd'
 >
-	<virtualType name='Df\GingerPaymentsBase\W\Nav' type='Df\StripeClone\W\Nav'/>
+	<virtualType name='Dfe\GingerPaymentsBase\W\Nav' type='Df\StripeClone\W\Nav'/>
 </config>
